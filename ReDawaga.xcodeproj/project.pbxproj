@@ -1,0 +1,598 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8C61B9FE2611570B00FCBB2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61B9FD2611570B00FCBB2C /* AppDelegate.swift */; };
+		8C61BA002611570B00FCBB2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61B9FF2611570B00FCBB2C /* SceneDelegate.swift */; };
+		8C61BA022611570B00FCBB2C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BA012611570B00FCBB2C /* ViewController.swift */; };
+		8C61BA052611570B00FCBB2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C61BA032611570B00FCBB2C /* Main.storyboard */; };
+		8C61BA072611570B00FCBB2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C61BA062611570B00FCBB2C /* Assets.xcassets */; };
+		8C61BA0A2611570B00FCBB2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C61BA082611570B00FCBB2C /* LaunchScreen.storyboard */; };
+		8C61BA152611570B00FCBB2C /* ReDawagaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BA142611570B00FCBB2C /* ReDawagaTests.swift */; };
+		8C61BA202611570B00FCBB2C /* ReDawagaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BA1F2611570B00FCBB2C /* ReDawagaUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8C61BA112611570B00FCBB2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C61B9F22611570B00FCBB2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C61B9F92611570B00FCBB2C;
+			remoteInfo = ReDawaga;
+		};
+		8C61BA1C2611570B00FCBB2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C61B9F22611570B00FCBB2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C61B9F92611570B00FCBB2C;
+			remoteInfo = ReDawaga;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8C61B9FA2611570B00FCBB2C /* ReDawaga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReDawaga.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C61B9FD2611570B00FCBB2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8C61B9FF2611570B00FCBB2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8C61BA012611570B00FCBB2C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8C61BA042611570B00FCBB2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8C61BA062611570B00FCBB2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8C61BA092611570B00FCBB2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8C61BA0B2611570B00FCBB2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C61BA102611570B00FCBB2C /* ReDawagaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReDawagaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C61BA142611570B00FCBB2C /* ReDawagaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReDawagaTests.swift; sourceTree = "<group>"; };
+		8C61BA162611570B00FCBB2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C61BA1B2611570B00FCBB2C /* ReDawagaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReDawagaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C61BA1F2611570B00FCBB2C /* ReDawagaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReDawagaUITests.swift; sourceTree = "<group>"; };
+		8C61BA212611570B00FCBB2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8C61B9F72611570B00FCBB2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C61BA0D2611570B00FCBB2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C61BA182611570B00FCBB2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8C61B9F12611570B00FCBB2C = {
+			isa = PBXGroup;
+			children = (
+				8C61B9FC2611570B00FCBB2C /* ReDawaga */,
+				8C61BA132611570B00FCBB2C /* ReDawagaTests */,
+				8C61BA1E2611570B00FCBB2C /* ReDawagaUITests */,
+				8C61B9FB2611570B00FCBB2C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8C61B9FB2611570B00FCBB2C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8C61B9FA2611570B00FCBB2C /* ReDawaga.app */,
+				8C61BA102611570B00FCBB2C /* ReDawagaTests.xctest */,
+				8C61BA1B2611570B00FCBB2C /* ReDawagaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8C61B9FC2611570B00FCBB2C /* ReDawaga */ = {
+			isa = PBXGroup;
+			children = (
+				8C61B9FD2611570B00FCBB2C /* AppDelegate.swift */,
+				8C61B9FF2611570B00FCBB2C /* SceneDelegate.swift */,
+				8C61BA012611570B00FCBB2C /* ViewController.swift */,
+				8C61BA032611570B00FCBB2C /* Main.storyboard */,
+				8C61BA062611570B00FCBB2C /* Assets.xcassets */,
+				8C61BA082611570B00FCBB2C /* LaunchScreen.storyboard */,
+				8C61BA0B2611570B00FCBB2C /* Info.plist */,
+			);
+			path = ReDawaga;
+			sourceTree = "<group>";
+		};
+		8C61BA132611570B00FCBB2C /* ReDawagaTests */ = {
+			isa = PBXGroup;
+			children = (
+				8C61BA142611570B00FCBB2C /* ReDawagaTests.swift */,
+				8C61BA162611570B00FCBB2C /* Info.plist */,
+			);
+			path = ReDawagaTests;
+			sourceTree = "<group>";
+		};
+		8C61BA1E2611570B00FCBB2C /* ReDawagaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8C61BA1F2611570B00FCBB2C /* ReDawagaUITests.swift */,
+				8C61BA212611570B00FCBB2C /* Info.plist */,
+			);
+			path = ReDawagaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8C61B9F92611570B00FCBB2C /* ReDawaga */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C61BA242611570B00FCBB2C /* Build configuration list for PBXNativeTarget "ReDawaga" */;
+			buildPhases = (
+				8C61B9F62611570B00FCBB2C /* Sources */,
+				8C61B9F72611570B00FCBB2C /* Frameworks */,
+				8C61B9F82611570B00FCBB2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReDawaga;
+			productName = ReDawaga;
+			productReference = 8C61B9FA2611570B00FCBB2C /* ReDawaga.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8C61BA0F2611570B00FCBB2C /* ReDawagaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C61BA272611570B00FCBB2C /* Build configuration list for PBXNativeTarget "ReDawagaTests" */;
+			buildPhases = (
+				8C61BA0C2611570B00FCBB2C /* Sources */,
+				8C61BA0D2611570B00FCBB2C /* Frameworks */,
+				8C61BA0E2611570B00FCBB2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8C61BA122611570B00FCBB2C /* PBXTargetDependency */,
+			);
+			name = ReDawagaTests;
+			productName = ReDawagaTests;
+			productReference = 8C61BA102611570B00FCBB2C /* ReDawagaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8C61BA1A2611570B00FCBB2C /* ReDawagaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C61BA2A2611570B00FCBB2C /* Build configuration list for PBXNativeTarget "ReDawagaUITests" */;
+			buildPhases = (
+				8C61BA172611570B00FCBB2C /* Sources */,
+				8C61BA182611570B00FCBB2C /* Frameworks */,
+				8C61BA192611570B00FCBB2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8C61BA1D2611570B00FCBB2C /* PBXTargetDependency */,
+			);
+			name = ReDawagaUITests;
+			productName = ReDawagaUITests;
+			productReference = 8C61BA1B2611570B00FCBB2C /* ReDawagaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8C61B9F22611570B00FCBB2C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					8C61B9F92611570B00FCBB2C = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					8C61BA0F2611570B00FCBB2C = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 8C61B9F92611570B00FCBB2C;
+					};
+					8C61BA1A2611570B00FCBB2C = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 8C61B9F92611570B00FCBB2C;
+					};
+				};
+			};
+			buildConfigurationList = 8C61B9F52611570B00FCBB2C /* Build configuration list for PBXProject "ReDawaga" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8C61B9F12611570B00FCBB2C;
+			productRefGroup = 8C61B9FB2611570B00FCBB2C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8C61B9F92611570B00FCBB2C /* ReDawaga */,
+				8C61BA0F2611570B00FCBB2C /* ReDawagaTests */,
+				8C61BA1A2611570B00FCBB2C /* ReDawagaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8C61B9F82611570B00FCBB2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C61BA0A2611570B00FCBB2C /* LaunchScreen.storyboard in Resources */,
+				8C61BA072611570B00FCBB2C /* Assets.xcassets in Resources */,
+				8C61BA052611570B00FCBB2C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C61BA0E2611570B00FCBB2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C61BA192611570B00FCBB2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8C61B9F62611570B00FCBB2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C61BA022611570B00FCBB2C /* ViewController.swift in Sources */,
+				8C61B9FE2611570B00FCBB2C /* AppDelegate.swift in Sources */,
+				8C61BA002611570B00FCBB2C /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C61BA0C2611570B00FCBB2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C61BA152611570B00FCBB2C /* ReDawagaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C61BA172611570B00FCBB2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C61BA202611570B00FCBB2C /* ReDawagaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8C61BA122611570B00FCBB2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C61B9F92611570B00FCBB2C /* ReDawaga */;
+			targetProxy = 8C61BA112611570B00FCBB2C /* PBXContainerItemProxy */;
+		};
+		8C61BA1D2611570B00FCBB2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C61B9F92611570B00FCBB2C /* ReDawaga */;
+			targetProxy = 8C61BA1C2611570B00FCBB2C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8C61BA032611570B00FCBB2C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8C61BA042611570B00FCBB2C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8C61BA082611570B00FCBB2C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8C61BA092611570B00FCBB2C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8C61BA222611570B00FCBB2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8C61BA232611570B00FCBB2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8C61BA252611570B00FCBB2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3N72J4U62S;
+				INFOPLIST_FILE = ReDawaga/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.MGHouse.ReDawaga;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8C61BA262611570B00FCBB2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3N72J4U62S;
+				INFOPLIST_FILE = ReDawaga/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.MGHouse.ReDawaga;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8C61BA282611570B00FCBB2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3N72J4U62S;
+				INFOPLIST_FILE = ReDawagaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.MGHouse.ReDawagaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReDawaga.app/ReDawaga";
+			};
+			name = Debug;
+		};
+		8C61BA292611570B00FCBB2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3N72J4U62S;
+				INFOPLIST_FILE = ReDawagaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.MGHouse.ReDawagaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReDawaga.app/ReDawaga";
+			};
+			name = Release;
+		};
+		8C61BA2B2611570B00FCBB2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3N72J4U62S;
+				INFOPLIST_FILE = ReDawagaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.MGHouse.ReDawagaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ReDawaga;
+			};
+			name = Debug;
+		};
+		8C61BA2C2611570B00FCBB2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3N72J4U62S;
+				INFOPLIST_FILE = ReDawagaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.MGHouse.ReDawagaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ReDawaga;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8C61B9F52611570B00FCBB2C /* Build configuration list for PBXProject "ReDawaga" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C61BA222611570B00FCBB2C /* Debug */,
+				8C61BA232611570B00FCBB2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C61BA242611570B00FCBB2C /* Build configuration list for PBXNativeTarget "ReDawaga" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C61BA252611570B00FCBB2C /* Debug */,
+				8C61BA262611570B00FCBB2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C61BA272611570B00FCBB2C /* Build configuration list for PBXNativeTarget "ReDawagaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C61BA282611570B00FCBB2C /* Debug */,
+				8C61BA292611570B00FCBB2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C61BA2A2611570B00FCBB2C /* Build configuration list for PBXNativeTarget "ReDawagaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C61BA2B2611570B00FCBB2C /* Debug */,
+				8C61BA2C2611570B00FCBB2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8C61B9F22611570B00FCBB2C /* Project object */;
+}
