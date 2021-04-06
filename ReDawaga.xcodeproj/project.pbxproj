@@ -275,7 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				8C61BB0726140BC000FCBB2C /* Constants */,
-				8C61BAFE26140B7D00FCBB2C /* Utils */,
 				8C61BA5D2611586A00FCBB2C /* Storyboard */,
 				8C61BA512611582C00FCBB2C /* Enum */,
 				8C61BA502611582600FCBB2C /* Extension */,
@@ -467,13 +466,6 @@
 				8C61BB3C261577E600FCBB2C /* BookMarkTableViewCell.swift */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		8C61BAFE26140B7D00FCBB2C /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		8C61BB0726140BC000FCBB2C /* Constants */ = {
