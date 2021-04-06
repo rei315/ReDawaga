@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  ReDawaga
+
+  Created by 김민국 on 2021/03/31.
+  
+*/
+
+"HomeTitle" = "Please enter the\nDestination Address";
+"AddressPlaceHolder" = "Please enter your address";
+"FavoriteTitle" = "Bookmark";
+
+"SearchAddressTitle" = "Destination Address";
+
+"QuickMapDistanceEdit" = "Edit";
+"QuickMapStart" = "Start";
+"QuickMapNamePlaceHolder" = "Please enter a name";
+"QuickMapAddFavorite" = "Add Bookmark";
+"QuickMapDeleteFavorite" = " Cancel Bookmark Modification";
+"QuickMapModifyFavorite" = "Modify Bookmark";
+"QuickMapEditValuePlaceHolder" = "Please enter";
+
+"ToTimeNotificationTitle" = "Arrived";
+"ToTimeNotificationBody" = "Arrived at destination";
+
+"NotificationPermissionTitle" = "Notification Permission Error";
+"NotificationPermissionBody" = "Please set permissions for notifications";
+"LocationDeniedTitle" = "Location Permission Error";
+"LocationDeniedBody" = "Please set the permission for the location";
+"NotificationErrorTitle" = "Error";
+"NotificationErrorBody" = "An error has occurred";
+
+"Enter" = "Done";
+"Destination" = "Destination";
+
+"InputError" = "Input Error";
+"FavoriteAddressEmptyAlertMessage" = "Please set the address";
+"FavoriteNameEmptyAlertMessage" = "Please enter a bookmark name";
+"FavoriteImageEmptyAlertMessage" = "Please set the bookmark icon";
+
+"CreatedComplete" = "Addition Complete";
+"UpdateComplete" = "Modification Complete";
+"FavoriteCreated" = "Bookmark addition completed";
+"FavoriteUpdated" = "Bookmark modification completed";
+
+"TutorialDoneTitle" = "Start!";

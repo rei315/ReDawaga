@@ -3,18 +3,53 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CB828632CF62971F0B1EC31 /* Pods_ReDawaga.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0A96CD7783ECE7DAF76FD6 /* Pods_ReDawaga.framework */; };
+		62A1D4A091F7C26939A6F7DE /* Pods_ReDawaga_ReDawagaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BAA7869675E1D27A91B5436 /* Pods_ReDawaga_ReDawagaUITests.framework */; };
+		8C43CF59261B26AB0086599B /* BookMarkListActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CF58261B26AB0086599B /* BookMarkListActionCreator.swift */; };
+		8C43CF5F261B2AE30086599B /* PlaceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CF5E261B2AE30086599B /* PlaceSearchView.swift */; };
+		8C43CF6D261B2B780086599B /* PlaceSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CF6C261B2B780086599B /* PlaceSearchTableViewCell.swift */; };
+		8C43CF7C261B2D290086599B /* PlaceSearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CF7B261B2D290086599B /* PlaceSearchState.swift */; };
+		8C43CF84261B2D330086599B /* PlaceSearchReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CF83261B2D330086599B /* PlaceSearchReducer.swift */; };
+		8C43CF89261B2D3A0086599B /* PlaceSearchAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CF88261B2D3A0086599B /* PlaceSearchAction.swift */; };
+		8C43CF8E261B2D410086599B /* PlaceSearchActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CF8D261B2D410086599B /* PlaceSearchActionCreator.swift */; };
+		8C43CFB1261B30C70086599B /* PlaceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CFB0261B30C70086599B /* PlaceSearchViewController.swift */; };
+		8C43CFC3261BF7830086599B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CFC2261BF7830086599B /* UITableView+Extension.swift */; };
+		8C43CFC8261BF7D40086599B /* NSObject+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CFC7261BF7D40086599B /* NSObject+Protocol.swift */; };
 		8C61B9FE2611570B00FCBB2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61B9FD2611570B00FCBB2C /* AppDelegate.swift */; };
-		8C61BA002611570B00FCBB2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61B9FF2611570B00FCBB2C /* SceneDelegate.swift */; };
-		8C61BA022611570B00FCBB2C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BA012611570B00FCBB2C /* ViewController.swift */; };
 		8C61BA052611570B00FCBB2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C61BA032611570B00FCBB2C /* Main.storyboard */; };
 		8C61BA072611570B00FCBB2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C61BA062611570B00FCBB2C /* Assets.xcassets */; };
 		8C61BA0A2611570B00FCBB2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C61BA082611570B00FCBB2C /* LaunchScreen.storyboard */; };
 		8C61BA152611570B00FCBB2C /* ReDawagaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BA142611570B00FCBB2C /* ReDawagaTests.swift */; };
 		8C61BA202611570B00FCBB2C /* ReDawagaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BA1F2611570B00FCBB2C /* ReDawagaUITests.swift */; };
+		8C61BA762611B5A800FCBB2C /* MarkEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BA752611B5A800FCBB2C /* MarkEntity.swift */; };
+		8C61BA7B2611B71100FCBB2C /* LocationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BA7A2611B71100FCBB2C /* LocationEntity.swift */; };
+		8C61BA9B2611B97000FCBB2C /* PlaceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BA9A2611B97000FCBB2C /* PlaceEntity.swift */; };
+		8C61BAA02611B9E100FCBB2C /* MarkRealmEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BA9F2611B9E100FCBB2C /* MarkRealmEntity.swift */; };
+		8C61BAA52611BD0200FCBB2C /* MarkRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BAA42611BD0200FCBB2C /* MarkRealm.swift */; };
+		8C61BAAD2613F4AC00FCBB2C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BAAC2613F4AC00FCBB2C /* Location.swift */; };
+		8C61BAB22613F4B300FCBB2C /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BAB12613F4B300FCBB2C /* Place.swift */; };
+		8C61BAB82613F61F00FCBB2C /* APIManagerForGoogleMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BAB72613F61F00FCBB2C /* APIManagerForGoogleMaps.swift */; };
+		8C61BAC42614037500FCBB2C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BAC32614037500FCBB2C /* AppState.swift */; };
+		8C61BACC2614037A00FCBB2C /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BACB2614037A00FCBB2C /* AppReducer.swift */; };
+		8C61BADD261405A700FCBB2C /* BookMarkListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BADC261405A700FCBB2C /* BookMarkListState.swift */; };
+		8C61BAE22614063900FCBB2C /* BookMarkListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BAE12614063900FCBB2C /* BookMarkListReducer.swift */; };
+		8C61BAE7261407D700FCBB2C /* BookMarkListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BAE6261407D700FCBB2C /* BookMarkListAction.swift */; };
+		8C61BAEC2614096500FCBB2C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BAEB2614096500FCBB2C /* MainViewController.swift */; };
+		8C61BAF226140A9B00FCBB2C /* MainViewSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BAF126140A9B00FCBB2C /* MainViewSearchView.swift */; };
+		8C61BAFA26140B5A00FCBB2C /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BAF926140B5A00FCBB2C /* PaddingTextField.swift */; };
+		8C61BB0026140B8600FCBB2C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BAFF26140B8600FCBB2C /* UIColor+Extension.swift */; };
+		8C61BB0926140BCD00FCBB2C /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB0826140BCD00FCBB2C /* App.swift */; };
+		8C61BB1126140BD900FCBB2C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB1026140BD900FCBB2C /* Constants.swift */; };
+		8C61BB1D26140C9B00FCBB2C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C61BB1F26140C9B00FCBB2C /* Localizable.strings */; };
+		8C61BB3026140D9700FCBB2C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB2F26140D9700FCBB2C /* String+Extension.swift */; };
+		8C61BB35261571E000FCBB2C /* DeviceSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB34261571E000FCBB2C /* DeviceSize.swift */; };
+		8C61BB3D261577E600FCBB2C /* BookMarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB3C261577E600FCBB2C /* BookMarkTableViewCell.swift */; };
+		8C61BB4226157A7A00FCBB2C /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB4126157A7A00FCBB2C /* ResourceManager.swift */; };
+		E00B3881644C6F508834B671 /* Pods_ReDawagaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81365408F410719010AAEDC0 /* Pods_ReDawagaTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +70,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		152E938A812B633021285F05 /* Pods-ReDawaga-ReDawagaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReDawaga-ReDawagaUITests.debug.xcconfig"; path = "Target Support Files/Pods-ReDawaga-ReDawagaUITests/Pods-ReDawaga-ReDawagaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2EE5869178522A06D28D63DE /* Pods-ReDawaga.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReDawaga.release.xcconfig"; path = "Target Support Files/Pods-ReDawaga/Pods-ReDawaga.release.xcconfig"; sourceTree = "<group>"; };
+		3D0A96CD7783ECE7DAF76FD6 /* Pods_ReDawaga.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReDawaga.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59BF2ED94A58C26928CAF96A /* Pods-ReDawaga-ReDawagaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReDawaga-ReDawagaUITests.release.xcconfig"; path = "Target Support Files/Pods-ReDawaga-ReDawagaUITests/Pods-ReDawaga-ReDawagaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5BAA7869675E1D27A91B5436 /* Pods_ReDawaga_ReDawagaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReDawaga_ReDawagaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A99666B8D5CE05F25F4DFAF /* Pods-ReDawaga.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReDawaga.debug.xcconfig"; path = "Target Support Files/Pods-ReDawaga/Pods-ReDawaga.debug.xcconfig"; sourceTree = "<group>"; };
+		81365408F410719010AAEDC0 /* Pods_ReDawagaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReDawagaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		845D0E88DE5F7CB9ED4DD41C /* Pods-ReDawagaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReDawagaTests.release.xcconfig"; path = "Target Support Files/Pods-ReDawagaTests/Pods-ReDawagaTests.release.xcconfig"; sourceTree = "<group>"; };
+		84F49E9F38CE3D4F311A9362 /* Pods-ReDawagaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReDawagaTests.debug.xcconfig"; path = "Target Support Files/Pods-ReDawagaTests/Pods-ReDawagaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8C43CF58261B26AB0086599B /* BookMarkListActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkListActionCreator.swift; sourceTree = "<group>"; };
+		8C43CF5E261B2AE30086599B /* PlaceSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchView.swift; sourceTree = "<group>"; };
+		8C43CF6C261B2B780086599B /* PlaceSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchTableViewCell.swift; sourceTree = "<group>"; };
+		8C43CF7B261B2D290086599B /* PlaceSearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchState.swift; sourceTree = "<group>"; };
+		8C43CF83261B2D330086599B /* PlaceSearchReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchReducer.swift; sourceTree = "<group>"; };
+		8C43CF88261B2D3A0086599B /* PlaceSearchAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchAction.swift; sourceTree = "<group>"; };
+		8C43CF8D261B2D410086599B /* PlaceSearchActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchActionCreator.swift; sourceTree = "<group>"; };
+		8C43CFB0261B30C70086599B /* PlaceSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchViewController.swift; sourceTree = "<group>"; };
+		8C43CFC2261BF7830086599B /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		8C43CFC7261BF7D40086599B /* NSObject+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Protocol.swift"; sourceTree = "<group>"; };
 		8C61B9FA2611570B00FCBB2C /* ReDawaga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReDawaga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C61B9FD2611570B00FCBB2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8C61B9FF2611570B00FCBB2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8C61BA012611570B00FCBB2C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8C61BA042611570B00FCBB2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8C61BA062611570B00FCBB2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C61BA092611570B00FCBB2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +101,36 @@
 		8C61BA1B2611570B00FCBB2C /* ReDawagaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReDawagaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C61BA1F2611570B00FCBB2C /* ReDawagaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReDawagaUITests.swift; sourceTree = "<group>"; };
 		8C61BA212611570B00FCBB2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C61BA752611B5A800FCBB2C /* MarkEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkEntity.swift; sourceTree = "<group>"; };
+		8C61BA7A2611B71100FCBB2C /* LocationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEntity.swift; sourceTree = "<group>"; };
+		8C61BA9A2611B97000FCBB2C /* PlaceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceEntity.swift; sourceTree = "<group>"; };
+		8C61BA9F2611B9E100FCBB2C /* MarkRealmEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkRealmEntity.swift; sourceTree = "<group>"; };
+		8C61BAA42611BD0200FCBB2C /* MarkRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkRealm.swift; sourceTree = "<group>"; };
+		8C61BAAC2613F4AC00FCBB2C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		8C61BAB12613F4B300FCBB2C /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		8C61BAB72613F61F00FCBB2C /* APIManagerForGoogleMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerForGoogleMaps.swift; sourceTree = "<group>"; };
+		8C61BAC32614037500FCBB2C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		8C61BACB2614037A00FCBB2C /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		8C61BADC261405A700FCBB2C /* BookMarkListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkListState.swift; sourceTree = "<group>"; };
+		8C61BAE12614063900FCBB2C /* BookMarkListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkListReducer.swift; sourceTree = "<group>"; };
+		8C61BAE6261407D700FCBB2C /* BookMarkListAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkListAction.swift; sourceTree = "<group>"; };
+		8C61BAEB2614096500FCBB2C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		8C61BAF126140A9B00FCBB2C /* MainViewSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewSearchView.swift; sourceTree = "<group>"; };
+		8C61BAF926140B5A00FCBB2C /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
+		8C61BAFF26140B8600FCBB2C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		8C61BB0826140BCD00FCBB2C /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		8C61BB1026140BD900FCBB2C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = /Users/kimminguk/Desktop/ReDawaga/ReDawaga/Constants/Constants.swift; sourceTree = "<absolute>"; };
+		8C61BB1E26140C9B00FCBB2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8C61BB2326140CC500FCBB2C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		8C61BB2426140CC500FCBB2C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		8C61BB2526140CC500FCBB2C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8C61BB2926140CFB00FCBB2C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		8C61BB2A26140CFB00FCBB2C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		8C61BB2B26140CFC00FCBB2C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8C61BB2F26140D9700FCBB2C /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		8C61BB34261571E000FCBB2C /* DeviceSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSize.swift; sourceTree = "<group>"; };
+		8C61BB3C261577E600FCBB2C /* BookMarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTableViewCell.swift; sourceTree = "<group>"; };
+		8C61BB4126157A7A00FCBB2C /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CB828632CF62971F0B1EC31 /* Pods_ReDawaga.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E00B3881644C6F508834B671 /* Pods_ReDawagaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +154,101 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62A1D4A091F7C26939A6F7DE /* Pods_ReDawaga_ReDawagaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DDAE443F9A211B1DD769505 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D0A96CD7783ECE7DAF76FD6 /* Pods_ReDawaga.framework */,
+				5BAA7869675E1D27A91B5436 /* Pods_ReDawaga_ReDawagaUITests.framework */,
+				81365408F410719010AAEDC0 /* Pods_ReDawagaTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		874764826867B8DF620FFE1B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7A99666B8D5CE05F25F4DFAF /* Pods-ReDawaga.debug.xcconfig */,
+				2EE5869178522A06D28D63DE /* Pods-ReDawaga.release.xcconfig */,
+				152E938A812B633021285F05 /* Pods-ReDawaga-ReDawagaUITests.debug.xcconfig */,
+				59BF2ED94A58C26928CAF96A /* Pods-ReDawaga-ReDawagaUITests.release.xcconfig */,
+				84F49E9F38CE3D4F311A9362 /* Pods-ReDawagaTests.debug.xcconfig */,
+				845D0E88DE5F7CB9ED4DD41C /* Pods-ReDawagaTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8C43CF5D261B2AB60086599B /* PlaceSearch */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CF5E261B2AE30086599B /* PlaceSearchView.swift */,
+				8C43CF6C261B2B780086599B /* PlaceSearchTableViewCell.swift */,
+			);
+			path = PlaceSearch;
+			sourceTree = "<group>";
+		};
+		8C43CF74261B2CDA0086599B /* PlaceSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CF7B261B2D290086599B /* PlaceSearchState.swift */,
+			);
+			path = PlaceSearchView;
+			sourceTree = "<group>";
+		};
+		8C43CF75261B2CEB0086599B /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				8C61BAE12614063900FCBB2C /* BookMarkListReducer.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		8C43CF76261B2CF20086599B /* PlaceSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CF83261B2D330086599B /* PlaceSearchReducer.swift */,
+			);
+			path = PlaceSearchView;
+			sourceTree = "<group>";
+		};
+		8C43CF77261B2CF90086599B /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				8C61BAE6261407D700FCBB2C /* BookMarkListAction.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		8C43CF78261B2CFD0086599B /* PlaceSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CF88261B2D3A0086599B /* PlaceSearchAction.swift */,
+			);
+			path = PlaceSearchView;
+			sourceTree = "<group>";
+		};
+		8C43CF79261B2D040086599B /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CF58261B26AB0086599B /* BookMarkListActionCreator.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		8C43CF7A261B2D070086599B /* PlaceSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CF8D261B2D410086599B /* PlaceSearchActionCreator.swift */,
+			);
+			path = PlaceSearchView;
+			sourceTree = "<group>";
+		};
 		8C61B9F12611570B00FCBB2C = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +256,8 @@
 				8C61BA132611570B00FCBB2C /* ReDawagaTests */,
 				8C61BA1E2611570B00FCBB2C /* ReDawagaUITests */,
 				8C61B9FB2611570B00FCBB2C /* Products */,
+				874764826867B8DF620FFE1B /* Pods */,
+				1DDAE443F9A211B1DD769505 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,10 +274,18 @@
 		8C61B9FC2611570B00FCBB2C /* ReDawaga */ = {
 			isa = PBXGroup;
 			children = (
+				8C61BB0726140BC000FCBB2C /* Constants */,
+				8C61BAFE26140B7D00FCBB2C /* Utils */,
+				8C61BA5D2611586A00FCBB2C /* Storyboard */,
+				8C61BA512611582C00FCBB2C /* Enum */,
+				8C61BA502611582600FCBB2C /* Extension */,
+				8C61BA4E2611581F00FCBB2C /* Model */,
+				8C61BA4C2611581300FCBB2C /* Module */,
+				8C61BA4B2611580D00FCBB2C /* Protocol */,
+				8C61BA4A2611580700FCBB2C /* View */,
+				8C61BA492611580000FCBB2C /* Redux */,
+				8C61BA45261157FB00FCBB2C /* ViewController */,
 				8C61B9FD2611570B00FCBB2C /* AppDelegate.swift */,
-				8C61B9FF2611570B00FCBB2C /* SceneDelegate.swift */,
-				8C61BA012611570B00FCBB2C /* ViewController.swift */,
-				8C61BA032611570B00FCBB2C /* Main.storyboard */,
 				8C61BA062611570B00FCBB2C /* Assets.xcassets */,
 				8C61BA082611570B00FCBB2C /* LaunchScreen.storyboard */,
 				8C61BA0B2611570B00FCBB2C /* Info.plist */,
@@ -128,6 +311,181 @@
 			path = ReDawagaUITests;
 			sourceTree = "<group>";
 		};
+		8C61BA45261157FB00FCBB2C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8C61BAEB2614096500FCBB2C /* MainViewController.swift */,
+				8C43CFB0261B30C70086599B /* PlaceSearchViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8C61BA492611580000FCBB2C /* Redux */ = {
+			isa = PBXGroup;
+			children = (
+				8C61BAC22614036900FCBB2C /* ActionCreator */,
+				8C61BAC12614036600FCBB2C /* Action */,
+				8C61BAC02614035E00FCBB2C /* Reducer */,
+				8C61BABF2614035A00FCBB2C /* State */,
+			);
+			path = Redux;
+			sourceTree = "<group>";
+		};
+		8C61BA4A2611580700FCBB2C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CF5D261B2AB60086599B /* PlaceSearch */,
+				8C61BAF026140A8000FCBB2C /* Main */,
+				8C61BAF926140B5A00FCBB2C /* PaddingTextField.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8C61BA4B2611580D00FCBB2C /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CFC7261BF7D40086599B /* NSObject+Protocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		8C61BA4C2611581300FCBB2C /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				8C61BAB62613F5C600FCBB2C /* APIManager */,
+				8C61BB34261571E000FCBB2C /* DeviceSize.swift */,
+				8C61BB4126157A7A00FCBB2C /* ResourceManager.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		8C61BA4E2611581F00FCBB2C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8C61BA4F2611582100FCBB2C /* Entity */,
+				8C61BAA42611BD0200FCBB2C /* MarkRealm.swift */,
+				8C61BAAC2613F4AC00FCBB2C /* Location.swift */,
+				8C61BAB12613F4B300FCBB2C /* Place.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8C61BA4F2611582100FCBB2C /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				8C61BA752611B5A800FCBB2C /* MarkEntity.swift */,
+				8C61BA7A2611B71100FCBB2C /* LocationEntity.swift */,
+				8C61BA9A2611B97000FCBB2C /* PlaceEntity.swift */,
+				8C61BA9F2611B9E100FCBB2C /* MarkRealmEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		8C61BA502611582600FCBB2C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8C61BAFF26140B8600FCBB2C /* UIColor+Extension.swift */,
+				8C61BB2F26140D9700FCBB2C /* String+Extension.swift */,
+				8C43CFC2261BF7830086599B /* UITableView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		8C61BA512611582C00FCBB2C /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		8C61BA5D2611586A00FCBB2C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8C61BA032611570B00FCBB2C /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		8C61BAB62613F5C600FCBB2C /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+				8C61BAB72613F61F00FCBB2C /* APIManagerForGoogleMaps.swift */,
+			);
+			path = APIManager;
+			sourceTree = "<group>";
+		};
+		8C61BABF2614035A00FCBB2C /* State */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CF74261B2CDA0086599B /* PlaceSearchView */,
+				8C61BAD02614043E00FCBB2C /* MainView */,
+				8C61BAC32614037500FCBB2C /* AppState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		8C61BAC02614035E00FCBB2C /* Reducer */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CF76261B2CF20086599B /* PlaceSearchView */,
+				8C43CF75261B2CEB0086599B /* MainView */,
+				8C61BACB2614037A00FCBB2C /* AppReducer.swift */,
+			);
+			path = Reducer;
+			sourceTree = "<group>";
+		};
+		8C61BAC12614036600FCBB2C /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CF78261B2CFD0086599B /* PlaceSearchView */,
+				8C43CF77261B2CF90086599B /* MainView */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
+		8C61BAC22614036900FCBB2C /* ActionCreator */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CF7A261B2D070086599B /* PlaceSearchView */,
+				8C43CF79261B2D040086599B /* MainView */,
+			);
+			path = ActionCreator;
+			sourceTree = "<group>";
+		};
+		8C61BAD02614043E00FCBB2C /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				8C61BADC261405A700FCBB2C /* BookMarkListState.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		8C61BAF026140A8000FCBB2C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				8C61BAF126140A9B00FCBB2C /* MainViewSearchView.swift */,
+				8C61BB3C261577E600FCBB2C /* BookMarkTableViewCell.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		8C61BAFE26140B7D00FCBB2C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		8C61BB0726140BC000FCBB2C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				8C61BB1026140BD900FCBB2C /* Constants.swift */,
+				8C61BB0826140BCD00FCBB2C /* App.swift */,
+				8C61BB1F26140C9B00FCBB2C /* Localizable.strings */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +493,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C61BA242611570B00FCBB2C /* Build configuration list for PBXNativeTarget "ReDawaga" */;
 			buildPhases = (
+				C9A344D75B10D399310CD5AE /* [CP] Check Pods Manifest.lock */,
 				8C61B9F62611570B00FCBB2C /* Sources */,
 				8C61B9F72611570B00FCBB2C /* Frameworks */,
 				8C61B9F82611570B00FCBB2C /* Resources */,
+				C0E76B0182EB349A52A1299C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +512,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C61BA272611570B00FCBB2C /* Build configuration list for PBXNativeTarget "ReDawagaTests" */;
 			buildPhases = (
+				D7EB542B1F0405F1D562F4F1 /* [CP] Check Pods Manifest.lock */,
 				8C61BA0C2611570B00FCBB2C /* Sources */,
 				8C61BA0D2611570B00FCBB2C /* Frameworks */,
 				8C61BA0E2611570B00FCBB2C /* Resources */,
@@ -170,9 +531,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C61BA2A2611570B00FCBB2C /* Build configuration list for PBXNativeTarget "ReDawagaUITests" */;
 			buildPhases = (
+				7C01A90883CFB8CFAC6BBAC4 /* [CP] Check Pods Manifest.lock */,
 				8C61BA172611570B00FCBB2C /* Sources */,
 				8C61BA182611570B00FCBB2C /* Frameworks */,
 				8C61BA192611570B00FCBB2C /* Resources */,
+				FA80140DFB71B5BB3C71634F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -213,6 +576,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
+				ko,
 			);
 			mainGroup = 8C61B9F12611570B00FCBB2C;
 			productRefGroup = 8C61B9FB2611570B00FCBB2C /* Products */;
@@ -232,6 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C61BA0A2611570B00FCBB2C /* LaunchScreen.storyboard in Resources */,
+				8C61BB1D26140C9B00FCBB2C /* Localizable.strings in Resources */,
 				8C61BA072611570B00FCBB2C /* Assets.xcassets in Resources */,
 				8C61BA052611570B00FCBB2C /* Main.storyboard in Resources */,
 			);
@@ -253,14 +619,148 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7C01A90883CFB8CFAC6BBAC4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReDawaga-ReDawagaUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0E76B0182EB349A52A1299C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReDawaga/Pods-ReDawaga-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReDawaga/Pods-ReDawaga-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReDawaga/Pods-ReDawaga-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9A344D75B10D399310CD5AE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReDawaga-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7EB542B1F0405F1D562F4F1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReDawagaTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA80140DFB71B5BB3C71634F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReDawaga-ReDawagaUITests/Pods-ReDawaga-ReDawagaUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReDawaga-ReDawagaUITests/Pods-ReDawaga-ReDawagaUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReDawaga-ReDawagaUITests/Pods-ReDawaga-ReDawagaUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8C61B9F62611570B00FCBB2C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C61BA022611570B00FCBB2C /* ViewController.swift in Sources */,
+				8C61BB35261571E000FCBB2C /* DeviceSize.swift in Sources */,
+				8C61BA762611B5A800FCBB2C /* MarkEntity.swift in Sources */,
+				8C61BB1126140BD900FCBB2C /* Constants.swift in Sources */,
+				8C61BADD261405A700FCBB2C /* BookMarkListState.swift in Sources */,
+				8C61BA7B2611B71100FCBB2C /* LocationEntity.swift in Sources */,
+				8C61BAE7261407D700FCBB2C /* BookMarkListAction.swift in Sources */,
+				8C61BAAD2613F4AC00FCBB2C /* Location.swift in Sources */,
 				8C61B9FE2611570B00FCBB2C /* AppDelegate.swift in Sources */,
-				8C61BA002611570B00FCBB2C /* SceneDelegate.swift in Sources */,
+				8C61BAA52611BD0200FCBB2C /* MarkRealm.swift in Sources */,
+				8C61BAEC2614096500FCBB2C /* MainViewController.swift in Sources */,
+				8C43CF8E261B2D410086599B /* PlaceSearchActionCreator.swift in Sources */,
+				8C43CFC8261BF7D40086599B /* NSObject+Protocol.swift in Sources */,
+				8C43CFC3261BF7830086599B /* UITableView+Extension.swift in Sources */,
+				8C43CF6D261B2B780086599B /* PlaceSearchTableViewCell.swift in Sources */,
+				8C61BAF226140A9B00FCBB2C /* MainViewSearchView.swift in Sources */,
+				8C61BA9B2611B97000FCBB2C /* PlaceEntity.swift in Sources */,
+				8C43CF84261B2D330086599B /* PlaceSearchReducer.swift in Sources */,
+				8C61BACC2614037A00FCBB2C /* AppReducer.swift in Sources */,
+				8C61BB3026140D9700FCBB2C /* String+Extension.swift in Sources */,
+				8C61BAC42614037500FCBB2C /* AppState.swift in Sources */,
+				8C61BB0926140BCD00FCBB2C /* App.swift in Sources */,
+				8C43CF59261B26AB0086599B /* BookMarkListActionCreator.swift in Sources */,
+				8C43CFB1261B30C70086599B /* PlaceSearchViewController.swift in Sources */,
+				8C61BAB22613F4B300FCBB2C /* Place.swift in Sources */,
+				8C61BAB82613F61F00FCBB2C /* APIManagerForGoogleMaps.swift in Sources */,
+				8C61BAA02611B9E100FCBB2C /* MarkRealmEntity.swift in Sources */,
+				8C61BB4226157A7A00FCBB2C /* ResourceManager.swift in Sources */,
+				8C43CF7C261B2D290086599B /* PlaceSearchState.swift in Sources */,
+				8C61BAE22614063900FCBB2C /* BookMarkListReducer.swift in Sources */,
+				8C43CF5F261B2AE30086599B /* PlaceSearchView.swift in Sources */,
+				8C61BAFA26140B5A00FCBB2C /* PaddingTextField.swift in Sources */,
+				8C61BB0026140B8600FCBB2C /* UIColor+Extension.swift in Sources */,
+				8C43CF89261B2D3A0086599B /* PlaceSearchAction.swift in Sources */,
+				8C61BB3D261577E600FCBB2C /* BookMarkTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +800,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				8C61BA042611570B00FCBB2C /* Base */,
+				8C61BB2326140CC500FCBB2C /* ja */,
+				8C61BB2926140CFB00FCBB2C /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -308,8 +810,20 @@
 			isa = PBXVariantGroup;
 			children = (
 				8C61BA092611570B00FCBB2C /* Base */,
+				8C61BB2426140CC500FCBB2C /* ja */,
+				8C61BB2A26140CFB00FCBB2C /* ko */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		8C61BB1F26140C9B00FCBB2C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8C61BB1E26140C9B00FCBB2C /* en */,
+				8C61BB2526140CC500FCBB2C /* ja */,
+				8C61BB2B26140CFC00FCBB2C /* ko */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -319,6 +833,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -380,6 +895,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -433,6 +949,7 @@
 		};
 		8C61BA252611570B00FCBB2C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A99666B8D5CE05F25F4DFAF /* Pods-ReDawaga.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -452,6 +969,7 @@
 		};
 		8C61BA262611570B00FCBB2C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EE5869178522A06D28D63DE /* Pods-ReDawaga.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -471,6 +989,7 @@
 		};
 		8C61BA282611570B00FCBB2C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84F49E9F38CE3D4F311A9362 /* Pods-ReDawagaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -493,6 +1012,7 @@
 		};
 		8C61BA292611570B00FCBB2C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 845D0E88DE5F7CB9ED4DD41C /* Pods-ReDawagaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -515,6 +1035,7 @@
 		};
 		8C61BA2B2611570B00FCBB2C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 152E938A812B633021285F05 /* Pods-ReDawaga-ReDawagaUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +1056,7 @@
 		};
 		8C61BA2C2611570B00FCBB2C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59BF2ED94A58C26928CAF96A /* Pods-ReDawaga-ReDawagaUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

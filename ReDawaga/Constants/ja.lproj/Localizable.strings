@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  ReDawaga
+
+  Created by 김민국 on 2021/03/31.
+  
+*/
+
+"HomeTitle" = "地番、道路名、建物名を\n入力してください";
+"AddressPlaceHolder" = "住所を入力してください";
+"FavoriteTitle" = "ブックマーク";
+
+"SearchAddressTitle" = "目的地住所";
+
+"QuickMapDistanceEdit" = "直接入力";
+"QuickMapStart" = "スタート";
+"QuickMapNamePlaceHolder" = "ブックマークの名前";
+"QuickMapAddFavorite" = "ブックマーク追加";
+"QuickMapDeleteFavorite" = " ブックマーク修正キャンセル";
+"QuickMapModifyFavorite" = "ブックマーク修正";
+"QuickMapEditValuePlaceHolder" = "入力";
+
+"ToTimeNotificationTitle" = "到着";
+"ToTimeNotificationBody" = "目的地に着きました";
+
+"NotificationPermissionTitle" = "通知権限エラー";
+"NotificationPermissionBody" = "通知に対する権限設定をしてください";
+"LocationDeniedTitle" = "位置権限エラー";
+"LocationDeniedBody" = "位置に対する権限設定をしてください";
+"NotificationErrorTitle" = "エラー発生";
+"NotificationErrorBody" = "エラーが発生しました";
+
+"Enter" = "完了";
+"Destination" = "目的地";
+
+"InputError" = "入力エラー";
+"FavoriteAddressEmptyAlertMessage" = "アドレスをもう一度設定してください";
+"FavoriteNameEmptyAlertMessage" = "ブックマークの名前を設定してください";
+"FavoriteImageEmptyAlertMessage" = "ブックマークアイコンを設定してください";
+
+"CreatedComplete" = "追加完了";
+"UpdateComplete" = "修正済み";
+"FavoriteCreated" = "ブックマーク 追加完了";
+"FavoriteUpdated" = "ブックマーク 修正済み";
+
+"TutorialDoneTitle" = "スタート!";
