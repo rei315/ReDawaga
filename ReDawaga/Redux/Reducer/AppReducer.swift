@@ -16,5 +16,7 @@ func appReduce(action: Action, state: AppState?) -> AppState {
     
     state.placeSearchState = PlaceSearchReducer.reduce(action: action, state: state.placeSearchState)
     
+    state.dawagaMapState = DawagaMapReducer.reduce(action: action, state: state.dawagaMapState)
+    
     return state
 }

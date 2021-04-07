@@ -13,4 +13,6 @@ struct AppState: ReSwift.StateType {
     var bookMarkListState = BookMarkListState()
     
     var placeSearchState = PlaceSearchState()
+    
+    var dawagaMapState = DawagaMapState()
 }
