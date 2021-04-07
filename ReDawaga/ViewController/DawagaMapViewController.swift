@@ -11,6 +11,8 @@ import GoogleMaps
 
 class DawagaMapViewController: UIViewController {
 
+    
+    
     enum TransitionType {
         case Search, Quick, BookMark
     }
@@ -21,7 +23,7 @@ class DawagaMapViewController: UIViewController {
     
     private let markImageView: UIImageView = {
         let iv = UIImageView()
-//        iv.image = #imageLiteral(resourceName: "pin")
+        iv.image = #imageLiteral(resourceName: "pin")
         iv.contentMode = .scaleAspectFit
         return iv
     }()
@@ -39,7 +41,9 @@ class DawagaMapViewController: UIViewController {
     private var locationManager: CLLocationManager?
     
     private var currentLocation: CLLocation?
+    private var searchedLocation: CLLocation?
     
+    let zoomLevel: Float = 15.0
     
     // MARK: - Lifecycle
     
@@ -108,16 +112,7 @@ class DawagaMapViewController: UIViewController {
     }
     
     private func configureSearch(placeId: String) {
-
-        let detail = DawagaMapActionCreator.fetchSearchLocation(id: placeId)
-            
-        
-//        detail
-//            .map { ($0.location ?? CLLocation(latitude: 0.0, longitude: 0.0)) }
-//            .subscribe(onNext: { [weak self] location in
-//                self?.didUpdateLocation.accept(location)
-//            })
-//            .disposed(by: disposeBag)
+        DawagaMapActionCreator.fetchSearchLocation(id: placeId)
     }
     
     private func configureQuick() {
@@ -170,19 +165,35 @@ class DawagaMapViewController: UIViewController {
             make.top.equalToSuperview().offset(view.frame.height-DawagaMapBottomView.VIEW_HEIGHT)
         }
     }
+    
+    private func configureMapCenter(with location: CLLocation) {
+        let region = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: zoomLevel)
+
+        self.mapView.camera = region
+    }
 }
 
 extension DawagaMapViewController: StoreSubscriber {
     
     func newState(state: AppState) {
+        
+        // fetchReverseGeocode
         if currentLocation != state.dawagaMapState.idleLocation {
             if let location = state.dawagaMapState.idleLocation {
                 self.currentLocation = location
                 DawagaMapActionCreator.fetchReverseGeocode(location: location)
             }
         }
-//         fetchReverseGeocode
+
         bottomView.configureRegionField(address: state.dawagaMapState.reverseLocationDetail?.title ?? "")
+        
+        // fetch searchLocation
+        if searchedLocation != state.dawagaMapState.searchLocationDetail?.location {
+            if let searched = state.dawagaMapState.searchLocationDetail?.location {
+                self.searchedLocation = searched
+                configureMapCenter(with: searched)
+            }            
+        }
     }
 }
 
@@ -209,7 +220,7 @@ extension DawagaMapViewController: CLLocationManagerDelegate {
         
         let location = locations.last?.coordinate ?? CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
 
-        let region = GMSCameraPosition.camera(withLatitude: location.latitude, longitude: location.longitude, zoom: 15)
+        let region = GMSCameraPosition.camera(withLatitude: location.latitude, longitude: location.longitude, zoom: zoomLevel)
 
         self.mapView.camera = region
     }
