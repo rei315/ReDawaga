@@ -14,8 +14,10 @@ extension PlaceSearchState {
         
         case setIsLoadingPlace
         
-        case setPlace(place: [PlaceEntity])
+        case setPlaceList(place: [PlaceEntity])
         
         case setIsErrorPlace
+        
+        case setSelectedPlace(place: PlaceEntity)        
     }
 }

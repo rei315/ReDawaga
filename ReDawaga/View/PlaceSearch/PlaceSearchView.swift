@@ -49,7 +49,7 @@ class PlaceSearchView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configureUI()
+        setupUI()
         setupSearchButtonView()
     }
     
@@ -64,7 +64,7 @@ class PlaceSearchView: UIView {
         addressField.text = address
     }
     
-    private func configureUI() {
+    private func setupUI() {
         backgroundColor = .white
         
         addSubview(addressField)

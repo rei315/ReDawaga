@@ -15,4 +15,6 @@ struct PlaceSearchState: ReSwift.StateType {
     var placeList: [PlaceEntity] = []
     
     var isErrorPlace: Bool = false
+            
+    var selectedPlace: PlaceEntity? = nil
 }

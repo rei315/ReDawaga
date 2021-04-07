@@ -24,13 +24,19 @@ extension PlaceSearchReducer {
         
         case .setIsLoadingPlace:
             state.isLoadingPlace = true
-        case let .setPlace(place):
+            
+        case let .setPlaceList(place):
             state.isLoadingPlace = false
             state.placeList = place
             state.isErrorPlace = false
+            
         case .setIsErrorPlace:
             state.isLoadingPlace = false
             state.isErrorPlace = true
+            
+        case let .setSelectedPlace(place):
+            state.selectedPlace = place
+            
         }
         
         return state

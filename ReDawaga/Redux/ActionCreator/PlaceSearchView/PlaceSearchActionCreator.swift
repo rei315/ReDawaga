@@ -19,11 +19,15 @@ extension PlaceSearchActionCreator {
         APIManagerForGoogleMaps.shared.getAutoCompleteList(address: address)
             .done { placesJSON in
                 let placeList = Place.getPlaceListBy(json: placesJSON)                
-                appStore.dispatch(PlaceSearchState.placeSearchAction.setPlace(place: placeList))
+                appStore.dispatch(PlaceSearchState.placeSearchAction.setPlaceList(place: placeList))
                 
             }
             .catch { error in
                 appStore.dispatch(PlaceSearchState.placeSearchAction.setIsErrorPlace)
             }
+    }
+    
+    static func fetchSelectedPlace(place: PlaceEntity) {
+        appStore.dispatch(PlaceSearchState.placeSearchAction.setSelectedPlace(place: place))
     }
 }
