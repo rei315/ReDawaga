@@ -64,8 +64,8 @@ class APIManagerForGoogleMaps {
         return Promise { seal in
             AF.request(DetailUrl, method: .get, parameters: parameters).validate().responseJSON { response in
                 switch response.result {
-                case .success:
-                    let res = JSON(response)
+                case .success(let value):
+                    let res = JSON(value)
                     let json = res["result"]
                     seal.fulfill(json)
                     
@@ -87,11 +87,17 @@ class APIManagerForGoogleMaps {
         return Promise { seal in
             AF.request(ReverseGeocodeUrl, method: .get, parameters: parameters).validate().responseJSON { response in
                 switch response.result {
-                case .success:
-                    let res = JSON(response)
-                    let json = res["result"]
-                    seal.fulfill(json)
+                case .success(let value):
+                    let res = JSON(value)
                     
+                    if let json = res["results"].arrayValue.first {
+                        seal.fulfill(json)
+                    }
+                    else {
+                        let error: AFError.ResponseValidationFailureReason = .dataFileNil
+                        seal.reject(AFError.responseValidationFailed(reason: error))
+                    }
+                                        
                 case .failure(let error):
                     seal.reject(error)
                 }
