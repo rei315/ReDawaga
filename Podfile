@@ -16,7 +16,8 @@ target 'ReDawaga' do
 	pod 'SwiftyJSON'
 
 	pod 'SnapKit'
-	# pod 'GoogleMaps'
+
+	pod 'GoogleMaps'
 
   target 'ReDawagaTests' do
     inherit! :search_paths

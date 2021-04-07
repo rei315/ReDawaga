@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>앱 실행시 위치 정보에 접근함</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>앱 실행시와 백그라운드에서 위치 정보에 접근함</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>앱 실행시와 백그라운드에서 위치 정보에 접근함</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -31,8 +39,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

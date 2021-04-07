@@ -19,6 +19,14 @@
 		8C43CFB1261B30C70086599B /* PlaceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CFB0261B30C70086599B /* PlaceSearchViewController.swift */; };
 		8C43CFC3261BF7830086599B /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CFC2261BF7830086599B /* UITableView+Extension.swift */; };
 		8C43CFC8261BF7D40086599B /* NSObject+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CFC7261BF7D40086599B /* NSObject+Protocol.swift */; };
+		8C43CFD0261C07E80086599B /* DawagaMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CFCF261C07E80086599B /* DawagaMapViewController.swift */; };
+		8C43CFDA261C08AD0086599B /* DawagaMapState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CFD9261C08AD0086599B /* DawagaMapState.swift */; };
+		8C43CFEA261C08C30086599B /* DawagaMapReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CFE9261C08C30086599B /* DawagaMapReducer.swift */; };
+		8C43CFEF261C08C90086599B /* DawagaMapAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CFEE261C08C90086599B /* DawagaMapAction.swift */; };
+		8C43CFF4261C08D20086599B /* DawagaMapActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CFF3261C08D20086599B /* DawagaMapActionCreator.swift */; };
+		8C43CFF9261C09C30086599B /* DawagaMapBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CFF8261C09C30086599B /* DawagaMapBottomView.swift */; };
+		8C43CFFE261C0F760086599B /* CornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CFFD261C0F760086599B /* CornerView.swift */; };
+		8C43D003261C10020086599B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43D002261C10020086599B /* UIView+Extension.swift */; };
 		8C61B9FE2611570B00FCBB2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61B9FD2611570B00FCBB2C /* AppDelegate.swift */; };
 		8C61BA052611570B00FCBB2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C61BA032611570B00FCBB2C /* Main.storyboard */; };
 		8C61BA072611570B00FCBB2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C61BA062611570B00FCBB2C /* Assets.xcassets */; };
@@ -49,6 +57,8 @@
 		8C61BB35261571E000FCBB2C /* DeviceSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB34261571E000FCBB2C /* DeviceSize.swift */; };
 		8C61BB3D261577E600FCBB2C /* BookMarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB3C261577E600FCBB2C /* BookMarkTableViewCell.swift */; };
 		8C61BB4226157A7A00FCBB2C /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB4126157A7A00FCBB2C /* ResourceManager.swift */; };
+		8CD6D38F261C11A000CEBD39 /* Pods_ReDawaga.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD6D38E261C11A000CEBD39 /* Pods_ReDawaga.framework */; };
+		8CD6D390261C11A000CEBD39 /* Pods_ReDawaga.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD6D38E261C11A000CEBD39 /* Pods_ReDawaga.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E00B3881644C6F508834B671 /* Pods_ReDawagaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81365408F410719010AAEDC0 /* Pods_ReDawagaTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +78,20 @@
 			remoteInfo = ReDawaga;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8CD6D391261C11A000CEBD39 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8CD6D390261C11A000CEBD39 /* Pods_ReDawaga.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		152E938A812B633021285F05 /* Pods-ReDawaga-ReDawagaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReDawaga-ReDawagaUITests.debug.xcconfig"; path = "Target Support Files/Pods-ReDawaga-ReDawagaUITests/Pods-ReDawaga-ReDawagaUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +113,14 @@
 		8C43CFB0261B30C70086599B /* PlaceSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchViewController.swift; sourceTree = "<group>"; };
 		8C43CFC2261BF7830086599B /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		8C43CFC7261BF7D40086599B /* NSObject+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Protocol.swift"; sourceTree = "<group>"; };
+		8C43CFCF261C07E80086599B /* DawagaMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaMapViewController.swift; sourceTree = "<group>"; };
+		8C43CFD9261C08AD0086599B /* DawagaMapState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaMapState.swift; sourceTree = "<group>"; };
+		8C43CFE9261C08C30086599B /* DawagaMapReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaMapReducer.swift; sourceTree = "<group>"; };
+		8C43CFEE261C08C90086599B /* DawagaMapAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaMapAction.swift; sourceTree = "<group>"; };
+		8C43CFF3261C08D20086599B /* DawagaMapActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaMapActionCreator.swift; sourceTree = "<group>"; };
+		8C43CFF8261C09C30086599B /* DawagaMapBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaMapBottomView.swift; sourceTree = "<group>"; };
+		8C43CFFD261C0F760086599B /* CornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerView.swift; sourceTree = "<group>"; };
+		8C43D002261C10020086599B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		8C61B9FA2611570B00FCBB2C /* ReDawaga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReDawaga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C61B9FD2611570B00FCBB2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C61BA042611570B00FCBB2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -131,6 +163,7 @@
 		8C61BB34261571E000FCBB2C /* DeviceSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSize.swift; sourceTree = "<group>"; };
 		8C61BB3C261577E600FCBB2C /* BookMarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTableViewCell.swift; sourceTree = "<group>"; };
 		8C61BB4126157A7A00FCBB2C /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
+		8CD6D38E261C11A000CEBD39 /* Pods_ReDawaga.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ReDawaga.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CD6D38F261C11A000CEBD39 /* Pods_ReDawaga.framework in Frameworks */,
 				1CB828632CF62971F0B1EC31 /* Pods_ReDawaga.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,6 +198,7 @@
 		1DDAE443F9A211B1DD769505 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8CD6D38E261C11A000CEBD39 /* Pods_ReDawaga.framework */,
 				3D0A96CD7783ECE7DAF76FD6 /* Pods_ReDawaga.framework */,
 				5BAA7869675E1D27A91B5436 /* Pods_ReDawaga_ReDawagaUITests.framework */,
 				81365408F410719010AAEDC0 /* Pods_ReDawagaTests.framework */,
@@ -249,6 +284,46 @@
 			path = PlaceSearchView;
 			sourceTree = "<group>";
 		};
+		8C43CFD4261C086D0086599B /* DawagaMap */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CFF8261C09C30086599B /* DawagaMapBottomView.swift */,
+			);
+			path = DawagaMap;
+			sourceTree = "<group>";
+		};
+		8C43CFD5261C08880086599B /* DawagaMapView */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CFF3261C08D20086599B /* DawagaMapActionCreator.swift */,
+			);
+			path = DawagaMapView;
+			sourceTree = "<group>";
+		};
+		8C43CFD6261C088D0086599B /* DawagaMapView */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CFEE261C08C90086599B /* DawagaMapAction.swift */,
+			);
+			path = DawagaMapView;
+			sourceTree = "<group>";
+		};
+		8C43CFD7261C08920086599B /* DawagaMapView */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CFE9261C08C30086599B /* DawagaMapReducer.swift */,
+			);
+			path = DawagaMapView;
+			sourceTree = "<group>";
+		};
+		8C43CFD8261C08960086599B /* DawagaMapView */ = {
+			isa = PBXGroup;
+			children = (
+				8C43CFD9261C08AD0086599B /* DawagaMapState.swift */,
+			);
+			path = DawagaMapView;
+			sourceTree = "<group>";
+		};
 		8C61B9F12611570B00FCBB2C = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +390,7 @@
 			children = (
 				8C61BAEB2614096500FCBB2C /* MainViewController.swift */,
 				8C43CFB0261B30C70086599B /* PlaceSearchViewController.swift */,
+				8C43CFCF261C07E80086599B /* DawagaMapViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -333,9 +409,11 @@
 		8C61BA4A2611580700FCBB2C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8C43CFD4261C086D0086599B /* DawagaMap */,
 				8C43CF5D261B2AB60086599B /* PlaceSearch */,
 				8C61BAF026140A8000FCBB2C /* Main */,
 				8C61BAF926140B5A00FCBB2C /* PaddingTextField.swift */,
+				8C43CFFD261C0F760086599B /* CornerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -386,6 +464,7 @@
 				8C61BAFF26140B8600FCBB2C /* UIColor+Extension.swift */,
 				8C61BB2F26140D9700FCBB2C /* String+Extension.swift */,
 				8C43CFC2261BF7830086599B /* UITableView+Extension.swift */,
+				8C43D002261C10020086599B /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -416,6 +495,7 @@
 		8C61BABF2614035A00FCBB2C /* State */ = {
 			isa = PBXGroup;
 			children = (
+				8C43CFD8261C08960086599B /* DawagaMapView */,
 				8C43CF74261B2CDA0086599B /* PlaceSearchView */,
 				8C61BAD02614043E00FCBB2C /* MainView */,
 				8C61BAC32614037500FCBB2C /* AppState.swift */,
@@ -426,6 +506,7 @@
 		8C61BAC02614035E00FCBB2C /* Reducer */ = {
 			isa = PBXGroup;
 			children = (
+				8C43CFD7261C08920086599B /* DawagaMapView */,
 				8C43CF76261B2CF20086599B /* PlaceSearchView */,
 				8C43CF75261B2CEB0086599B /* MainView */,
 				8C61BACB2614037A00FCBB2C /* AppReducer.swift */,
@@ -436,6 +517,7 @@
 		8C61BAC12614036600FCBB2C /* Action */ = {
 			isa = PBXGroup;
 			children = (
+				8C43CFD6261C088D0086599B /* DawagaMapView */,
 				8C43CF78261B2CFD0086599B /* PlaceSearchView */,
 				8C43CF77261B2CF90086599B /* MainView */,
 			);
@@ -445,6 +527,7 @@
 		8C61BAC22614036900FCBB2C /* ActionCreator */ = {
 			isa = PBXGroup;
 			children = (
+				8C43CFD5261C08880086599B /* DawagaMapView */,
 				8C43CF7A261B2D070086599B /* PlaceSearchView */,
 				8C43CF79261B2D040086599B /* MainView */,
 			);
@@ -490,6 +573,8 @@
 				8C61B9F72611570B00FCBB2C /* Frameworks */,
 				8C61B9F82611570B00FCBB2C /* Resources */,
 				C0E76B0182EB349A52A1299C /* [CP] Embed Pods Frameworks */,
+				151B44614FA8F43DA8B76959 /* [CP] Copy Pods Resources */,
+				8CD6D391261C11A000CEBD39 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -528,6 +613,7 @@
 				8C61BA182611570B00FCBB2C /* Frameworks */,
 				8C61BA192611570B00FCBB2C /* Resources */,
 				FA80140DFB71B5BB3C71634F /* [CP] Embed Pods Frameworks */,
+				81396A870B07CEFF54D09873 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -612,6 +698,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		151B44614FA8F43DA8B76959 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReDawaga/Pods-ReDawaga-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReDawaga/Pods-ReDawaga-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReDawaga/Pods-ReDawaga-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7C01A90883CFB8CFAC6BBAC4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -632,6 +735,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81396A870B07CEFF54D09873 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReDawaga-ReDawagaUITests/Pods-ReDawaga-ReDawagaUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReDawaga-ReDawagaUITests/Pods-ReDawaga-ReDawagaUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReDawaga-ReDawagaUITests/Pods-ReDawaga-ReDawagaUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C0E76B0182EB349A52A1299C /* [CP] Embed Pods Frameworks */ = {
@@ -721,7 +841,9 @@
 			files = (
 				8C61BB35261571E000FCBB2C /* DeviceSize.swift in Sources */,
 				8C61BA762611B5A800FCBB2C /* MarkEntity.swift in Sources */,
+				8C43CFF4261C08D20086599B /* DawagaMapActionCreator.swift in Sources */,
 				8C61BB1126140BD900FCBB2C /* Constants.swift in Sources */,
+				8C43CFDA261C08AD0086599B /* DawagaMapState.swift in Sources */,
 				8C61BADD261405A700FCBB2C /* BookMarkListState.swift in Sources */,
 				8C61BA7B2611B71100FCBB2C /* LocationEntity.swift in Sources */,
 				8C61BAE7261407D700FCBB2C /* BookMarkListAction.swift in Sources */,
@@ -729,12 +851,14 @@
 				8C61B9FE2611570B00FCBB2C /* AppDelegate.swift in Sources */,
 				8C61BAA52611BD0200FCBB2C /* MarkRealm.swift in Sources */,
 				8C61BAEC2614096500FCBB2C /* MainViewController.swift in Sources */,
+				8C43CFD0261C07E80086599B /* DawagaMapViewController.swift in Sources */,
 				8C43CF8E261B2D410086599B /* PlaceSearchActionCreator.swift in Sources */,
 				8C43CFC8261BF7D40086599B /* NSObject+Protocol.swift in Sources */,
 				8C43CFC3261BF7830086599B /* UITableView+Extension.swift in Sources */,
 				8C43CF6D261B2B780086599B /* PlaceSearchTableViewCell.swift in Sources */,
 				8C61BAF226140A9B00FCBB2C /* MainViewSearchView.swift in Sources */,
 				8C61BA9B2611B97000FCBB2C /* PlaceEntity.swift in Sources */,
+				8C43CFEA261C08C30086599B /* DawagaMapReducer.swift in Sources */,
 				8C43CF84261B2D330086599B /* PlaceSearchReducer.swift in Sources */,
 				8C61BACC2614037A00FCBB2C /* AppReducer.swift in Sources */,
 				8C61BB3026140D9700FCBB2C /* String+Extension.swift in Sources */,
@@ -744,15 +868,19 @@
 				8C43CFB1261B30C70086599B /* PlaceSearchViewController.swift in Sources */,
 				8C61BAB22613F4B300FCBB2C /* Place.swift in Sources */,
 				8C61BAB82613F61F00FCBB2C /* APIManagerForGoogleMaps.swift in Sources */,
+				8C43CFFE261C0F760086599B /* CornerView.swift in Sources */,
 				8C61BAA02611B9E100FCBB2C /* MarkRealmEntity.swift in Sources */,
 				8C61BB4226157A7A00FCBB2C /* ResourceManager.swift in Sources */,
 				8C43CF7C261B2D290086599B /* PlaceSearchState.swift in Sources */,
 				8C61BAE22614063900FCBB2C /* BookMarkListReducer.swift in Sources */,
 				8C43CF5F261B2AE30086599B /* PlaceSearchView.swift in Sources */,
 				8C61BAFA26140B5A00FCBB2C /* PaddingTextField.swift in Sources */,
+				8C43D003261C10020086599B /* UIView+Extension.swift in Sources */,
 				8C61BB0026140B8600FCBB2C /* UIColor+Extension.swift in Sources */,
 				8C43CF89261B2D3A0086599B /* PlaceSearchAction.swift in Sources */,
 				8C61BB3D261577E600FCBB2C /* BookMarkTableViewCell.swift in Sources */,
+				8C43CFEF261C08C90086599B /* DawagaMapAction.swift in Sources */,
+				8C43CFF9261C09C30086599B /* DawagaMapBottomView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -873,7 +1001,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -929,7 +1057,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -948,6 +1076,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3N72J4U62S;
 				INFOPLIST_FILE = ReDawaga/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -955,7 +1084,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.MGHouse.ReDawaga;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -968,6 +1097,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3N72J4U62S;
 				INFOPLIST_FILE = ReDawaga/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -975,7 +1105,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.MGHouse.ReDawaga;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
