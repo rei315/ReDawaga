@@ -10,13 +10,8 @@ import SwiftyJSON
 
 class Location {
     
-    static func getLocationListBy(json: JSON) -> [LocationEntity] {
+    static func getLocationBy(json: JSON) -> LocationEntity {
         
-        var locationEntityList: [LocationEntity] = []
-        
-        for (key: _, value: newJSON) in json {
-            locationEntityList.append(LocationEntity.init(json: newJSON))
-        }
-        return locationEntityList
+        return LocationEntity.init(json: json)
     }
 }
