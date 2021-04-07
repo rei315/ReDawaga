@@ -25,5 +25,14 @@ extension BookMarkListState {
         
         case setSearchAddress(address: String)
         
+        
+        // MARK: - When Transition Parameters
+        
+        case setTransitionType(type: DawagaMapViewController.TransitionType)
+        
+        
+        
+        case setBookMark(mark: MarkRealmEntity)
+        
     }
 }

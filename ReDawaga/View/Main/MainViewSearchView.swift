@@ -82,7 +82,7 @@ class MainViewSearchView: UIView {
     init() {
         super.init(frame: .zero)
         
-        configureUI()
+        setupUI()
         setupQuickSearchButtonView()
         setupQuickMapButtonView()        
     }
@@ -94,7 +94,7 @@ class MainViewSearchView: UIView {
     
     // MARK: - Function
 
-    private func configureUI() {
+    private func setupUI() {
         backgroundColor = .white
         
         addSubview(titleLabel)

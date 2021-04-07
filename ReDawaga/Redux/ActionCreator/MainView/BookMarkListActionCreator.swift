@@ -27,4 +27,14 @@ extension BookMarkListActionCreator {
     static func fetchSearchAddress(address: String) {
         appStore.dispatch(BookMarkListState.bookMarkListAction.setSearchAddress(address: address))
     }
+    
+    static func fetchTransitionType(type: DawagaMapViewController.TransitionType) {
+        appStore.dispatch(BookMarkListState.bookMarkListAction.setTransitionType(type: type))
+    }
+    
+    
+    
+    static func fetchBookMark(mark: MarkRealmEntity) {
+        appStore.dispatch(BookMarkListState.bookMarkListAction.setBookMark(mark: mark))
+    }
 }

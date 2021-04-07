@@ -22,6 +22,7 @@ extension BookMarkListReducer {
             
         case .setIsLoadingMarkRealm:
             state.isLoadingMarkRealm = true
+            
         case let .setMarkRealm(markRealm):
             state.isLoadingMarkRealm = false
             state.markRealm = markRealm
@@ -33,6 +34,14 @@ extension BookMarkListReducer {
             
         case let .setSearchAddress(address):
             state.searchAddress = address
+            
+        case let .setTransitionType(type):
+            state.transitionType = type
+            
+        
+        
+        case let .setBookMark(mark):
+            state.bookMark = mark
 
         }
                                         
