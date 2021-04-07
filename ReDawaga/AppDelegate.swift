@@ -7,6 +7,7 @@
 
 import UIKit
 import ReSwift
+import GoogleMaps
 
 let appStore = Store(reducer: appReduce, state: AppState())
 
@@ -16,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        GMSServices.provideAPIKey(Constants.GOOGLE_API_KEY)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         let nav = UINavigationController(rootViewController: MainViewController())
