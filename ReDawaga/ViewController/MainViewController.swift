@@ -34,6 +34,9 @@ class MainViewController: UIViewController {
         appStore.subscribe(self)
         
         navigationController?.navigationBar.isHidden = true
+        
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -44,7 +47,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-                
+        
         setupSearchView()
         setupBookmarkTableView()
         
@@ -59,12 +62,15 @@ class MainViewController: UIViewController {
         view.addSubview(searchView)
         
         searchView.quickMapButtonAction = {
-            
+            let dawagaMapVC = DawagaMapViewController()
+            BookMarkListActionCreator.fetchTransitionType(type: .Quick)
+            self.navigationController?.pushViewController(dawagaMapVC, animated: true)
         }
         
         searchView.quickSearchButtonAction = { address in
-//            BookMarkListActionCreator.fetchSearchAddress(address: address ?? "")
-            self.presentSearchView(address: address ?? "")
+            BookMarkListActionCreator.fetchSearchAddress(address: address ?? "")
+            BookMarkListActionCreator.fetchTransitionType(type: .Search)
+            self.presentSearchVC()
         }
         
         searchView.snp.makeConstraints({ (make) in
@@ -90,9 +96,8 @@ class MainViewController: UIViewController {
         }
     }
     
-    private func presentSearchView(address: String) {
+    private func presentSearchVC() {
         let searchVC = PlaceSearchViewController()
-        searchVC.setupSearchField(address: address)
         self.navigationController?.pushViewController(searchVC, animated: true)
     }
 }
@@ -123,6 +128,15 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return BookMarkTableViewCell.CELL_HEIGHT
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let mark = self.markList[indexPath.row]
+        let dawagaMapVC = DawagaMapViewController()
+        BookMarkListActionCreator.fetchTransitionType(type: .BookMark)
+        BookMarkListActionCreator.fetchBookMark(mark: mark)
+        
+        self.navigationController?.pushViewController(dawagaMapVC, animated: true)
     }
 }
 
