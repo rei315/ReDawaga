@@ -24,8 +24,6 @@ class PlaceSearchViewController: UIViewController {
         }
     }
     
-    private var placeAddress: String = ""
-    
     
     // MARK: - Lifecycle
     
@@ -45,6 +43,8 @@ class PlaceSearchViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         appStore.unsubscribe(self)
+        
+        
     }
     
     override func viewDidLoad() {
@@ -56,21 +56,18 @@ class PlaceSearchViewController: UIViewController {
     
     
     // MARK: - Function
-
-    func setupSearchField(address: String) {
-        self.placeAddress = address
-    }
     
     private func setupSearchView() {
         searchView = PlaceSearchView()
         view.addSubview(searchView)
         
-        searchView.configureItem(address: self.placeAddress)
-        
         searchView.searchButtonAction = { address in
             PlaceSearchActionCreator.fetchPlaceList(address: address ?? "")
-            
         }
+        let storeAddress = appStore.state.bookMarkListState.searchAddress
+        
+        searchView.configureItem(address: storeAddress)
+        searchView.searchButtonAction?(storeAddress)
         
         searchView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
@@ -92,6 +89,13 @@ class PlaceSearchViewController: UIViewController {
             make.left.right.bottom.equalToSuperview()
             make.top.equalTo(searchView.snp.bottom)
         }
+    }
+    
+    private func presentDawagaMapVC(place: PlaceEntity) {
+        let dawagaMapVC = DawagaMapViewController()        
+        PlaceSearchActionCreator.fetchSelectedPlace(place: place)
+        
+        self.navigationController?.pushViewController(dawagaMapVC, animated: true)
     }
 }
 
@@ -126,5 +130,10 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return PlaceSearchTableViewCell.CELL_HEIGHT
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let place = placeList[indexPath.row]
+        presentDawagaMapVC(place: place)
     }
 }
