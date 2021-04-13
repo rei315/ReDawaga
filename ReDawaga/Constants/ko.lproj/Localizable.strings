@@ -8,20 +8,19 @@
 
 "HomeTitle" = "지번, 도로명, 건물명을\n입력하세요";
 "AddressPlaceHolder" = "주소를 입력하세요";
-"FavoriteTitle" = "즐겨찾기";
+"BookMarkTitle" = "즐겨찾기";
 
 "SearchAddressTitle" = "목적지 주소";
 
-"QuickMapDistanceEdit" = "직접입력";
-"QuickMapStart" = "시작";
-"QuickMapNamePlaceHolder" = "이름을 입력하세요";
-"QuickMapAddFavorite" = "즐겨찾기 추가";
-"QuickMapDeleteFavorite" = " 즐겨찾기 수정 취소";
-"QuickMapModifyFavorite" = "즐겨찾기 수정";
-"QuickMapEditValuePlaceHolder" = "입력하세요";
+"DawagaMapDistanceEdit" = "직접입력";
+"DawagaMapStart" = "시작";
+"DawagaMapEditValuePlaceHolder" = "이름을 입력하세요";
+"DawagaMapAddBookMark" = "즐겨찾기 추가";
+"DawagaMapDeleteBookMark" = " 즐겨찾기 수정 취소";
+"DawagaMapModifyBookMark" = "즐겨찾기 수정";
 
-"ToTimeNotificationTitle" = "도착";
-"ToTimeNotificationBody" = "목적지에 도착하였습니다.";
+"DawagaNotificationTitle" = "도착";
+"DawagaNotificationBody" = "목적지에 도착하였습니다.";
 
 "NotificationPermissionTitle" = "알림 권한 오류";
 "NotificationPermissionBody" = "알림에 대한 권한 설정을 해주세요";
@@ -34,13 +33,14 @@
 "Destination" = "목적지";
 
 "InputError" = "입력 오류";
-"FavoriteAddressEmptyAlertMessage" = "주소를 다시 설정해주세요";
-"FavoriteNameEmptyAlertMessage" = "즐겨찾기 이름을 설정해주세요";
-"FavoriteImageEmptyAlertMessage" = "즐겨찾기 아이콘을 설정해주세요";
+"BookMarkAddressEmptyAlertMessage" = "주소를 다시 설정해주세요";
+"BookMarkNameEmptyAlertMessage" = "즐겨찾기 이름을 설정해주세요";
+"BookMarkImageEmptyAlertMessage" = "즐겨찾기 아이콘을 설정해주세요";
+"BookMarkRealmErrorAlertMessage" = "데이터베이스 에러";
 
 "CreatedComplete" = "추가 완료";
 "UpdateComplete" = "수정 완료";
-"FavoriteCreated" = "즐겨찾기 추가 완료";
-"FavoriteUpdated" = "즐겨찾기 수정 완료";
+"BookMarkCreated" = "즐겨찾기 추가 완료";
+"BookMarkUpdated" = "즐겨찾기 수정 완료";
 
 "TutorialDoneTitle" = "시작!";

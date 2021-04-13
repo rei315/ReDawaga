@@ -17,8 +17,8 @@ extension AppString {
     static let Destination = "Destination"
     static let NotificationID = "reach_notification_id"
     static let LocationID = "reach_location_id"
-    static let NotificationTitle = "ToTimeNotificationTitle"
-    static let NotificationBody = "ToTimeNotificationBody"
+    static let NotificationTitle = "DawagaNotificationTitle"
+    static let NotificationBody = "DawagaNotificationBody"
     static let NotificationPermissionTitle = "NotificationPermissionTitle"
     static let NotificationPermissionMessage = "NotificationPermissionBody"
     static let LocationDeniedTitle = "LocationDeniedTitle"
@@ -29,31 +29,32 @@ extension AppString {
     static let Fifty = "50M"
     static let Hundred = "100M"
     static let Thousand = "1000M"
-    static let DistanceEdit = "QuickMapDistanceEdit"
     
-    static let QuickMapStart = "QuickMapStart"
-    static let QuickMapEditValuePlaceHolder = "QuickMapEditValuePlaceHolder"
-    static let Enter = "Enter"
-    static let QuickMapNamePlaceHolder = "QuickMapNamePlaceHolder"
-    static let QuickMapAddFavorite = "QuickMapAddFavorite"
-    static let QuickMapDeleteFavorite = "QuickMapDeleteFavorite"
-    static let QuickMapModifyFavorite = "QuickMapModifyFavorite"
+    static let DistanceEdit = "DawagaMapDistanceEdit"
+    static let DawagaMapStart = "DawagaMapStart"
+    static let DawagaMapEditValuePlaceHolder = "DawagaMapEditValuePlaceHolder"
+    static let DawagaMapAddBookMark = "DawagaMapAddBookMark"
+    static let DawagaMapDeleteBookMark = "DawagaMapDeleteBookMark"
+    static let DawagaMapModifyBookMark = "DawagaMapModifyBookMark"
     
     static let AddressPlaceHolder = "AddressPlaceHolder"
     static let HomeTitle = "HomeTitle"
-    static let FavoriteTitle = "FavoriteTitle"
+    static let BookMarkTitle = "BookMarkTitle"
     
     static let InputError = "InputError"
-    static let FavoriteAddressEmptyAlertMessage = "FavoriteAddressEmptyAlertMessage"
-    static let FavoriteNameEmptyAlertMessage = "FavoriteNameEmptyAlertMessage"
-    static let FavoriteImageEmptyAlertMessage = "FavoriteImageEmptyAlertMessage"
+    static let BookMarkAddressEmptyAlertMessage = "BookMarkAddressEmptyAlertMessage"
+    static let BookMarkNameEmptyAlertMessage = "BookMarkNameEmptyAlertMessage"
+    static let BookMarkImageEmptyAlertMessage = "BookMarkImageEmptyAlertMessage"
+    static let BookMarkRealmErrorAlertMessage = "BookMarkRealmErrorAlertMessage"
     
     static let CreatedComplete = "CreatedComplete"
     static let UpdateComplete = "UpdateComplete"
-    static let FavoriteCreated = "FavoriteCreated"
-    static let FavoriteUpdated = "FavoriteUpdated"
+    static let BookMarkCreated = "BookMarkCreated"
+    static let BookMarkUpdated = "BookMarkUpdated"
     
     static let TutorialDoneTitle = "TutorialDoneTitle"
+    
+    static let Enter = "Enter"
 }
 
 enum Url {}
