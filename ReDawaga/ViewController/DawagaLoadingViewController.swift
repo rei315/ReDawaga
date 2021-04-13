@@ -54,7 +54,7 @@ class DawagaLoadingViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         appStore.unsubscribe(self)
-                
+        self.stopUpdatingLocation()
     }
     
     override func viewDidLoad() {
