@@ -34,6 +34,7 @@ class MainViewSearchView: UIView {
         tf.layer.cornerRadius = 4.0
         tf.clearButtonMode = .always
         tf.returnKeyType = .search
+        tf.delegate = self
         return tf
     }()
     
@@ -59,7 +60,7 @@ class MainViewSearchView: UIView {
     
     private lazy var bookMarkLabel: UILabel = {
         let label = UILabel()
-        label.text = AppString.FavoriteTitle.localized()
+        label.text = AppString.BookMarkTitle.localized()
         label.font = UIFont.systemFont(ofSize: 25)
         return label
     }()
@@ -94,6 +95,10 @@ class MainViewSearchView: UIView {
     
     // MARK: - Function
 
+    func clearTextField() {
+        addressTextField.text = ""
+    }
+    
     private func setupUI() {
         backgroundColor = .white
         
@@ -158,5 +163,12 @@ class MainViewSearchView: UIView {
     
     private func setupQuickMapButtonView() {
         quickMapButton.addTarget(self, action: #selector(onQuickMapButton(sender:)), for: .touchUpInside)
+    }
+}
+
+extension MainViewSearchView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        quickSearchButtonAction?(addressTextField.text)
+        return true
     }
 }
