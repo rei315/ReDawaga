@@ -16,7 +16,7 @@ class DawagaMapBottomView: CornerView {
     private let regionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.systemFont(ofSize: 20)
         label.numberOfLines = 2
         label.lineBreakMode = .byTruncatingTail
         return label
@@ -27,7 +27,6 @@ class DawagaMapBottomView: CornerView {
         bt.layer.cornerRadius = 5
         bt.backgroundColor = .lightGray
         bt.setTitle(AppString.Fifty.localized(), for: .normal)
-        bt.backgroundColor = .red
         return bt
     }()
     
@@ -55,7 +54,7 @@ class DawagaMapBottomView: CornerView {
         return bt
     }()
     
-    private let favoriteButton: UIButton = {
+    private let bookMarkButton: UIButton = {
         let bt = UIButton()
         bt.layer.cornerRadius = 8
         bt.backgroundColor = .middleBlue
@@ -68,54 +67,14 @@ class DawagaMapBottomView: CornerView {
         let bt = UIButton()
         bt.layer.cornerRadius = 8
         bt.backgroundColor = .middleBlue
-        bt.setTitle(AppString.QuickMapStart.localized(), for: .normal)
+        bt.setTitle(AppString.DawagaMapStart.localized(), for: .normal)
         return bt
     }()
     
-    private let valueEditDimView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        return view
-    }()
-    
-    private let valueEditView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 15
-        return view
-    }()
-
-    private let valueTextField: UITextField = {
-        let tf = UITextField()
-        tf.font = UIFont.systemFont(ofSize: 20)
-        tf.textColor = .black
-        tf.attributedPlaceholder = NSAttributedString(string: AppString.QuickMapEditValuePlaceHolder.localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)])
-        tf.textAlignment = .center
-        tf.borderStyle = .none
-        tf.returnKeyType = .done
-        return tf
-    }()
-    
-    private let valueEditButton: UIButton = {
-        let bt = UIButton()
-        bt.layer.cornerRadius = 8
-        bt.backgroundColor = .middleBlue
-        bt.setTitle(AppString.Enter.localized(), for: .normal)
-        return bt
-    }()
-    
-    private let valueEditExitButton: UIButton = {
-        let bt = UIButton()
-        bt.setImage(UIImage(systemName: "multiply.circle"), for: .normal)
-        bt.contentHorizontalAlignment = .fill
-        bt.contentVerticalAlignment = .fill
-        return bt
-    }()
-    
-    private let favoriteField: PaddingTextField = {
+    private let bookMarkField: PaddingTextField = {
         let tf = PaddingTextField(padding: 10, type: .Default)
         tf.font = UIFont.systemFont(ofSize: 18)
-        tf.attributedPlaceholder = NSAttributedString(string: AppString.QuickMapNamePlaceHolder.localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        tf.attributedPlaceholder = NSAttributedString(string: AppString.DawagaMapEditValuePlaceHolder.localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         tf.layer.borderColor = UIColor.middleBlue.cgColor
         tf.layer.borderWidth = 1.5
         tf.layer.cornerRadius = 4.0
@@ -125,13 +84,13 @@ class DawagaMapBottomView: CornerView {
         return tf
     }()
     
-    private let favoriteView: UIView = {
+    private let bookMarkView: UIView = {
         let view = UIView()
         view.backgroundColor = .lightBlue
         return view
     }()
     
-    private let favoriteIconButton: UIButton = {
+    private let bookMarkIconButton: UIButton = {
         let bt = UIButton()
         bt.layer.cornerRadius = 8
         bt.backgroundColor = .lightGray
@@ -140,16 +99,16 @@ class DawagaMapBottomView: CornerView {
         return bt
     }()
     
-    private let favoriteCreateButton: UIButton = {
+    private let bookMarkCreateButton: UIButton = {
         let bt = UIButton()
         bt.layer.cornerRadius = 8
         bt.backgroundColor = .middleBlue
-        bt.setTitle(AppString.QuickMapAddFavorite.localized(), for: .normal)
+        bt.setTitle(AppString.DawagaMapAddBookMark.localized(), for: .normal)
         bt.tintColor = .white
         return bt
     }()
     
-    private let favoriteDeleteButton: UIButton = {
+    private let bookMarkDeleteButton: UIButton = {
         let bt = UIButton()
         bt.layer.cornerRadius = 8
         bt.backgroundColor = .middleBlue
@@ -160,8 +119,8 @@ class DawagaMapBottomView: CornerView {
     
     // MARK: - Property
     
-    enum EditViewState { case on, off }
-    enum EditState { case none, distance, favorite }
+    enum EditViewState { case On, Off }
+    enum EditState { case Distance, BookMark, None }
     enum DistanceState: Int{
         case Fifty = 50
         case Hundred = 100
@@ -169,12 +128,27 @@ class DawagaMapBottomView: CornerView {
         case EditValue = 0
     }
     
-    private var editViewState: EditViewState = .off
-    private var editState: EditState = .none
+    private var editViewState: EditViewState = .Off
+    private var editState: EditState = .None
+    
     private var distanceState: DistanceState = .Fifty
     
+    var fiftyButtonAction: ((Int) -> ())?
+    var hundredButtonAction: ((Int) -> ())?
+    var thousandButtonAction: ((Int) -> ())?
+    
+    var bookMarkIconButtonAction: (() -> ())?
+    
+    var saveBookMarkButtonAction: (() -> ())?
+    var editBookMarkButtonAction: (() -> ())?
+    var deleteBookMarkButtonAction: (() -> ())?
+    
+    var startDawagaButtonAction: (() -> ())?
+    
     private var transitionType: DawagaMapViewController.TransitionType = .Quick
+    
     private var mark: MarkRealmEntity?
+    
     
     // MARK: - Lifecycle
     
@@ -182,8 +156,11 @@ class DawagaMapBottomView: CornerView {
         super.init(cornerRadius: cornerRadius)
         self.backgroundColor = .lightBlue
         
-        setupUI()
         setupBottomView()
+        setupDistanceButtonViews()
+        setupBookMarkTitleFieldView()
+        
+        onFiftyButton()
     }
     
     required init?(coder: NSCoder) {
@@ -202,55 +179,133 @@ class DawagaMapBottomView: CornerView {
         self.regionLabel.text = address
     }
     
-    @objc private func onEditFavorite() {
-        switch (editViewState) {
-        case .on:
-            self.editOffFavorite()
-            editViewState = .off
-        case .off:
-            self.editOnFavorite()
-            editViewState = .on
-        }
+    func configureBookMarkField(title: String) {
+        self.bookMarkField.text = title
     }
 }
 
+// MARK: - Button Action
+
+extension DawagaMapBottomView {
+    
+    // MARK: - Distance Edit
+    
+    @objc private func onFiftyButton() {
+        resetDistanceButtonConfigure()
+        self.distanceState = .Fifty
+        self.distanceFiftyButton.backgroundColor = .red
+        self.fiftyButtonAction?(self.distanceState.rawValue)
+    }
+    
+    @objc private func onHundredButton() {
+        resetDistanceButtonConfigure()
+        self.distanceState = .Hundred
+        self.distanceHundredButton.backgroundColor = .red
+        self.hundredButtonAction?(self.distanceState.rawValue)
+    }
+    
+    @objc private func onThousandButton() {
+        resetDistanceButtonConfigure()
+        self.distanceState = .Thousand
+        self.distanceThousandButton.backgroundColor = .red
+        self.thousandButtonAction?(self.distanceState.rawValue)
+    }
+    
+    @objc private func onEditButton() {
+        if self.editState == .BookMark {
+            onEditBookMark()
+        }
+        resetDistanceButtonConfigure()
+        self.distanceState = .EditValue
+        self.editState = .Distance
+        self.distanceEditButton.backgroundColor = .red
+        DawagaMapActionCreator.fetchEditState(with: .Distance)
+    }
+    
+    
+    // MARK: - BookMark Edit
+    @objc private func onBookMarkField() {
+        self.editState = .BookMark
+        DawagaMapActionCreator.fetchEditState(with: .BookMark)
+    }
+    
+    @objc private func onBookMarkIconButton() {
+        self.bookMarkIconButtonAction?()
+    }
+    
+    @objc private func onEditBookMark() {
+        switch (editViewState) {
+        case .On:
+            self.editOffBookMark()
+            self.editViewState = .Off
+        case .Off:
+            self.editOnBookMark()
+            self.editViewState = .On
+            self.editState = .BookMark
+        }
+    }
+    
+    @objc private func onSaveBookMarkButton() {
+        self.saveBookMarkButtonAction?()
+    }
+    
+    @objc private func onEditBookMarkButton() {
+        self.editBookMarkButtonAction?()
+    }
+    
+    @objc private func onDeleteBookMarkButton() {
+        self.deleteBookMarkButtonAction?()
+    }
+    
+    
+    // MARK: - Start
+    @objc private func onStartDawagaButton() {
+        self.startDawagaButtonAction?()
+    }
+}
+
+
+// MARK: - Helpers
+
+extension DawagaMapBottomView {
+    
+    private func getValueFromField(valueStr: String) -> Int {
+        let filterStr = valueStr.filter { $0.isNumber }
+        if let valueInt = Int(filterStr) {
+            return valueInt
+        }
+        return 0
+    }
+}
 
 // MARK: - UI
 
 extension DawagaMapBottomView {
     
-    private func setupUI() {
+    private func setupDistanceButtonViews() {
+        self.distanceFiftyButton.addTarget(self, action: #selector(onFiftyButton), for: .touchUpInside)
         
-        valueEditDimView.addSubview(valueEditView)
-        valueEditDimView.addSubview(valueEditExitButton)
-        valueEditView.addSubview(valueTextField)
-        valueEditView.addSubview(valueEditButton)
+        self.distanceHundredButton.addTarget(self, action: #selector(onHundredButton), for: .touchUpInside)
         
-        valueEditExitButton.snp.makeConstraints { (make) in
-            make.width.equalTo(valueEditView.snp.width).dividedBy(3)
-            make.height.equalTo(valueEditView.snp.width).dividedBy(3)
-            make.bottom.equalTo(valueEditView.snp.top).offset(-20)
-            make.centerX.equalToSuperview()
-        }
+        self.distanceThousandButton.addTarget(self, action: #selector(onThousandButton), for: .touchUpInside)
         
-        valueEditView.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            make.centerX.equalToSuperview()
-            make.width.equalTo(self.frame.width/2)
-            make.height.equalTo(self.frame.height/5.5)
-        }
-        
-        valueTextField.snp.makeConstraints { (make) in
-            make.bottom.equalTo(valueEditButton.snp.top).offset(-20)
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.8)
-            make.top.lessThanOrEqualToSuperview().offset(20)
-        }
-        valueEditButton.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview().offset(-10)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(self.frame.width/3)
-            make.height.equalToSuperview().multipliedBy(0.3)
+        self.distanceEditButton.addTarget(self, action: #selector(onEditButton), for: .touchUpInside)
+    }
+    
+    private func setupBookMarkTitleFieldView() {
+        self.bookMarkField.addTarget(self, action: #selector(onBookMarkField), for: .editingDidBegin)
+    }
+    
+    private func resetDistanceButtonConfigure() {
+        switch self.distanceState {
+        case .Fifty:
+            distanceFiftyButton.backgroundColor = .lightGray
+        case .Hundred:
+            distanceHundredButton.backgroundColor = .lightGray
+        case .Thousand:
+            distanceThousandButton.backgroundColor = .lightGray
+        case .EditValue:
+            distanceEditButton.backgroundColor = .lightGray
         }
     }
     
@@ -267,10 +322,14 @@ extension DawagaMapBottomView {
         self.addSubview(topStack)
         
         self.addSubview(regionLabel)
-        self.addSubview(favoriteButton)
+        self.addSubview(bookMarkButton)
         self.addSubview(startButton)
 
-        favoriteButton.addTarget(self, action: #selector(onEditFavorite), for: .touchUpInside)
+        startButton.addTarget(self, action: #selector(onStartDawagaButton), for: .touchUpInside)
+        
+        bookMarkButton.addTarget(self, action: #selector(onEditBookMark), for: .touchUpInside)
+        
+        bookMarkIconButton.addTarget(self, action: #selector(onBookMarkIconButton), for: .touchUpInside)
         
         topStack.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
@@ -291,7 +350,7 @@ extension DawagaMapBottomView {
             make.width.equalTo(DeviceSize.screenWidth()-110)
         }
         
-        favoriteButton.snp.makeConstraints { (make) in
+        bookMarkButton.snp.makeConstraints { (make) in
             make.left.equalTo(startButton.snp.right).offset(20)
             make.right.equalToSuperview().offset(-20)
             make.centerY.equalTo(startButton.snp.centerY)
@@ -299,15 +358,15 @@ extension DawagaMapBottomView {
         }
     }
     
-    private func setupFavoriteIcon(image: UIImage) {
-        favoriteIconButton.backgroundColor = .clear
-        favoriteIconButton.layer.borderColor = UIColor.lightGray.cgColor
-        favoriteIconButton.layer.borderWidth = 1.5
-        favoriteIconButton.layer.cornerRadius = 8
-        favoriteIconButton.contentVerticalAlignment = .fill
-        favoriteIconButton.contentHorizontalAlignment = .fill
-        favoriteIconButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        favoriteIconButton.setImage(image, for: .normal)
+    func setupBookMarkIcon(image: UIImage) {
+        bookMarkIconButton.backgroundColor = .clear
+        bookMarkIconButton.layer.borderColor = UIColor.lightGray.cgColor
+        bookMarkIconButton.layer.borderWidth = 1.5
+        bookMarkIconButton.layer.cornerRadius = 8
+        bookMarkIconButton.contentVerticalAlignment = .fill
+        bookMarkIconButton.contentHorizontalAlignment = .fill
+        bookMarkIconButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        bookMarkIconButton.setImage(image, for: .normal)
     }
 }
 
@@ -316,7 +375,7 @@ extension DawagaMapBottomView {
 
 extension DawagaMapBottomView {
     
-    private func editOnFavorite() {
+    private func editOnBookMark() {
         self.snp.updateConstraints { (make) in
             make.top.equalToSuperview().offset(DeviceSize.screenHeight()-(DawagaMapBottomView.VIEW_HEIGHT*2.5))
             make.bottom.equalToSuperview()
@@ -330,57 +389,63 @@ extension DawagaMapBottomView {
             self.superview?.layoutIfNeeded()
         }
         
-        favoriteButton.setTitle(AppString.QuickMapDeleteFavorite.localized(), for: .normal)
-        favoriteButton.backgroundColor = .middlePink
+        bookMarkButton.setTitle(AppString.DawagaMapDeleteBookMark.localized(), for: .normal)
+        bookMarkButton.backgroundColor = .middlePink
             
-        favoriteView.addSubview(favoriteField)
-        favoriteView.addSubview(favoriteCreateButton)
-        favoriteView.addSubview(favoriteIconButton)
+        bookMarkView.addSubview(bookMarkField)
+        bookMarkView.addSubview(bookMarkCreateButton)
+        bookMarkView.addSubview(bookMarkIconButton)
         
-        self.addSubview(favoriteView)
+        self.addSubview(bookMarkView)
         
-        favoriteView.snp.makeConstraints { (make) in
+        bookMarkView.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().offset(-40)
             make.top.equalTo(startButton.snp.bottom).offset(40)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
         }
-        favoriteField.snp.makeConstraints { (make) in
+        bookMarkField.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.15)
+            make.top.equalTo(bookMarkIconButton.snp.bottom).offset(50)
             make.width.equalToSuperview().multipliedBy(0.5)
+            make.height.equalToSuperview().multipliedBy(0.15)
         }
-        favoriteIconButton.snp.makeConstraints { (make) in
+        bookMarkIconButton.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.height.equalTo(favoriteIconButton.snp.width)
+            make.height.equalTo(bookMarkIconButton.snp.width)
             make.width.equalToSuperview().multipliedBy(0.2)
             make.top.equalToSuperview()
         }
         
         if self.transitionType == .BookMark {
                         
-            favoriteField.text = mark?.name
-            let image = ResourceManager.shared.loadImageWithFileName(fileName: mark?.iconImageUrl ?? "")
-            setupFavoriteIcon(image: image)
+            bookMarkField.text = mark?.name
 
-            favoriteView.addSubview(favoriteDeleteButton)
-            favoriteCreateButton.setTitle(AppString.QuickMapModifyFavorite.localized(), for: .normal)
-            favoriteCreateButton.snp.makeConstraints { (make) in
+            bookMarkView.addSubview(bookMarkDeleteButton)
+            
+            bookMarkCreateButton.setTitle(AppString.DawagaMapModifyBookMark.localized(), for: .normal)
+            bookMarkCreateButton.addTarget(self, action: #selector(onEditBookMarkButton), for: .touchUpInside)
+            
+            bookMarkDeleteButton.addTarget(self, action: #selector(onDeleteBookMarkButton), for: .touchUpInside)
+            
+            bookMarkCreateButton.snp.makeConstraints { (make) in
                 make.left.equalToSuperview().offset(20)
                 make.height.equalTo(startButton.snp.height)
                 make.width.equalToSuperview().multipliedBy(0.7)
                 make.bottom.equalToSuperview()
             }
             
-            favoriteDeleteButton.snp.makeConstraints { (make) in
-                make.left.equalTo(favoriteCreateButton.snp.right).offset(20)
+            bookMarkDeleteButton.snp.makeConstraints { (make) in
+                make.left.equalTo(bookMarkCreateButton.snp.right).offset(20)
                 make.right.equalToSuperview().offset(-20)
-                make.centerY.equalTo(favoriteCreateButton.snp.centerY)
-                make.height.equalTo(favoriteCreateButton.snp.height)
+                make.centerY.equalTo(bookMarkCreateButton.snp.centerY)
+                make.height.equalTo(bookMarkCreateButton.snp.height)
             }
         } else {
-            favoriteCreateButton.snp.makeConstraints { (make) in
+            
+            bookMarkCreateButton.addTarget(self, action: #selector(onSaveBookMarkButton), for: .touchUpInside)
+            
+            bookMarkCreateButton.snp.makeConstraints { (make) in
                 make.centerX.equalToSuperview()
                 make.height.equalTo(startButton.snp.height)
                 make.width.equalToSuperview().multipliedBy(0.8)
@@ -389,7 +454,8 @@ extension DawagaMapBottomView {
         }
     }
     
-    private func editOffFavorite() {
+    private func editOffBookMark() {
+        
         self.snp.updateConstraints { (make) in
             make.bottom.equalToSuperview().offset(DeviceSize.screenHeight()-DawagaMapBottomView.VIEW_HEIGHT)
             make.top.equalToSuperview().offset(DeviceSize.screenHeight()-DawagaMapBottomView.VIEW_HEIGHT)
@@ -407,15 +473,9 @@ extension DawagaMapBottomView {
             self.superview?.layoutIfNeeded()
         }
         
-        favoriteButton.setTitle("", for: .normal)
-        favoriteButton.backgroundColor = .middleBlue
+        bookMarkButton.setTitle("", for: .normal)
+        bookMarkButton.backgroundColor = .middleBlue
         
-        favoriteField.removeFromSuperview()
-        favoriteIconButton.removeFromSuperview()
-        favoriteCreateButton.removeFromSuperview()
-        
-        if self.transitionType == .BookMark {
-            favoriteDeleteButton.removeFromSuperview()
-        }
+        bookMarkView.removeFromSuperview()
     }
 }
