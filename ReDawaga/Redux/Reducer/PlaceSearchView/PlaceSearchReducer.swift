@@ -23,18 +23,22 @@ extension PlaceSearchReducer {
         switch action {
         
         case .setIsLoadingPlace:
+            print("setIsLoadingPlace")
             state.isLoadingPlace = true
             
         case let .setPlaceList(place):
+            print("setPlaceList")
             state.isLoadingPlace = false
             state.placeList = place
             state.isErrorPlace = false
             
         case .setIsErrorPlace:
+            print("setIsErrorPlace")
             state.isLoadingPlace = false
             state.isErrorPlace = true
             
         case let .setSelectedPlace(place):
+            print("setSelectedPlace")
             state.selectedPlace = place
             
         }
