@@ -18,7 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+        }
+        
         GMSServices.provideAPIKey(Constants.GOOGLE_API_KEY)
+             
+        Thread.sleep(forTimeInterval: 2.0)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         let nav = UINavigationController(rootViewController: MainViewController())
@@ -27,7 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-
-
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
 }
 
