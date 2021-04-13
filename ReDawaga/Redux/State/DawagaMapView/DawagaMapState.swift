@@ -31,9 +31,24 @@ struct DawagaMapState: ReSwift.StateType {
     
     // MARK: - Location Manager
     
-    var isRequestMonitoring: Bool = false
+    var idleLocation: CLLocation?
     
-    var isAuthorization: Bool = false
     
-    var idleLocation: CLLocation?    
+    // MARK: - GMSMapView
+    
+    var isMapReady: Bool = false
+    
+    
+    // MARK: - Bottom View
+    
+    var distanceState: Int = DawagaMapBottomView.DistanceState.Fifty.rawValue
+    
+    var editState: DawagaMapBottomView.EditState = .None
+    
+    var bookMarkIconName: String = ""
+    
+    
+    // MARK: - Transition
+    
+    var destination: CLLocation? = nil
 }

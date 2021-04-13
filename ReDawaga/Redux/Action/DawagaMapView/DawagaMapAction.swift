@@ -32,12 +32,26 @@ extension DawagaMapState {
         
         
         // MARK: - Map Action
-        
-        case setIsRequestMonotoring(isMonotoring: Bool)
-        
-        case setAuthorization(isAuthorized: Bool)
-        
+
         case setIdleLocation(location: CLLocation)
         
+    
+        // MARK: - GMSMapView
+        
+        case setIsMapReady(isReady: Bool)
+        
+        
+        // MARK: - Bottom View
+        
+        case setDistanceState(state: Int)
+        
+        case setEditState(state: DawagaMapBottomView.EditState)
+        
+        case setBookMarkIconName(name: String)
+        
+        
+        // MARK: - Transition
+        
+        case setDestination(location: CLLocation?)
     }
 }

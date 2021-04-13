@@ -43,22 +43,36 @@ extension DawagaMapActionCreator {
     
     // MARK: - Map Action
     
-    static func requestMonitoring(locationManager: CLLocationManager) {
-        appStore.dispatch(DawagaMapState.dawagaMapAction.setIsRequestMonotoring(isMonotoring: true))
-                
-        locationManager.requestLocation()
-    }
-    
-    static func fetchErrorRequestMonotoring(locationManager: CLLocationManager) {
-        appStore.dispatch(DawagaMapState.dawagaMapAction.setIsRequestMonotoring(isMonotoring: true))
-        locationManager.stopUpdatingLocation()
-    }
-    
     static func fetchIdleLocation(location: CLLocation) {
         appStore.dispatch(DawagaMapState.dawagaMapAction.setIdleLocation(location: location))
     }
     
-    static func fetchAuthorization(isAuthorized: Bool) {
-        appStore.dispatch(DawagaMapState.dawagaMapAction.setAuthorization(isAuthorized: isAuthorized))
+    
+    // MARK: - GMSMapView
+    
+    static func fetchIsMapReady(isReady: Bool) {
+        appStore.dispatch(DawagaMapState.dawagaMapAction.setIsMapReady(isReady: isReady))
+    }
+
+
+    // MARK: - Bottom View
+    
+    static func fetchDistanceState(with state: Int) {
+        appStore.dispatch(DawagaMapState.dawagaMapAction.setDistanceState(state: state))
+    }
+    
+    static func fetchEditState(with state: DawagaMapBottomView.EditState) {
+        appStore.dispatch(DawagaMapState.dawagaMapAction.setEditState(state: state))
+    }
+    
+    static func fetchBookMarkIconName(with name: String) {
+        appStore.dispatch(DawagaMapState.dawagaMapAction.setBookMarkIconName(name: name))
+    }
+    
+    
+    // MARK: - Transition
+    
+    static func fetchDestination(with location: CLLocation?) {
+        appStore.dispatch(DawagaMapState.dawagaMapAction.setDestination(location: location))
     }
 }
