@@ -69,7 +69,6 @@
 		8CD6D405261F2FC100CEBD39 /* BookMarkIconSelectorReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D404261F2FC100CEBD39 /* BookMarkIconSelectorReducer.swift */; };
 		8CD6D409261F2FC700CEBD39 /* BookMarkIconSelectorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D408261F2FC700CEBD39 /* BookMarkIconSelectorAction.swift */; };
 		8CD6D40D261F2FCE00CEBD39 /* BookMarkIconSelectorActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D40C261F2FCE00CEBD39 /* BookMarkIconSelectorActionCreator.swift */; };
-		8CD6D411261F34F700CEBD39 /* MarkIcon in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6D410261F34F700CEBD39 /* MarkIcon */; };
 		8CD6D415262477E500CEBD39 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D414262477E500CEBD39 /* UIViewController+Extension.swift */; };
 		8CD6D4192625A36200CEBD39 /* DawagaLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D4182625A36200CEBD39 /* DawagaLoadingViewController.swift */; };
 		8CD6D4212625A5EA00CEBD39 /* DawagaLoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D4202625A5EA00CEBD39 /* DawagaLoadingState.swift */; };
@@ -198,7 +197,6 @@
 		8CD6D404261F2FC100CEBD39 /* BookMarkIconSelectorReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkIconSelectorReducer.swift; sourceTree = "<group>"; };
 		8CD6D408261F2FC700CEBD39 /* BookMarkIconSelectorAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkIconSelectorAction.swift; sourceTree = "<group>"; };
 		8CD6D40C261F2FCE00CEBD39 /* BookMarkIconSelectorActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkIconSelectorActionCreator.swift; sourceTree = "<group>"; };
-		8CD6D410261F34F700CEBD39 /* MarkIcon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MarkIcon; sourceTree = "<group>"; };
 		8CD6D414262477E500CEBD39 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		8CD6D4182625A36200CEBD39 /* DawagaLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaLoadingViewController.swift; sourceTree = "<group>"; };
 		8CD6D4202625A5EA00CEBD39 /* DawagaLoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaLoadingState.swift; sourceTree = "<group>"; };
@@ -400,10 +398,8 @@
 			children = (
 				8CD6D4412625AF5100CEBD39 /* Emitter&Observer */,
 				8CD6D4362625AB4B00CEBD39 /* LocationNotification */,
-				8CD6D410261F34F700CEBD39 /* MarkIcon */,
 				8C61BB0726140BC000FCBB2C /* Constants */,
 				8C61BA5D2611586A00FCBB2C /* Storyboard */,
-				8C61BA512611582C00FCBB2C /* Enum */,
 				8C61BA502611582600FCBB2C /* Extension */,
 				8C61BA4E2611581F00FCBB2C /* Model */,
 				8C61BA4C2611581300FCBB2C /* Module */,
@@ -526,13 +522,6 @@
 				8CD6D414262477E500CEBD39 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		8C61BA512611582C00FCBB2C /* Enum */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Enum;
 			sourceTree = "<group>";
 		};
 		8C61BA5D2611586A00FCBB2C /* Storyboard */ = {
@@ -837,7 +826,6 @@
 				8C61BA0A2611570B00FCBB2C /* LaunchScreen.storyboard in Resources */,
 				8C61BB1D26140C9B00FCBB2C /* Localizable.strings in Resources */,
 				8C61BA072611570B00FCBB2C /* Assets.xcassets in Resources */,
-				8CD6D411261F34F700CEBD39 /* MarkIcon in Resources */,
 				8C61BA052611570B00FCBB2C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
