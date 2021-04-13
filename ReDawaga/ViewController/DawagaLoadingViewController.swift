@@ -200,6 +200,8 @@ class DawagaLoadingViewController: UIViewController {
 }
 
 
+// MARK: - Redux
+
 extension DawagaLoadingViewController: StoreSubscriber {
     
     func newState(state: AppState) {
