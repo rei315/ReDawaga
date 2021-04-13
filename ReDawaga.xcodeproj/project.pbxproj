@@ -57,7 +57,6 @@
 		8C61BB3D261577E600FCBB2C /* BookMarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB3C261577E600FCBB2C /* BookMarkTableViewCell.swift */; };
 		8C61BB4226157A7A00FCBB2C /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB4126157A7A00FCBB2C /* ResourceManager.swift */; };
 		8CD6D38F261C11A000CEBD39 /* Pods_ReDawaga.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD6D38E261C11A000CEBD39 /* Pods_ReDawaga.framework */; };
-		8CD6D390261C11A000CEBD39 /* Pods_ReDawaga.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD6D38E261C11A000CEBD39 /* Pods_ReDawaga.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8CD6D3CF261EA78000CEBD39 /* DawagaMapEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3CE261EA78000CEBD39 /* DawagaMapEditView.swift */; };
 		8CD6D3D3261EF30900CEBD39 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3D2261EF30900CEBD39 /* UITextField+Extension.swift */; };
 		8CD6D3D9261F032800CEBD39 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3D8261F032800CEBD39 /* RoundButton.swift */; };
@@ -102,20 +101,6 @@
 			remoteInfo = ReDawaga;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		8CD6D391261C11A000CEBD39 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8CD6D390261C11A000CEBD39 /* Pods_ReDawaga.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		152E938A812B633021285F05 /* Pods-ReDawaga-ReDawagaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReDawaga-ReDawagaUITests.debug.xcconfig"; path = "Target Support Files/Pods-ReDawaga-ReDawagaUITests/Pods-ReDawaga-ReDawagaUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -726,7 +711,6 @@
 				8C61B9F82611570B00FCBB2C /* Resources */,
 				C0E76B0182EB349A52A1299C /* [CP] Embed Pods Frameworks */,
 				151B44614FA8F43DA8B76959 /* [CP] Copy Pods Resources */,
-				8CD6D391261C11A000CEBD39 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
