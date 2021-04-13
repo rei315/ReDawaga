@@ -12,8 +12,15 @@ class PlaceSearchViewController: UIViewController {
 
     // MARK: - UI Initialization
     
-    private var searchView: PlaceSearchView!
-    private var placeTableView: UITableView!
+    private lazy var searchView: PlaceSearchView = {
+        let sv = PlaceSearchView()
+        return sv
+    }()
+    
+    private lazy var placeTableView: UITableView = {
+        let tv = UITableView()
+        return tv
+    }()
     
     
     // MARK: - Property
@@ -33,18 +40,13 @@ class PlaceSearchViewController: UIViewController {
         appStore.subscribe(self)
         self.view.backgroundColor = .white
         
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.topItem?.title = ""
-        navigationItem.title = NavigationTitle.DestinationAddress.localized()
+        self.setupNavigationController()
     }
              
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        appStore.unsubscribe(self)
-        
-        
+        self.view.endEditing(true)
+        appStore.unsubscribe(self)                
     }
     
     override func viewDidLoad() {
@@ -57,8 +59,15 @@ class PlaceSearchViewController: UIViewController {
     
     // MARK: - Function
     
+    private func setupNavigationController() {
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.topItem?.title = ""
+        navigationItem.title = NavigationTitle.DestinationAddress.localized()
+    }
+    
     private func setupSearchView() {
-        searchView = PlaceSearchView()
         view.addSubview(searchView)
         
         searchView.searchButtonAction = { address in
@@ -77,7 +86,6 @@ class PlaceSearchViewController: UIViewController {
     }
     
     private func setupPlaceTableView() {
-        placeTableView = UITableView()
         view.addSubview(placeTableView)
         
         placeTableView.register(PlaceSearchTableViewCell.self, forCellReuseIdentifier: PlaceSearchTableViewCell.self.identifier)
@@ -92,7 +100,7 @@ class PlaceSearchViewController: UIViewController {
     }
     
     private func presentDawagaMapVC(place: PlaceEntity) {
-        let dawagaMapVC = DawagaMapViewController()        
+        let dawagaMapVC = DawagaMapViewController()
         PlaceSearchActionCreator.fetchSelectedPlace(place: place)
         
         self.navigationController?.pushViewController(dawagaMapVC, animated: true)
