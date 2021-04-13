@@ -14,8 +14,15 @@ class MainViewController: UIViewController {
     
     // MARK: - UI Initialization
     
-    private var searchView: MainViewSearchView!
-    private var bookmarkTableView: UITableView!
+    private lazy var searchView: MainViewSearchView = {
+        let sv = MainViewSearchView()
+        return sv
+    }()
+    
+    private lazy var bookmarkTableView: UITableView = {
+        let tv = UITableView()
+        return tv
+    }()
     
     
     // MARK: - Property
@@ -32,16 +39,20 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appStore.subscribe(self)
+                
+        self.setupNavigationController()
         
-        navigationController?.navigationBar.isHidden = true
-        
-        
-        
+        BookMarkListActionCreator.fetchBookMarkList()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        appStore.unsubscribe(self)
+        self.view.endEditing(true)
+        appStore.unsubscribe(self)        
+        
+        searchView.clearTextField()
+        
+        BookMarkListActionCreator.fetchBookMarkListClear()
     }
     
     override func viewDidLoad() {
@@ -50,15 +61,16 @@ class MainViewController: UIViewController {
         
         setupSearchView()
         setupBookmarkTableView()
-        
-        BookMarkListActionCreator.fetchBookMarkList()
     }
 
     
     // MARK: - Function
 
+    private func setupNavigationController() {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     private func setupSearchView() {
-        searchView = MainViewSearchView()
         view.addSubview(searchView)
         
         searchView.quickMapButtonAction = {
@@ -81,7 +93,6 @@ class MainViewController: UIViewController {
     }
     
     private func setupBookmarkTableView() {
-        bookmarkTableView = UITableView()
         view.addSubview(bookmarkTableView)
         
         bookmarkTableView.register(BookMarkTableViewCell.self, forCellReuseIdentifier: BookMarkTableViewCell.self.identifier)
@@ -92,7 +103,7 @@ class MainViewController: UIViewController {
                         
         bookmarkTableView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
-            make.top.equalTo(searchView.snp.bottom).offset(50)
+            make.top.equalTo(searchView.snp.bottom)
         }
     }
     

@@ -21,26 +21,30 @@ extension BookMarkListReducer {
         switch action {
             
         case .setIsLoadingMarkRealm:
+            print("setIsLoadingMarkRealm")
             state.isLoadingMarkRealm = true
             
         case let .setMarkRealm(markRealm):
+            print("setMarkRealm")
             state.isLoadingMarkRealm = false
             state.markRealm = markRealm
             state.isErrorMarkRealm = false
         
         case .setIsErrorMarkRealm:
+            print("setIsErrorMarkRealm")
             state.isLoadingMarkRealm = false
             state.isErrorMarkRealm = true
             
         case let .setSearchAddress(address):
+            print("setSearchAddress")
             state.searchAddress = address
             
         case let .setTransitionType(type):
+            print("setTransitionType")
             state.transitionType = type
-            
-        
         
         case let .setBookMark(mark):
+            print("setBookMark")
             state.bookMark = mark
 
         }

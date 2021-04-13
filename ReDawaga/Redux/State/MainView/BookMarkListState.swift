@@ -26,7 +26,7 @@ struct BookMarkListState: ReSwift.StateType {
     
     // MARK: - When Transition Parameters
     
-    var transitionType: DawagaMapViewController.TransitionType = .Quick        
+    var transitionType: DawagaMapViewController.TransitionType = .Quick
     
     var bookMark: MarkRealmEntity? = nil
 }
