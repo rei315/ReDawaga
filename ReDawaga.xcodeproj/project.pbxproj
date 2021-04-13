@@ -51,7 +51,6 @@
 		8C61BAFA26140B5A00FCBB2C /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BAF926140B5A00FCBB2C /* PaddingTextField.swift */; };
 		8C61BB0026140B8600FCBB2C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BAFF26140B8600FCBB2C /* UIColor+Extension.swift */; };
 		8C61BB0926140BCD00FCBB2C /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB0826140BCD00FCBB2C /* App.swift */; };
-		8C61BB1126140BD900FCBB2C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB1026140BD900FCBB2C /* Constants.swift */; };
 		8C61BB1D26140C9B00FCBB2C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C61BB1F26140C9B00FCBB2C /* Localizable.strings */; };
 		8C61BB3026140D9700FCBB2C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB2F26140D9700FCBB2C /* String+Extension.swift */; };
 		8C61BB35261571E000FCBB2C /* DeviceSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB34261571E000FCBB2C /* DeviceSize.swift */; };
@@ -83,6 +82,7 @@
 		8CD6D4512625B02A00CEBD39 /* LocationEmitterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D4502625B02A00CEBD39 /* LocationEmitterAction.swift */; };
 		8CD6D4572625B10B00CEBD39 /* LocationEmitterActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D4562625B10B00CEBD39 /* LocationEmitterActionCreator.swift */; };
 		8CD6D4A52626187700CEBD39 /* MarkIcon in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6D4A42626187700CEBD39 /* MarkIcon */; };
+		8CD81774262621600093C2B1 /* GoogleKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD81773262621600093C2B1 /* GoogleKey.swift */; };
 		E00B3881644C6F508834B671 /* Pods_ReDawagaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81365408F410719010AAEDC0 /* Pods_ReDawagaTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -175,7 +175,6 @@
 		8C61BAF926140B5A00FCBB2C /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		8C61BAFF26140B8600FCBB2C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		8C61BB0826140BCD00FCBB2C /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		8C61BB1026140BD900FCBB2C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = /Users/kimminguk/Desktop/ReDawaga/ReDawaga/Constants/Constants.swift; sourceTree = "<absolute>"; };
 		8C61BB1E26140C9B00FCBB2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8C61BB2326140CC500FCBB2C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		8C61BB2426140CC500FCBB2C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -212,6 +211,7 @@
 		8CD6D4502625B02A00CEBD39 /* LocationEmitterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEmitterAction.swift; sourceTree = "<group>"; };
 		8CD6D4562625B10B00CEBD39 /* LocationEmitterActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEmitterActionCreator.swift; sourceTree = "<group>"; };
 		8CD6D4A42626187700CEBD39 /* MarkIcon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MarkIcon; sourceTree = "<group>"; };
+		8CD81773262621600093C2B1 /* GoogleKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -613,9 +613,9 @@
 		8C61BB0726140BC000FCBB2C /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				8C61BB1026140BD900FCBB2C /* Constants.swift */,
 				8C61BB0826140BCD00FCBB2C /* App.swift */,
 				8C61BB1F26140C9B00FCBB2C /* Localizable.strings */,
+				8CD81773262621600093C2B1 /* GoogleKey.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1000,7 +1000,6 @@
 				8CD6D3D9261F032800CEBD39 /* RoundButton.swift in Sources */,
 				8C43CFF4261C08D20086599B /* DawagaMapActionCreator.swift in Sources */,
 				8CD6D3E8261F29F400CEBD39 /* BookMarkIconSelectorViewController.swift in Sources */,
-				8C61BB1126140BD900FCBB2C /* Constants.swift in Sources */,
 				8C43CFDA261C08AD0086599B /* DawagaMapState.swift in Sources */,
 				8CD6D40D261F2FCE00CEBD39 /* BookMarkIconSelectorActionCreator.swift in Sources */,
 				8CD6D4272625A5F400CEBD39 /* DawagaLoadingReducer.swift in Sources */,
@@ -1036,6 +1035,7 @@
 				8C43CF59261B26AB0086599B /* BookMarkListActionCreator.swift in Sources */,
 				8C43CFB1261B30C70086599B /* PlaceSearchViewController.swift in Sources */,
 				8C61BAB22613F4B300FCBB2C /* Place.swift in Sources */,
+				8CD81774262621600093C2B1 /* GoogleKey.swift in Sources */,
 				8CD6D43E2625AB8900CEBD39 /* LocationNotificationScheduler.swift in Sources */,
 				8CD6D42F2625A60A00CEBD39 /* DawagaLoadingActionCreator.swift in Sources */,
 				8C61BAB82613F61F00FCBB2C /* APIManagerForGoogleMaps.swift in Sources */,

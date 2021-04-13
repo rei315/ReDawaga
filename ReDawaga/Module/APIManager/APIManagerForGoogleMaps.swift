@@ -17,7 +17,7 @@ class APIManagerForGoogleMaps {
     private let DetailUrl = "https://maps.googleapis.com/maps/api/place/details/json"
     private let ReverseGeocodeUrl = "https://maps.googleapis.com/maps/api/geocode/json"
     
-    private let key = Constants.GOOGLE_API_KEY
+    private let key = GOOGLE_API_KEY
     
     
     // MARK: - Singleton Instance

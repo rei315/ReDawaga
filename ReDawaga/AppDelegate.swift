@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
         }
         
-        GMSServices.provideAPIKey(Constants.GOOGLE_API_KEY)
+        GMSServices.provideAPIKey(GOOGLE_API_KEY)
              
         Thread.sleep(forTimeInterval: 2.0)
         
