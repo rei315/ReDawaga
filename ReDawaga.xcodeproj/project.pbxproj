@@ -59,6 +59,30 @@
 		8C61BB4226157A7A00FCBB2C /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB4126157A7A00FCBB2C /* ResourceManager.swift */; };
 		8CD6D38F261C11A000CEBD39 /* Pods_ReDawaga.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD6D38E261C11A000CEBD39 /* Pods_ReDawaga.framework */; };
 		8CD6D390261C11A000CEBD39 /* Pods_ReDawaga.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD6D38E261C11A000CEBD39 /* Pods_ReDawaga.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8CD6D3CF261EA78000CEBD39 /* DawagaMapEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3CE261EA78000CEBD39 /* DawagaMapEditView.swift */; };
+		8CD6D3D3261EF30900CEBD39 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3D2261EF30900CEBD39 /* UITextField+Extension.swift */; };
+		8CD6D3D9261F032800CEBD39 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3D8261F032800CEBD39 /* RoundButton.swift */; };
+		8CD6D3E8261F29F400CEBD39 /* BookMarkIconSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3E7261F29F400CEBD39 /* BookMarkIconSelectorViewController.swift */; };
+		8CD6D3EF261F2AEA00CEBD39 /* BookMarkIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3EE261F2AEA00CEBD39 /* BookMarkIconCell.swift */; };
+		8CD6D3F7261F2B9700CEBD39 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3F6261F2B9700CEBD39 /* UICollectionView+Extension.swift */; };
+		8CD6D401261F2FB500CEBD39 /* BookMarkIconSelectorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D400261F2FB500CEBD39 /* BookMarkIconSelectorState.swift */; };
+		8CD6D405261F2FC100CEBD39 /* BookMarkIconSelectorReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D404261F2FC100CEBD39 /* BookMarkIconSelectorReducer.swift */; };
+		8CD6D409261F2FC700CEBD39 /* BookMarkIconSelectorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D408261F2FC700CEBD39 /* BookMarkIconSelectorAction.swift */; };
+		8CD6D40D261F2FCE00CEBD39 /* BookMarkIconSelectorActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D40C261F2FCE00CEBD39 /* BookMarkIconSelectorActionCreator.swift */; };
+		8CD6D411261F34F700CEBD39 /* MarkIcon in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6D410261F34F700CEBD39 /* MarkIcon */; };
+		8CD6D415262477E500CEBD39 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D414262477E500CEBD39 /* UIViewController+Extension.swift */; };
+		8CD6D4192625A36200CEBD39 /* DawagaLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D4182625A36200CEBD39 /* DawagaLoadingViewController.swift */; };
+		8CD6D4212625A5EA00CEBD39 /* DawagaLoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D4202625A5EA00CEBD39 /* DawagaLoadingState.swift */; };
+		8CD6D4272625A5F400CEBD39 /* DawagaLoadingReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D4262625A5F400CEBD39 /* DawagaLoadingReducer.swift */; };
+		8CD6D42B2625A5FA00CEBD39 /* DawagaLoadingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D42A2625A5FA00CEBD39 /* DawagaLoadingAction.swift */; };
+		8CD6D42F2625A60A00CEBD39 /* DawagaLoadingActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D42E2625A60A00CEBD39 /* DawagaLoadingActionCreator.swift */; };
+		8CD6D4382625AB6100CEBD39 /* LocationNotificationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D4372625AB6100CEBD39 /* LocationNotificationEntity.swift */; };
+		8CD6D43E2625AB8900CEBD39 /* LocationNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D43D2625AB8900CEBD39 /* LocationNotificationScheduler.swift */; };
+		8CD6D4432625AF6100CEBD39 /* LocationEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D4422625AF6100CEBD39 /* LocationEmitter.swift */; };
+		8CD6D4472625AFAD00CEBD39 /* LocationEmitterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D4462625AFAD00CEBD39 /* LocationEmitterState.swift */; };
+		8CD6D44B2625B01400CEBD39 /* LocationEmitterReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D44A2625B01400CEBD39 /* LocationEmitterReducer.swift */; };
+		8CD6D4512625B02A00CEBD39 /* LocationEmitterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D4502625B02A00CEBD39 /* LocationEmitterAction.swift */; };
+		8CD6D4572625B10B00CEBD39 /* LocationEmitterActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D4562625B10B00CEBD39 /* LocationEmitterActionCreator.swift */; };
 		E00B3881644C6F508834B671 /* Pods_ReDawagaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81365408F410719010AAEDC0 /* Pods_ReDawagaTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -164,6 +188,30 @@
 		8C61BB3C261577E600FCBB2C /* BookMarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTableViewCell.swift; sourceTree = "<group>"; };
 		8C61BB4126157A7A00FCBB2C /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
 		8CD6D38E261C11A000CEBD39 /* Pods_ReDawaga.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ReDawaga.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CD6D3CE261EA78000CEBD39 /* DawagaMapEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaMapEditView.swift; sourceTree = "<group>"; };
+		8CD6D3D2261EF30900CEBD39 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		8CD6D3D8261F032800CEBD39 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		8CD6D3E7261F29F400CEBD39 /* BookMarkIconSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkIconSelectorViewController.swift; sourceTree = "<group>"; };
+		8CD6D3EE261F2AEA00CEBD39 /* BookMarkIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkIconCell.swift; sourceTree = "<group>"; };
+		8CD6D3F6261F2B9700CEBD39 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		8CD6D400261F2FB500CEBD39 /* BookMarkIconSelectorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkIconSelectorState.swift; sourceTree = "<group>"; };
+		8CD6D404261F2FC100CEBD39 /* BookMarkIconSelectorReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkIconSelectorReducer.swift; sourceTree = "<group>"; };
+		8CD6D408261F2FC700CEBD39 /* BookMarkIconSelectorAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkIconSelectorAction.swift; sourceTree = "<group>"; };
+		8CD6D40C261F2FCE00CEBD39 /* BookMarkIconSelectorActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkIconSelectorActionCreator.swift; sourceTree = "<group>"; };
+		8CD6D410261F34F700CEBD39 /* MarkIcon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MarkIcon; sourceTree = "<group>"; };
+		8CD6D414262477E500CEBD39 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		8CD6D4182625A36200CEBD39 /* DawagaLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaLoadingViewController.swift; sourceTree = "<group>"; };
+		8CD6D4202625A5EA00CEBD39 /* DawagaLoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaLoadingState.swift; sourceTree = "<group>"; };
+		8CD6D4262625A5F400CEBD39 /* DawagaLoadingReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaLoadingReducer.swift; sourceTree = "<group>"; };
+		8CD6D42A2625A5FA00CEBD39 /* DawagaLoadingAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaLoadingAction.swift; sourceTree = "<group>"; };
+		8CD6D42E2625A60A00CEBD39 /* DawagaLoadingActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaLoadingActionCreator.swift; sourceTree = "<group>"; };
+		8CD6D4372625AB6100CEBD39 /* LocationNotificationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNotificationEntity.swift; sourceTree = "<group>"; };
+		8CD6D43D2625AB8900CEBD39 /* LocationNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNotificationScheduler.swift; sourceTree = "<group>"; };
+		8CD6D4422625AF6100CEBD39 /* LocationEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEmitter.swift; sourceTree = "<group>"; };
+		8CD6D4462625AFAD00CEBD39 /* LocationEmitterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEmitterState.swift; sourceTree = "<group>"; };
+		8CD6D44A2625B01400CEBD39 /* LocationEmitterReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEmitterReducer.swift; sourceTree = "<group>"; };
+		8CD6D4502625B02A00CEBD39 /* LocationEmitterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEmitterAction.swift; sourceTree = "<group>"; };
+		8CD6D4562625B10B00CEBD39 /* LocationEmitterActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEmitterActionCreator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				8C43CFF8261C09C30086599B /* DawagaMapBottomView.swift */,
+				8CD6D3CE261EA78000CEBD39 /* DawagaMapEditView.swift */,
 			);
 			path = DawagaMap;
 			sourceTree = "<group>";
@@ -349,6 +398,9 @@
 		8C61B9FC2611570B00FCBB2C /* ReDawaga */ = {
 			isa = PBXGroup;
 			children = (
+				8CD6D4412625AF5100CEBD39 /* Emitter&Observer */,
+				8CD6D4362625AB4B00CEBD39 /* LocationNotification */,
+				8CD6D410261F34F700CEBD39 /* MarkIcon */,
 				8C61BB0726140BC000FCBB2C /* Constants */,
 				8C61BA5D2611586A00FCBB2C /* Storyboard */,
 				8C61BA512611582C00FCBB2C /* Enum */,
@@ -391,6 +443,8 @@
 				8C61BAEB2614096500FCBB2C /* MainViewController.swift */,
 				8C43CFB0261B30C70086599B /* PlaceSearchViewController.swift */,
 				8C43CFCF261C07E80086599B /* DawagaMapViewController.swift */,
+				8CD6D3E7261F29F400CEBD39 /* BookMarkIconSelectorViewController.swift */,
+				8CD6D4182625A36200CEBD39 /* DawagaLoadingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -409,11 +463,13 @@
 		8C61BA4A2611580700FCBB2C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8CD6D3ED261F2AD900CEBD39 /* BookMarkIconSelector */,
 				8C43CFD4261C086D0086599B /* DawagaMap */,
 				8C43CF5D261B2AB60086599B /* PlaceSearch */,
 				8C61BAF026140A8000FCBB2C /* Main */,
 				8C61BAF926140B5A00FCBB2C /* PaddingTextField.swift */,
 				8C43CFFD261C0F760086599B /* CornerView.swift */,
+				8CD6D3D8261F032800CEBD39 /* RoundButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -465,6 +521,9 @@
 				8C61BB2F26140D9700FCBB2C /* String+Extension.swift */,
 				8C43CFC2261BF7830086599B /* UITableView+Extension.swift */,
 				8C43D002261C10020086599B /* UIView+Extension.swift */,
+				8CD6D3D2261EF30900CEBD39 /* UITextField+Extension.swift */,
+				8CD6D3F6261F2B9700CEBD39 /* UICollectionView+Extension.swift */,
+				8CD6D414262477E500CEBD39 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -495,6 +554,8 @@
 		8C61BABF2614035A00FCBB2C /* State */ = {
 			isa = PBXGroup;
 			children = (
+				8CD6D41C2625A5C400CEBD39 /* DawagaLoadingView */,
+				8CD6D3FC261F2F8D00CEBD39 /* BookMarkIconSelectorView */,
 				8C43CFD8261C08960086599B /* DawagaMapView */,
 				8C43CF74261B2CDA0086599B /* PlaceSearchView */,
 				8C61BAD02614043E00FCBB2C /* MainView */,
@@ -506,6 +567,8 @@
 		8C61BAC02614035E00FCBB2C /* Reducer */ = {
 			isa = PBXGroup;
 			children = (
+				8CD6D41D2625A5CE00CEBD39 /* DawagaLoadingView */,
+				8CD6D3FD261F2F9E00CEBD39 /* BookMarkIconSelectorView */,
 				8C43CFD7261C08920086599B /* DawagaMapView */,
 				8C43CF76261B2CF20086599B /* PlaceSearchView */,
 				8C43CF75261B2CEB0086599B /* MainView */,
@@ -517,6 +580,8 @@
 		8C61BAC12614036600FCBB2C /* Action */ = {
 			isa = PBXGroup;
 			children = (
+				8CD6D41E2625A5D200CEBD39 /* DawagaLoadingView */,
+				8CD6D3FE261F2FA400CEBD39 /* BookMarkIconSelectorView */,
 				8C43CFD6261C088D0086599B /* DawagaMapView */,
 				8C43CF78261B2CFD0086599B /* PlaceSearchView */,
 				8C43CF77261B2CF90086599B /* MainView */,
@@ -527,6 +592,8 @@
 		8C61BAC22614036900FCBB2C /* ActionCreator */ = {
 			isa = PBXGroup;
 			children = (
+				8CD6D41F2625A5D700CEBD39 /* DawagaLoadingView */,
+				8CD6D3FF261F2FA700CEBD39 /* BookMarkIconSelectorView */,
 				8C43CFD5261C08880086599B /* DawagaMapView */,
 				8C43CF7A261B2D070086599B /* PlaceSearchView */,
 				8C43CF79261B2D040086599B /* MainView */,
@@ -559,6 +626,99 @@
 				8C61BB1F26140C9B00FCBB2C /* Localizable.strings */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		8CD6D3ED261F2AD900CEBD39 /* BookMarkIconSelector */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6D3EE261F2AEA00CEBD39 /* BookMarkIconCell.swift */,
+			);
+			path = BookMarkIconSelector;
+			sourceTree = "<group>";
+		};
+		8CD6D3FC261F2F8D00CEBD39 /* BookMarkIconSelectorView */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6D400261F2FB500CEBD39 /* BookMarkIconSelectorState.swift */,
+			);
+			path = BookMarkIconSelectorView;
+			sourceTree = "<group>";
+		};
+		8CD6D3FD261F2F9E00CEBD39 /* BookMarkIconSelectorView */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6D404261F2FC100CEBD39 /* BookMarkIconSelectorReducer.swift */,
+			);
+			path = BookMarkIconSelectorView;
+			sourceTree = "<group>";
+		};
+		8CD6D3FE261F2FA400CEBD39 /* BookMarkIconSelectorView */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6D408261F2FC700CEBD39 /* BookMarkIconSelectorAction.swift */,
+			);
+			path = BookMarkIconSelectorView;
+			sourceTree = "<group>";
+		};
+		8CD6D3FF261F2FA700CEBD39 /* BookMarkIconSelectorView */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6D40C261F2FCE00CEBD39 /* BookMarkIconSelectorActionCreator.swift */,
+			);
+			path = BookMarkIconSelectorView;
+			sourceTree = "<group>";
+		};
+		8CD6D41C2625A5C400CEBD39 /* DawagaLoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6D4202625A5EA00CEBD39 /* DawagaLoadingState.swift */,
+			);
+			path = DawagaLoadingView;
+			sourceTree = "<group>";
+		};
+		8CD6D41D2625A5CE00CEBD39 /* DawagaLoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6D4262625A5F400CEBD39 /* DawagaLoadingReducer.swift */,
+			);
+			path = DawagaLoadingView;
+			sourceTree = "<group>";
+		};
+		8CD6D41E2625A5D200CEBD39 /* DawagaLoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6D42A2625A5FA00CEBD39 /* DawagaLoadingAction.swift */,
+			);
+			path = DawagaLoadingView;
+			sourceTree = "<group>";
+		};
+		8CD6D41F2625A5D700CEBD39 /* DawagaLoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6D42E2625A60A00CEBD39 /* DawagaLoadingActionCreator.swift */,
+			);
+			path = DawagaLoadingView;
+			sourceTree = "<group>";
+		};
+		8CD6D4362625AB4B00CEBD39 /* LocationNotification */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6D4372625AB6100CEBD39 /* LocationNotificationEntity.swift */,
+				8CD6D43D2625AB8900CEBD39 /* LocationNotificationScheduler.swift */,
+			);
+			path = LocationNotification;
+			sourceTree = "<group>";
+		};
+		8CD6D4412625AF5100CEBD39 /* Emitter&Observer */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6D4422625AF6100CEBD39 /* LocationEmitter.swift */,
+				8CD6D4462625AFAD00CEBD39 /* LocationEmitterState.swift */,
+				8CD6D44A2625B01400CEBD39 /* LocationEmitterReducer.swift */,
+				8CD6D4502625B02A00CEBD39 /* LocationEmitterAction.swift */,
+				8CD6D4562625B10B00CEBD39 /* LocationEmitterActionCreator.swift */,
+			);
+			path = "Emitter&Observer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -677,6 +837,7 @@
 				8C61BA0A2611570B00FCBB2C /* LaunchScreen.storyboard in Resources */,
 				8C61BB1D26140C9B00FCBB2C /* Localizable.strings in Resources */,
 				8C61BA072611570B00FCBB2C /* Assets.xcassets in Resources */,
+				8CD6D411261F34F700CEBD39 /* MarkIcon in Resources */,
 				8C61BA052611570B00FCBB2C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -839,35 +1000,55 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CD6D3F7261F2B9700CEBD39 /* UICollectionView+Extension.swift in Sources */,
+				8CD6D4572625B10B00CEBD39 /* LocationEmitterActionCreator.swift in Sources */,
+				8CD6D4212625A5EA00CEBD39 /* DawagaLoadingState.swift in Sources */,
 				8C61BB35261571E000FCBB2C /* DeviceSize.swift in Sources */,
 				8C61BA762611B5A800FCBB2C /* MarkEntity.swift in Sources */,
+				8CD6D3D9261F032800CEBD39 /* RoundButton.swift in Sources */,
 				8C43CFF4261C08D20086599B /* DawagaMapActionCreator.swift in Sources */,
+				8CD6D3E8261F29F400CEBD39 /* BookMarkIconSelectorViewController.swift in Sources */,
 				8C61BB1126140BD900FCBB2C /* Constants.swift in Sources */,
 				8C43CFDA261C08AD0086599B /* DawagaMapState.swift in Sources */,
+				8CD6D40D261F2FCE00CEBD39 /* BookMarkIconSelectorActionCreator.swift in Sources */,
+				8CD6D4272625A5F400CEBD39 /* DawagaLoadingReducer.swift in Sources */,
 				8C61BADD261405A700FCBB2C /* BookMarkListState.swift in Sources */,
 				8C61BA7B2611B71100FCBB2C /* LocationEntity.swift in Sources */,
 				8C61BAE7261407D700FCBB2C /* BookMarkListAction.swift in Sources */,
+				8CD6D42B2625A5FA00CEBD39 /* DawagaLoadingAction.swift in Sources */,
 				8C61BAAD2613F4AC00FCBB2C /* Location.swift in Sources */,
 				8C61B9FE2611570B00FCBB2C /* AppDelegate.swift in Sources */,
 				8C61BAA52611BD0200FCBB2C /* MarkRealm.swift in Sources */,
+				8CD6D3EF261F2AEA00CEBD39 /* BookMarkIconCell.swift in Sources */,
 				8C61BAEC2614096500FCBB2C /* MainViewController.swift in Sources */,
 				8C43CFD0261C07E80086599B /* DawagaMapViewController.swift in Sources */,
 				8C43CF8E261B2D410086599B /* PlaceSearchActionCreator.swift in Sources */,
 				8C43CFC8261BF7D40086599B /* NSObject+Protocol.swift in Sources */,
 				8C43CFC3261BF7830086599B /* UITableView+Extension.swift in Sources */,
 				8C43CF6D261B2B780086599B /* PlaceSearchTableViewCell.swift in Sources */,
+				8CD6D4472625AFAD00CEBD39 /* LocationEmitterState.swift in Sources */,
+				8CD6D4192625A36200CEBD39 /* DawagaLoadingViewController.swift in Sources */,
 				8C61BAF226140A9B00FCBB2C /* MainViewSearchView.swift in Sources */,
+				8CD6D3CF261EA78000CEBD39 /* DawagaMapEditView.swift in Sources */,
+				8CD6D4382625AB6100CEBD39 /* LocationNotificationEntity.swift in Sources */,
 				8C61BA9B2611B97000FCBB2C /* PlaceEntity.swift in Sources */,
+				8CD6D405261F2FC100CEBD39 /* BookMarkIconSelectorReducer.swift in Sources */,
 				8C43CFEA261C08C30086599B /* DawagaMapReducer.swift in Sources */,
 				8C43CF84261B2D330086599B /* PlaceSearchReducer.swift in Sources */,
+				8CD6D409261F2FC700CEBD39 /* BookMarkIconSelectorAction.swift in Sources */,
 				8C61BACC2614037A00FCBB2C /* AppReducer.swift in Sources */,
 				8C61BB3026140D9700FCBB2C /* String+Extension.swift in Sources */,
 				8C61BAC42614037500FCBB2C /* AppState.swift in Sources */,
 				8C61BB0926140BCD00FCBB2C /* App.swift in Sources */,
+				8CD6D4512625B02A00CEBD39 /* LocationEmitterAction.swift in Sources */,
 				8C43CF59261B26AB0086599B /* BookMarkListActionCreator.swift in Sources */,
 				8C43CFB1261B30C70086599B /* PlaceSearchViewController.swift in Sources */,
 				8C61BAB22613F4B300FCBB2C /* Place.swift in Sources */,
+				8CD6D43E2625AB8900CEBD39 /* LocationNotificationScheduler.swift in Sources */,
+				8CD6D42F2625A60A00CEBD39 /* DawagaLoadingActionCreator.swift in Sources */,
 				8C61BAB82613F61F00FCBB2C /* APIManagerForGoogleMaps.swift in Sources */,
+				8CD6D4432625AF6100CEBD39 /* LocationEmitter.swift in Sources */,
+				8CD6D3D3261EF30900CEBD39 /* UITextField+Extension.swift in Sources */,
 				8C43CFFE261C0F760086599B /* CornerView.swift in Sources */,
 				8C61BAA02611B9E100FCBB2C /* MarkRealmEntity.swift in Sources */,
 				8C61BB4226157A7A00FCBB2C /* ResourceManager.swift in Sources */,
@@ -877,7 +1058,10 @@
 				8C61BAFA26140B5A00FCBB2C /* PaddingTextField.swift in Sources */,
 				8C43D003261C10020086599B /* UIView+Extension.swift in Sources */,
 				8C61BB0026140B8600FCBB2C /* UIColor+Extension.swift in Sources */,
+				8CD6D401261F2FB500CEBD39 /* BookMarkIconSelectorState.swift in Sources */,
 				8C43CF89261B2D3A0086599B /* PlaceSearchAction.swift in Sources */,
+				8CD6D415262477E500CEBD39 /* UIViewController+Extension.swift in Sources */,
+				8CD6D44B2625B01400CEBD39 /* LocationEmitterReducer.swift in Sources */,
 				8C61BB3D261577E600FCBB2C /* BookMarkTableViewCell.swift in Sources */,
 				8C43CFEF261C08C90086599B /* DawagaMapAction.swift in Sources */,
 				8C43CFF9261C09C30086599B /* DawagaMapBottomView.swift in Sources */,
