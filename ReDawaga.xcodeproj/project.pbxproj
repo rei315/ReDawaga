@@ -82,6 +82,7 @@
 		8CD6D44B2625B01400CEBD39 /* LocationEmitterReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D44A2625B01400CEBD39 /* LocationEmitterReducer.swift */; };
 		8CD6D4512625B02A00CEBD39 /* LocationEmitterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D4502625B02A00CEBD39 /* LocationEmitterAction.swift */; };
 		8CD6D4572625B10B00CEBD39 /* LocationEmitterActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D4562625B10B00CEBD39 /* LocationEmitterActionCreator.swift */; };
+		8CD6D4A52626187700CEBD39 /* MarkIcon in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6D4A42626187700CEBD39 /* MarkIcon */; };
 		E00B3881644C6F508834B671 /* Pods_ReDawagaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81365408F410719010AAEDC0 /* Pods_ReDawagaTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -210,6 +211,7 @@
 		8CD6D44A2625B01400CEBD39 /* LocationEmitterReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEmitterReducer.swift; sourceTree = "<group>"; };
 		8CD6D4502625B02A00CEBD39 /* LocationEmitterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEmitterAction.swift; sourceTree = "<group>"; };
 		8CD6D4562625B10B00CEBD39 /* LocationEmitterActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEmitterActionCreator.swift; sourceTree = "<group>"; };
+		8CD6D4A42626187700CEBD39 /* MarkIcon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MarkIcon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,6 +398,7 @@
 		8C61B9FC2611570B00FCBB2C /* ReDawaga */ = {
 			isa = PBXGroup;
 			children = (
+				8CD6D4A42626187700CEBD39 /* MarkIcon */,
 				8CD6D4412625AF5100CEBD39 /* Emitter&Observer */,
 				8CD6D4362625AB4B00CEBD39 /* LocationNotification */,
 				8C61BB0726140BC000FCBB2C /* Constants */,
@@ -826,6 +829,7 @@
 				8C61BA0A2611570B00FCBB2C /* LaunchScreen.storyboard in Resources */,
 				8C61BB1D26140C9B00FCBB2C /* Localizable.strings in Resources */,
 				8C61BA072611570B00FCBB2C /* Assets.xcassets in Resources */,
+				8CD6D4A52626187700CEBD39 /* MarkIcon in Resources */,
 				8C61BA052611570B00FCBB2C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1245,7 +1249,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3N72J4U62S;
 				INFOPLIST_FILE = ReDawaga/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1255,6 +1260,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MGHouse.ReDawaga;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = ReDawagaDistribution;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1266,7 +1272,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3N72J4U62S;
 				INFOPLIST_FILE = ReDawaga/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1276,6 +1283,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MGHouse.ReDawaga;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = ReDawagaDistribution;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
