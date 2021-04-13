@@ -15,4 +15,10 @@ struct AppState: ReSwift.StateType {
     var placeSearchState = PlaceSearchState()
     
     var dawagaMapState = DawagaMapState()
+    
+    var bookMarkIconSelectorState = BookMarkIconSelectorState()
+    
+    var dawagaLoadingState = DawagaLoadingState()
+    
+    var locationEmitterState = LocationEmitterState()
 }
