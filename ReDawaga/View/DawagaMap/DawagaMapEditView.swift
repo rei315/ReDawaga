@@ -22,7 +22,7 @@ class DawagaMapEditView: UIView {
         let tf = UITextField()
         tf.font = UIFont.systemFont(ofSize: 50)
         tf.textColor = .white
-        tf.attributedPlaceholder = NSAttributedString(string: AppString.DawagaMapEditValuePlaceHolder.localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 50)])
+        tf.attributedPlaceholder = NSAttributedString(string: AppString.DawagaMapEditViewPlaceHolder.localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 50)])
         tf.textAlignment = .center
         tf.borderStyle = .none
         tf.returnKeyType = .done

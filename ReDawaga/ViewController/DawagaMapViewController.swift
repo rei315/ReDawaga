@@ -67,6 +67,7 @@ class DawagaMapViewController: UIViewController {
     private var curBookMarkIconName: String = ""
     private var curBookMarkIdentity: String = ""
     
+    
     // MARK: - Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -170,6 +171,23 @@ extension DawagaMapViewController: StoreSubscriber {
     func newState(state: AppState) {
         guard state.dawagaMapState.isMapReady else { return }
         
+        switch state.locationEmitterState.authorizationStatus {
+        case .denied, .restricted:
+            let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { _ in
+                _ = self.navigationController?.popToRootViewController(animated: true)
+            }
+            self.showAlert(title: AppString.LocationDeniedTitle.localized(), message: AppString.LocationDeniedMessage.localized(), style: .alert, actions: [action])
+        case .notDetermined, .authorizedAlways, .authorizedWhenInUse:
+            break
+        @unknown default:
+            break
+        }
+        
+        if let location = state.locationEmitterState.location, self.currentEmitterLocation != location {
+            self.currentEmitterLocation = location
+            configureMapCenter(with: location)
+        }
+        
         // SearchLocation Makes Center
         if state.bookMarkListState.transitionType == .Search {
             if searchedLocation != state.dawagaMapState.searchLocationDetail?.location {
@@ -178,6 +196,14 @@ extension DawagaMapViewController: StoreSubscriber {
                     self.configureMapCenter(with: searched)
                 }
             }
+        }
+        
+        if curBookMarkIconName != state.dawagaMapState.bookMarkIconName && state.dawagaMapState.bookMarkIconName != "" {
+            let name = state.dawagaMapState.bookMarkIconName
+            self.curBookMarkIconName = name
+            let image = ResourceManager.shared.loadImageWithFileName(fileName: name)
+            
+            bottomView.setupBookMarkIcon(image: image)
         }
         
         // Show Circle
@@ -196,43 +222,6 @@ extension DawagaMapViewController: StoreSubscriber {
         }
         
         bottomView.configureRegionField(address: state.dawagaMapState.reverseLocationDetail?.title ?? "")
-        
-        switch state.dawagaMapState.editState{
-        case .Distance:
-            DawagaMapActionCreator.fetchEditState(with: .None)
-            setupDistanceEditView(state: .Distance)
-        case .BookMark:
-            DawagaMapActionCreator.fetchEditState(with: .None)
-            setupDistanceEditView(state: .BookMark)
-        case .None:
-            break
-        }
-        
-        if curBookMarkIconName != state.dawagaMapState.bookMarkIconName && state.dawagaMapState.bookMarkIconName != "" {
-            let name = state.dawagaMapState.bookMarkIconName
-            self.curBookMarkIconName = name
-            let image = ResourceManager.shared.loadImageWithFileName(fileName: name)
-            
-            bottomView.setupBookMarkIcon(image: image)
-        }
-        
-        if let location = state.locationEmitterState.location {
-            if self.currentEmitterLocation == location { return }
-            self.currentEmitterLocation = location
-            configureMapCenter(with: location)
-        }
-        
-        switch state.locationEmitterState.authorizationStatus {
-        case .denied, .restricted:
-            let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { _ in
-                _ = self.navigationController?.popToRootViewController(animated: true)
-            }
-            self.showAlert(title: AppString.LocationDeniedTitle.localized(), message: AppString.LocationDeniedMessage.localized(), style: .alert, actions: [action])
-        case .notDetermined, .authorizedAlways, .authorizedWhenInUse:
-            break
-        @unknown default:
-            break
-        }
     }
 }
 
@@ -303,6 +292,17 @@ extension DawagaMapViewController {
             self.presentBookMarkIconSelectorVC()
         }
         
+        bottomView.editViewAction = { state in
+            switch state {
+            case .BookMark:
+                self.setupDistanceEditView(state: .BookMark)
+            case .Distance:
+                self.setupDistanceEditView(state: .Distance)
+            case .None:
+                break
+            }
+        }
+        
         bottomView.startDawagaButtonAction = {
             let coordinate = self.circle.position
             let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
@@ -310,8 +310,7 @@ extension DawagaMapViewController {
             
             let DawagaLoadingVC = DawagaLoadingViewController()
             self.navigationController?.pushViewController(DawagaLoadingVC, animated: true)
-//            self.present(DawagaLoadingVC, animated: true, completion: nil)
-            
+//            self.present(DawagaLoadingVC, animated: true, completion: nil)            
         }
         
         bottomView.saveBookMarkButtonAction = {

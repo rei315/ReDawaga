@@ -45,8 +45,6 @@ extension DawagaMapState {
         
         case setDistanceState(state: Int)
         
-        case setEditState(state: DawagaMapBottomView.EditState)
-        
         case setBookMarkIconName(name: String)
         
         

@@ -43,8 +43,6 @@ struct DawagaMapState: ReSwift.StateType {
     
     var distanceState: Int = DawagaMapBottomView.DistanceState.Fifty.rawValue
     
-    var editState: DawagaMapBottomView.EditState = .None
-    
     var bookMarkIconName: String = ""
     
     

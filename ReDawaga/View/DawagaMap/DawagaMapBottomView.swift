@@ -145,6 +145,8 @@ class DawagaMapBottomView: CornerView {
     
     var startDawagaButtonAction: (() -> ())?
     
+    var editViewAction: ((EditState) -> ())?
+    
     private var transitionType: DawagaMapViewController.TransitionType = .Quick
     
     private var mark: MarkRealmEntity?
@@ -212,21 +214,21 @@ extension DawagaMapBottomView {
     }
     
     @objc private func onEditButton() {
-        if self.editState == .BookMark {
+        if self.editViewState == .On {
             onEditBookMark()
         }
         resetDistanceButtonConfigure()
         self.distanceState = .EditValue
         self.editState = .Distance
         self.distanceEditButton.backgroundColor = .red
-        DawagaMapActionCreator.fetchEditState(with: .Distance)
+        editViewAction?(.Distance)
     }
     
     
     // MARK: - BookMark Edit
     @objc private func onBookMarkField() {
         self.editState = .BookMark
-        DawagaMapActionCreator.fetchEditState(with: .BookMark)
+        editViewAction?(.BookMark)
     }
     
     @objc private func onBookMarkIconButton() {
@@ -236,12 +238,13 @@ extension DawagaMapBottomView {
     @objc private func onEditBookMark() {
         switch (editViewState) {
         case .On:
-            self.editOffBookMark()
             self.editViewState = .Off
+            self.editOffBookMark()
+                        
         case .Off:
-            self.editOnBookMark()
             self.editViewState = .On
             self.editState = .BookMark
+            self.editOnBookMark()
         }
     }
     

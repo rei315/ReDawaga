@@ -61,10 +61,6 @@ extension DawagaMapActionCreator {
         appStore.dispatch(DawagaMapState.dawagaMapAction.setDistanceState(state: state))
     }
     
-    static func fetchEditState(with state: DawagaMapBottomView.EditState) {
-        appStore.dispatch(DawagaMapState.dawagaMapAction.setEditState(state: state))
-    }
-    
     static func fetchBookMarkIconName(with name: String) {
         appStore.dispatch(DawagaMapState.dawagaMapAction.setBookMarkIconName(name: name))
     }

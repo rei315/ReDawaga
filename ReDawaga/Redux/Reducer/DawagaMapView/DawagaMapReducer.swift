@@ -52,7 +52,7 @@ extension DawagaMapReducer {
             state.isErrorReverseLocation = false
             
         case let .setIsMapReady(isReady):
-            print("setIsMapReady")
+            print("setIsMapReady", isReady)
             state.isMapReady = isReady
             
         case .setIsErrorReverseLocation:
@@ -63,10 +63,6 @@ extension DawagaMapReducer {
         case let .setDistanceState(distanceState):
             print("setDistanceState")
             state.distanceState = distanceState            
-            
-        case let .setEditState(editState):
-            print("setEditState")
-            state.editState = editState
             
         case let .setBookMarkIconName(name):
             print("setBookMarkIconName")
