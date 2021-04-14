@@ -18,6 +18,7 @@
 "DawagaMapAddBookMark" = "ブックマーク追加";
 "DawagaMapDeleteBookMark" = " ブックマーク修正キャンセル";
 "DawagaMapModifyBookMark" = "ブックマーク修正";
+"DawagaMapEditViewPlaceHolder" = "入力";
 
 "DawagaNotificationTitle" = "到着";
 "DawagaNotificationBody" = "目的地に着きました";
