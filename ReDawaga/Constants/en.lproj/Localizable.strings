@@ -18,6 +18,7 @@
 "DawagaMapAddBookMark" = "Add Bookmark";
 "DawagaMapDeleteBookMark" = " Cancel Bookmark Modification";
 "DawagaMapModifyBookMark" = "Modify Bookmark";
+"DawagaMapEditViewPlaceHolder" = "Please enter";
 
 "DawagaNotificationTitle" = "Arrived";
 "DawagaNotificationBody" = "Arrived at destination";

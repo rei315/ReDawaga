@@ -36,6 +36,7 @@ extension AppString {
     static let DawagaMapAddBookMark = "DawagaMapAddBookMark"
     static let DawagaMapDeleteBookMark = "DawagaMapDeleteBookMark"
     static let DawagaMapModifyBookMark = "DawagaMapModifyBookMark"
+    static let DawagaMapEditViewPlaceHolder = "DawagaMapEditViewPlaceHolder"
     
     static let AddressPlaceHolder = "AddressPlaceHolder"
     static let HomeTitle = "HomeTitle"
