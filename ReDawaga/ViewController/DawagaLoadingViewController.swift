@@ -74,14 +74,6 @@ class DawagaLoadingViewController: UIViewController {
 
     
     // MARK: - Function
-
-    private func setupNavigationController() {
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.topItem?.title = ""
-        navigationController?.navigationBar.tintColor = .white
-    }
     
     private func startUpdatingLocation() {
         self.locationEmitter.startUpdatingLocation()
@@ -94,25 +86,6 @@ class DawagaLoadingViewController: UIViewController {
     private func setupNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(startAnimateFish), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setIsFishSetupFalse), name: UIApplication.didEnterBackgroundNotification, object: nil)
-    }
-    
-    private func configureUI() {
-        view.backgroundColor = .middleBlue
-        
-        view.addSubview(seperator)
-        seperator.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(10)
-            make.height.equalTo(3)
-            make.width.equalToSuperview().multipliedBy(0.25)
-        }
-        
-        view.layer.addSublayer(shapeLayer)
-        
-        fishImageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        fishImageView.backgroundColor = .clear
-
-        self.view.addSubview(fishImageView)
     }
     
     
@@ -242,6 +215,38 @@ extension DawagaLoadingViewController: StoreSubscriber {
             
             self.showAlertDestinationComplete()
         }
+    }
+}
+
+
+// MARK: - UI Setup
+extension DawagaLoadingViewController {
+    
+    private func configureUI() {
+        view.backgroundColor = .middleBlue
+        
+        view.addSubview(seperator)
+        seperator.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(10)
+            make.height.equalTo(3)
+            make.width.equalToSuperview().multipliedBy(0.25)
+        }
+        
+        view.layer.addSublayer(shapeLayer)
+        
+        fishImageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        fishImageView.backgroundColor = .clear
+
+        self.view.addSubview(fishImageView)
+    }
+    
+    private func setupNavigationController() {
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.topItem?.title = ""
+        navigationController?.navigationBar.tintColor = .white
     }
 }
 
