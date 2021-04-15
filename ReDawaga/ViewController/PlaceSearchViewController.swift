@@ -12,13 +12,17 @@ class PlaceSearchViewController: UIViewController {
 
     // MARK: - UI Initialization
     
-    private lazy var searchView: PlaceSearchView = {
+    private let searchView: PlaceSearchView = {
         let sv = PlaceSearchView()
         return sv
     }()
     
     private lazy var placeTableView: UITableView = {
         let tv = UITableView()
+        tv.register(PlaceSearchTableViewCell.self, forCellReuseIdentifier: PlaceSearchTableViewCell.self.identifier)
+        tv.delegate = self
+        tv.dataSource = self
+        tv.estimatedRowHeight = PlaceSearchTableViewCell.CELL_HEIGHT
         return tv
     }()
     
@@ -59,6 +63,27 @@ class PlaceSearchViewController: UIViewController {
     
     // MARK: - Function
     
+    private func presentDawagaMapVC(place: PlaceEntity) {
+        let dawagaMapVC = DawagaMapViewController()
+        PlaceSearchActionCreator.fetchSelectedPlace(place: place)
+        
+        self.navigationController?.pushViewController(dawagaMapVC, animated: true)
+    }
+}
+
+
+// MARK: - Redux
+extension PlaceSearchViewController: StoreSubscriber  {
+    
+    func newState(state: AppState) {
+        self.placeList = state.placeSearchState.placeList
+    }
+}
+
+
+// MARK: - UI Setup
+extension PlaceSearchViewController {
+    
     private func setupNavigationController() {
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -88,35 +113,15 @@ class PlaceSearchViewController: UIViewController {
     private func setupPlaceTableView() {
         view.addSubview(placeTableView)
         
-        placeTableView.register(PlaceSearchTableViewCell.self, forCellReuseIdentifier: PlaceSearchTableViewCell.self.identifier)
-        placeTableView.delegate = self
-        placeTableView.dataSource = self
-        placeTableView.estimatedRowHeight = PlaceSearchTableViewCell.CELL_HEIGHT
-        
         placeTableView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
             make.top.equalTo(searchView.snp.bottom)
         }
     }
-    
-    private func presentDawagaMapVC(place: PlaceEntity) {
-        let dawagaMapVC = DawagaMapViewController()
-        PlaceSearchActionCreator.fetchSelectedPlace(place: place)
-        
-        self.navigationController?.pushViewController(dawagaMapVC, animated: true)
-    }
 }
 
-extension PlaceSearchViewController: StoreSubscriber  {
-    
-    func newState(state: AppState) {
-        // 이런식으로 추가
-        // let isPlaceEmpty = emptyErrorView.isHidden ? True : False
-        
-        self.placeList = state.placeSearchState.placeList
-    }
-}
 
+// MARK: - TableView Delegate
 extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
