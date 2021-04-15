@@ -56,6 +56,7 @@
 		8C61BB35261571E000FCBB2C /* DeviceSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB34261571E000FCBB2C /* DeviceSize.swift */; };
 		8C61BB3D261577E600FCBB2C /* BookMarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB3C261577E600FCBB2C /* BookMarkTableViewCell.swift */; };
 		8C61BB4226157A7A00FCBB2C /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB4126157A7A00FCBB2C /* ResourceManager.swift */; };
+		8C8221802627C94C008EDDF4 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C82217F2627C94C008EDDF4 /* TutorialViewController.swift */; };
 		8CD6D38F261C11A000CEBD39 /* Pods_ReDawaga.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD6D38E261C11A000CEBD39 /* Pods_ReDawaga.framework */; };
 		8CD6D3CF261EA78000CEBD39 /* DawagaMapEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3CE261EA78000CEBD39 /* DawagaMapEditView.swift */; };
 		8CD6D3D3261EF30900CEBD39 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3D2261EF30900CEBD39 /* UITextField+Extension.swift */; };
@@ -171,6 +172,7 @@
 		8C61BB34261571E000FCBB2C /* DeviceSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSize.swift; sourceTree = "<group>"; };
 		8C61BB3C261577E600FCBB2C /* BookMarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTableViewCell.swift; sourceTree = "<group>"; };
 		8C61BB4126157A7A00FCBB2C /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
+		8C82217F2627C94C008EDDF4 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		8CD6D38E261C11A000CEBD39 /* Pods_ReDawaga.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ReDawaga.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD6D3CE261EA78000CEBD39 /* DawagaMapEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaMapEditView.swift; sourceTree = "<group>"; };
 		8CD6D3D2261EF30900CEBD39 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 				8C43CFCF261C07E80086599B /* DawagaMapViewController.swift */,
 				8CD6D3E7261F29F400CEBD39 /* BookMarkIconSelectorViewController.swift */,
 				8CD6D4182625A36200CEBD39 /* DawagaLoadingViewController.swift */,
+				8C82217F2627C94C008EDDF4 /* TutorialViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1040,6 +1043,7 @@
 				8CD6D44B2625B01400CEBD39 /* LocationEmitterReducer.swift in Sources */,
 				8C61BB3D261577E600FCBB2C /* BookMarkTableViewCell.swift in Sources */,
 				8C43CFEF261C08C90086599B /* DawagaMapAction.swift in Sources */,
+				8C8221802627C94C008EDDF4 /* TutorialViewController.swift in Sources */,
 				8C43CFF9261C09C30086599B /* DawagaMapBottomView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
