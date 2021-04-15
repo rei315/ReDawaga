@@ -60,16 +60,7 @@ class BookMarkIconSelectorViewController: UIViewController {
 
     private func loadIconResource() {
         BookMarkIconSelectorActionCreator.fetchIconTitles()
-    }
-    
-    private func setupCollectionView() {
-        self.view.addSubview(collectionView)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.snp.makeConstraints { (make) in
-            make.left.right.top.bottom.equalToSuperview()
-        }
-    }
+    }    
 }
 
 // MARK: - Redux
@@ -80,6 +71,19 @@ extension BookMarkIconSelectorViewController: StoreSubscriber {
     }
 }
 
+
+// MARK: - UI Setup
+extension BookMarkIconSelectorViewController {
+    
+    private func setupCollectionView() {
+        self.view.addSubview(collectionView)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.snp.makeConstraints { (make) in
+            make.left.right.top.bottom.equalToSuperview()
+        }
+    }
+}
 
 // MARK: - CollectionView Delegate
 extension BookMarkIconSelectorViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -102,24 +106,11 @@ extension BookMarkIconSelectorViewController: UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let title = self.iconTitles[indexPath.row]
-//        BookMarkIconSelectorActionCreator.fetchSelectedTitle(title: title)
                 
         self.dismiss(animated: true) {
             DawagaMapActionCreator.fetchBookMarkIconName(with: ResourceManager.shared.getFileName(fullURL: title))
         }
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-//        if let cell = collectionView.cellForItem(at: indexPath) {
-//            cell.contentView.backgroundColor = UIColor.red.withAlphaComponent(0.3)
-//        }
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-//        if let cell = collectionView.cellForItem(at: indexPath) {
-//            cell.contentView.backgroundColor = nil
-//        }
-//    }
 }
 
 
