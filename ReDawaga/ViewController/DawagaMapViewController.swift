@@ -72,7 +72,6 @@ class DawagaMapViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         appStore.subscribe(self)
         
         self.setupNavigationController()
@@ -169,7 +168,6 @@ class DawagaMapViewController: UIViewController {
 extension DawagaMapViewController: StoreSubscriber {
     
     func newState(state: AppState) {
-        guard state.dawagaMapState.isMapReady else { return }
         
         switch state.locationEmitterState.authorizationStatus {
         case .denied, .restricted:
@@ -206,13 +204,6 @@ extension DawagaMapViewController: StoreSubscriber {
             bottomView.setupBookMarkIcon(image: image)
         }
         
-        // Show Circle
-        if currentDistance != state.dawagaMapState.distanceState && self.currentLocation != nil {
-            let distance = state.dawagaMapState.distanceState
-            self.currentDistance = distance
-            self.configureCircle(with: distance)
-        }
-        
         // ReverseGeocode
         if currentLocation != state.dawagaMapState.idleLocation {
             if let location = state.dawagaMapState.idleLocation {
@@ -222,6 +213,17 @@ extension DawagaMapViewController: StoreSubscriber {
         }
         
         bottomView.configureRegionField(address: state.dawagaMapState.reverseLocationDetail?.title ?? "")
+        
+        
+        // Check GMSMapView is ready to show
+        guard state.dawagaMapState.isMapReady else { return }
+                
+        // Show Circle
+        if currentDistance != state.dawagaMapState.distanceState && self.currentLocation != nil {
+            let distance = state.dawagaMapState.distanceState
+            self.currentDistance = distance
+            self.configureCircle(with: distance)
+        }                
     }
 }
 
@@ -310,7 +312,6 @@ extension DawagaMapViewController {
             
             let DawagaLoadingVC = DawagaLoadingViewController()
             self.navigationController?.pushViewController(DawagaLoadingVC, animated: true)
-//            self.present(DawagaLoadingVC, animated: true, completion: nil)            
         }
         
         bottomView.saveBookMarkButtonAction = {
