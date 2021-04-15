@@ -11,7 +11,6 @@ import ReSwift
 class MainViewController: UIViewController {
 
     
-    
     // MARK: - UI Initialization
     
     private lazy var searchView: MainViewSearchView = {
@@ -41,6 +40,7 @@ class MainViewController: UIViewController {
         appStore.subscribe(self)
                 
         self.setupNavigationController()
+        setupTutorialView()
         
         BookMarkListActionCreator.fetchBookMarkList()
     }
@@ -66,6 +66,35 @@ class MainViewController: UIViewController {
     
     // MARK: - Function
 
+    private func setupTutorialView() {
+        let isLaunchedBefore = UserDefaults.standard.bool(forKey: "LaunchedBefore")
+        
+        guard !isLaunchedBefore else { return }
+        
+        UserDefaults.standard.setValue(true, forKey: "LaunchedBefore")
+        let tutorialVC = TutorialViewController()
+        tutorialVC.modalPresentationStyle = .fullScreen
+        self.present(tutorialVC, animated: true, completion: nil)
+    }
+            
+    private func presentSearchVC() {
+        let searchVC = PlaceSearchViewController()
+        self.navigationController?.pushViewController(searchVC, animated: true)
+    }
+}
+
+
+// MARK: - Redux
+extension MainViewController: StoreSubscriber {
+    func newState(state: AppState) {
+        self.markList = state.bookMarkListState.markRealm
+    }
+}
+
+
+// MARK: - UI Setup
+extension MainViewController {
+    
     private func setupNavigationController() {
         navigationController?.navigationBar.isHidden = true
     }
@@ -106,19 +135,10 @@ class MainViewController: UIViewController {
             make.top.equalTo(searchView.snp.bottom)
         }
     }
-    
-    private func presentSearchVC() {
-        let searchVC = PlaceSearchViewController()
-        self.navigationController?.pushViewController(searchVC, animated: true)
-    }
 }
 
-extension MainViewController: StoreSubscriber {
-    func newState(state: AppState) {
-        self.markList = state.bookMarkListState.markRealm
-    }
-}
 
+// MARK: - TableView Delegate
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
