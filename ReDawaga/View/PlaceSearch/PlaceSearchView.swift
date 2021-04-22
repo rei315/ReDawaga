@@ -19,6 +19,7 @@ class PlaceSearchView: UIView {
         tf.attributedPlaceholder = NSAttributedString(string: AppString.AddressPlaceHolder.localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         tf.clearButtonMode = .always
         tf.returnKeyType = .search
+        tf.delegate = self
         tf.adjustsFontSizeToFitWidth = true
         return tf
     }()
@@ -94,10 +95,17 @@ class PlaceSearchView: UIView {
     }
     
     @objc private func onSearchButton(sender: UIButton) {
-        searchButtonAction?(addressField.text ?? "")
+        searchButtonAction?(addressField.text)
     }
     
     private func setupSearchButtonView() {
         searchButton.addTarget(self, action: #selector(onSearchButton(sender:)), for: .touchUpInside)
+    }
+}
+
+extension PlaceSearchView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchButtonAction?(addressField.text)
+        return true
     }
 }
