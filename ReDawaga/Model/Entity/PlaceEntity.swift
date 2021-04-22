@@ -17,3 +17,4 @@ struct PlaceEntity {
         self.placeName = json["description"].string ?? ""
     }
 }
+
