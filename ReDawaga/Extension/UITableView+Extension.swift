@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Foundation
 
 extension UITableViewCell {
 
