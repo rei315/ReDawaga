@@ -1237,7 +1237,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Min Guk Kim (3SHSKP537W)";
+				CODE_SIGN_IDENTITY = "Apple Distribution: Min Guk Kim (3N72J4U62S)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3N72J4U62S;
 				INFOPLIST_FILE = ReDawaga/Info.plist;
@@ -1248,7 +1248,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MGHouse.ReDawaga;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ReDawagaDevelopment;
+				PROVISIONING_PROFILE_SPECIFIER = ReDawagaDistribution;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1260,7 +1260,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Min Guk Kim (3SHSKP537W)";
+				CODE_SIGN_IDENTITY = "Apple Distribution: Min Guk Kim (3N72J4U62S)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3N72J4U62S;
 				INFOPLIST_FILE = ReDawaga/Info.plist;
@@ -1271,7 +1271,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MGHouse.ReDawaga;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ReDawagaDevelopment;
+				PROVISIONING_PROFILE_SPECIFIER = ReDawagaDistribution;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
