@@ -51,10 +51,6 @@ extension DawagaMapReducer {
             state.reverseLocationDetail = location
             state.isErrorReverseLocation = false
             
-        case let .setIsMapReady(isReady):
-            print("setIsMapReady", isReady)
-            state.isMapReady = isReady
-            
         case .setIsErrorReverseLocation:
             print("setIsErrorReverseLocation")
             state.isReverseLoadingLocation = false

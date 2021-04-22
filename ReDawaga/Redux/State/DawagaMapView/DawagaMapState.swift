@@ -34,11 +34,6 @@ struct DawagaMapState: ReSwift.StateType {
     var idleLocation: CLLocation?
     
     
-    // MARK: - GMSMapView
-    
-    var isMapReady: Bool = false
-    
-    
     // MARK: - Bottom View
     
     var distanceState: Int = DawagaMapBottomView.DistanceState.Fifty.rawValue

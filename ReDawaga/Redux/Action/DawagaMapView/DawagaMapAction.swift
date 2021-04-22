@@ -35,12 +35,7 @@ extension DawagaMapState {
 
         case setIdleLocation(location: CLLocation)
         
-    
-        // MARK: - GMSMapView
-        
-        case setIsMapReady(isReady: Bool)
-        
-        
+
         // MARK: - Bottom View
         
         case setDistanceState(state: Int)

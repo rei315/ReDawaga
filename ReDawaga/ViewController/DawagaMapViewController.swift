@@ -59,8 +59,6 @@ class DawagaMapViewController: UIViewController {
     private var currentEmitterLocation: CLLocation?
     private var searchedLocation: CLLocation?
     
-    private var currentDistance: Int = 0
-    
     private let zoomLevel: Float = 15.0
     
     private var curBookMarkTitle: String = ""
@@ -83,7 +81,6 @@ class DawagaMapViewController: UIViewController {
         appStore.unsubscribe(self)
         
         LocationEmitterActionCreator.fetchLocation(location: nil)
-        DawagaMapActionCreator.fetchIsMapReady(isReady: false)
         
         DawagaMapActionCreator.fetchBookMarkIconName(with: "")
         BookMarkListActionCreator.fetchBookMark(mark: nil)
@@ -155,6 +152,7 @@ class DawagaMapViewController: UIViewController {
                 
         circle.position = coor
         circle.radius = cllDistance
+        
         circle.map = mapView
     }
     
@@ -213,17 +211,6 @@ extension DawagaMapViewController: StoreSubscriber {
         }
         
         bottomView.configureRegionField(address: state.dawagaMapState.reverseLocationDetail?.title ?? "")
-        
-        
-        // Check GMSMapView is ready to show
-        guard state.dawagaMapState.isMapReady else { return }
-                
-        // Show Circle
-        if currentDistance != state.dawagaMapState.distanceState && self.currentLocation != nil {
-            let distance = state.dawagaMapState.distanceState
-            self.currentDistance = distance
-            self.configureCircle(with: distance)
-        }                
     }
 }
 
@@ -238,12 +225,7 @@ extension DawagaMapViewController: GMSMapViewDelegate {
         DawagaMapActionCreator.fetchIdleLocation(location: location)
         
         let distance = appStore.state.dawagaMapState.distanceState
-        self.currentDistance = distance
         self.configureCircle(with: distance)
-    }
-    
-    func mapViewDidFinishTileRendering(_ mapView: GMSMapView) {
-        DawagaMapActionCreator.fetchIsMapReady(isReady: true)
     }
 }
 
@@ -280,14 +262,17 @@ extension DawagaMapViewController {
         
         bottomView.fiftyButtonAction = { distance in
             DawagaMapActionCreator.fetchDistanceState(with: distance)
+            self.configureCircle(with: distance)
         }
         
         bottomView.hundredButtonAction = { distance in
             DawagaMapActionCreator.fetchDistanceState(with: distance)
+            self.configureCircle(with: distance)
         }
         
         bottomView.thousandButtonAction = { distance in
             DawagaMapActionCreator.fetchDistanceState(with: distance)
+            self.configureCircle(with: distance)
         }
         
         bottomView.bookMarkIconButtonAction = {

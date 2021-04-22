@@ -47,13 +47,6 @@ extension DawagaMapActionCreator {
         appStore.dispatch(DawagaMapState.dawagaMapAction.setIdleLocation(location: location))
     }
     
-    
-    // MARK: - GMSMapView
-    
-    static func fetchIsMapReady(isReady: Bool) {
-        appStore.dispatch(DawagaMapState.dawagaMapAction.setIsMapReady(isReady: isReady))
-    }
-
 
     // MARK: - Bottom View
     
