@@ -41,6 +41,7 @@ class MarkRealm {
             }
         }
     }
+        
     
     static func editMarkRealm(identity: String, name: String = "", address: String = "", iconImage: String = "", latitude: Double = 0, longitude: Double = 0) -> Promise<Bool> {
         return Promise { seal in
