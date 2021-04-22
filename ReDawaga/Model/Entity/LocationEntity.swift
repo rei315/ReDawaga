@@ -13,7 +13,7 @@ struct LocationEntity {
     var title: String
     let location: CLLocation
     
-    init(json: JSON) {        
+    init(json: JSON) {
         var fullAddress = json["formatted_address"].string ?? ""
         
         if let addressData = json["address_components"].arrayValue.filter({ $0["types"].arrayObject!.contains { $0 as! String == "country"} }).first {
