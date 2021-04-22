@@ -65,21 +65,24 @@ class TutorialViewController: UIViewController {
 // MARK: - ScrollView Delegate
 extension TutorialViewController: UIScrollViewDelegate  {
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageNumber = round(scrollView.contentOffset.x / self.view.frame.width)
         
-        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
         tutorialPage.currentPage = Int(pageNumber)
         
         let maxPage = tutorialImages.count - 1
         
         if tutorialPage.currentPage == maxPage && tutorialDoneButton.isHidden {
             self.animateTutorialDoneButton(state: .Up)
+            return
         }
-        else if tutorialPage.currentPage != maxPage && !tutorialDoneButton.isHidden {
+        if tutorialPage.currentPage != maxPage && !tutorialDoneButton.isHidden {
             self.animateTutorialDoneButton(state: .Down)
+            return
         }
     }
 }
+
 
 // MARK: - UI Setup
 extension TutorialViewController {
@@ -88,6 +91,14 @@ extension TutorialViewController {
         view.addSubview(tutorialView)
         view.addSubview(tutorialPage)
         view.addSubview(tutorialDoneButton)
+        
+        tutorialView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        tutorialPage.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(70)
+        }
         
         switch Locale.current.languageCode {
         case "en":
@@ -117,16 +128,8 @@ extension TutorialViewController {
         
         let pageWidth = self.view.frame.width
         
-        tutorialView.contentSize = CGSize(width: CGFloat(tutorialImages.count) * self.view.frame.maxX, height: 0)
-        
-        tutorialView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        tutorialPage.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(70)
-        }
-        
+        tutorialView.contentSize = CGSize(width: CGFloat(tutorialImages.count) * self.view.frame.maxX, height: self.view.frame.height)
+                
         tutorialImages.enumerated().forEach { index, image in
             let backView = UIView()
             let iv = UIImageView()
@@ -141,7 +144,7 @@ extension TutorialViewController {
             backView.snp.makeConstraints { (make) in
                 make.width.equalTo(view.frame.width)
                 make.height.equalTo(view.frame.height)
-                make.left.equalTo(tutorialView).offset(offset)
+                make.left.equalToSuperview().offset(offset)
                 make.centerY.equalToSuperview()
             }
             
