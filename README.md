@@ -18,11 +18,9 @@ Languages supported: Korean, English, Japanese
 pod install
 
 ## Using
-- Architecture: MVVM
+- Architecture: ReSwift
 <br></br>
 
-- Framework:
-1. RxSwift
 <br></br>
 
 - Library : 
@@ -31,6 +29,7 @@ pod install
 3. RealmSwift
 4. CoreAnimation
 5. Alamofire -> Google API (Reverse-Geocode, Place-Detail, AutoComplete)
+6. PromiseKit
 <br></br>
 
 - CI/CD:
