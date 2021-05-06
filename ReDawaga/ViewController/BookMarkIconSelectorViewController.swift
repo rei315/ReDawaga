@@ -29,7 +29,9 @@ class BookMarkIconSelectorViewController: UIViewController {
     private var iconTitles: [String] = [] {
         
         didSet {
-            self.collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }            
         }
     }
     
@@ -42,8 +44,8 @@ class BookMarkIconSelectorViewController: UIViewController {
         appStore.subscribe(self)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
         appStore.unsubscribe(self)
     }
@@ -109,7 +111,7 @@ extension BookMarkIconSelectorViewController: UICollectionViewDelegate, UICollec
         let title = self.iconTitles[indexPath.row]
                 
         self.dismiss(animated: true) {
-            DawagaMapActionCreator.fetchBookMarkIconName(with: ResourceManager.shared.getFileName(fullURL: title))
+            DawagaMapActionCreator.fetchBookMarkIconName(with: title)
         }
     }
 }
