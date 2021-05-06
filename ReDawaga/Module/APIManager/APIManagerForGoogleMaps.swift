@@ -30,8 +30,7 @@ class APIManagerForGoogleMaps {
     // MARK: - Function
 
     func getAutoCompleteList(address: String) -> Promise<JSON> {
-        
-        
+                
         let parameters: [String : Any] = [
             "input"     :   address,
             "types"     :   "geocode|establishment",
