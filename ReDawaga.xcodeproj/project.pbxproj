@@ -71,7 +71,7 @@
 		8C9C0A7E2637DB3400D7AA39 /* ProgressShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0A7D2637DB3400D7AA39 /* ProgressShapeLayer.swift */; };
 		8C9C0A832637DB3900D7AA39 /* StrokeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0A822637DB3900D7AA39 /* StrokeAnimation.swift */; };
 		8C9C0A882637DB4000D7AA39 /* RotationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0A872637DB4000D7AA39 /* RotationAnimation.swift */; };
-		8C9C0A8D2637DB7800D7AA39 /* DawagaMapLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0A8C2637DB7800D7AA39 /* DawagaMapLoadingView.swift */; };
+		8C9C0A8D2637DB7800D7AA39 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0A8C2637DB7800D7AA39 /* LoadingView.swift */; };
 		8CD6D38F261C11A000CEBD39 /* Pods_ReDawaga.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD6D38E261C11A000CEBD39 /* Pods_ReDawaga.framework */; };
 		8CD6D3CF261EA78000CEBD39 /* DawagaMapEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3CE261EA78000CEBD39 /* DawagaMapEditView.swift */; };
 		8CD6D3D3261EF30900CEBD39 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3D2261EF30900CEBD39 /* UITextField+Extension.swift */; };
@@ -202,7 +202,7 @@
 		8C9C0A7D2637DB3400D7AA39 /* ProgressShapeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressShapeLayer.swift; sourceTree = "<group>"; };
 		8C9C0A822637DB3900D7AA39 /* StrokeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeAnimation.swift; sourceTree = "<group>"; };
 		8C9C0A872637DB4000D7AA39 /* RotationAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationAnimation.swift; sourceTree = "<group>"; };
-		8C9C0A8C2637DB7800D7AA39 /* DawagaMapLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaMapLoadingView.swift; sourceTree = "<group>"; };
+		8C9C0A8C2637DB7800D7AA39 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		8CD6D38E261C11A000CEBD39 /* Pods_ReDawaga.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ReDawaga.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD6D3CE261EA78000CEBD39 /* DawagaMapEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaMapEditView.swift; sourceTree = "<group>"; };
 		8CD6D3D2261EF30900CEBD39 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
@@ -384,7 +384,6 @@
 			children = (
 				8C43CFF8261C09C30086599B /* DawagaMapBottomView.swift */,
 				8CD6D3CE261EA78000CEBD39 /* DawagaMapEditView.swift */,
-				8C9C0A8C2637DB7800D7AA39 /* DawagaMapLoadingView.swift */,
 			);
 			path = DawagaMap;
 			sourceTree = "<group>";
@@ -678,6 +677,7 @@
 				8C61BAF926140B5A00FCBB2C /* PaddingTextField.swift */,
 				8C43CFFD261C0F760086599B /* CornerView.swift */,
 				8CD6D3D8261F032800CEBD39 /* RoundButton.swift */,
+				8C9C0A8C2637DB7800D7AA39 /* LoadingView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -1075,7 +1075,7 @@
 				8C9C0A882637DB4000D7AA39 /* RotationAnimation.swift in Sources */,
 				8C43CFDA261C08AD0086599B /* DawagaMapState.swift in Sources */,
 				8CD6D40D261F2FCE00CEBD39 /* BookMarkIconSelectorActionCreator.swift in Sources */,
-				8C9C0A8D2637DB7800D7AA39 /* DawagaMapLoadingView.swift in Sources */,
+				8C9C0A8D2637DB7800D7AA39 /* LoadingView.swift in Sources */,
 				8CD6D4272625A5F400CEBD39 /* DawagaLoadingReducer.swift in Sources */,
 				8C61BADD261405A700FCBB2C /* BookMarkListState.swift in Sources */,
 				8C61BA7B2611B71100FCBB2C /* LocationEntity.swift in Sources */,
