@@ -133,14 +133,17 @@ class DawagaMapBottomView: CornerView {
     
     private var distanceState: DistanceState = .Fifty
     
-    var fiftyButtonAction: ((Int) -> ())?
-    var hundredButtonAction: ((Int) -> ())?
-    var thousandButtonAction: ((Int) -> ())?
+    var distanceButtonAction: ((Int) -> ())?
     
     var bookMarkIconButtonAction: (() -> ())?
     
-    var saveBookMarkButtonAction: (() -> ())?
-    var editBookMarkButtonAction: (() -> ())?
+    struct BookMarkParameter {
+        let title: String
+        let icon: String
+        let address: String
+    }
+    var saveBookMarkButtonAction: ((BookMarkParameter) -> ())?
+    var editBookMarkButtonAction: ((BookMarkParameter) -> ())?
     var deleteBookMarkButtonAction: (() -> ())?
     
     var startDawagaButtonAction: (() -> ())?
@@ -151,6 +154,7 @@ class DawagaMapBottomView: CornerView {
     
     private var mark: MarkRealmEntity?
     
+    private var imageName: String = ""
     
     // MARK: - Lifecycle
     
@@ -196,21 +200,21 @@ extension DawagaMapBottomView {
         resetDistanceButtonConfigure()
         self.distanceState = .Fifty
         self.distanceFiftyButton.backgroundColor = .red
-        self.fiftyButtonAction?(self.distanceState.rawValue)
+        self.distanceButtonAction?(self.distanceState.rawValue)
     }
     
     @objc private func onHundredButton() {
         resetDistanceButtonConfigure()
         self.distanceState = .Hundred
         self.distanceHundredButton.backgroundColor = .red
-        self.hundredButtonAction?(self.distanceState.rawValue)
+        self.distanceButtonAction?(self.distanceState.rawValue)
     }
     
     @objc private func onThousandButton() {
         resetDistanceButtonConfigure()
         self.distanceState = .Thousand
         self.distanceThousandButton.backgroundColor = .red
-        self.thousandButtonAction?(self.distanceState.rawValue)
+        self.distanceButtonAction?(self.distanceState.rawValue)
     }
     
     @objc private func onEditButton() {
@@ -249,11 +253,13 @@ extension DawagaMapBottomView {
     }
     
     @objc private func onSaveBookMarkButton() {
-        self.saveBookMarkButtonAction?()
+        let bookMark = BookMarkParameter(title: bookMarkField.text ?? "", icon: imageName, address: regionLabel.text ?? "")
+        self.saveBookMarkButtonAction?(bookMark)
     }
     
     @objc private func onEditBookMarkButton() {
-        self.editBookMarkButtonAction?()
+        let bookMark = BookMarkParameter(title: bookMarkField.text ?? "", icon: imageName, address: regionLabel.text ?? "")
+        self.editBookMarkButtonAction?(bookMark)
     }
     
     @objc private func onDeleteBookMarkButton() {
@@ -361,15 +367,23 @@ extension DawagaMapBottomView {
         }
     }
     
-    func setupBookMarkIcon(image: UIImage) {
-        bookMarkIconButton.backgroundColor = .clear
-        bookMarkIconButton.layer.borderColor = UIColor.lightGray.cgColor
-        bookMarkIconButton.layer.borderWidth = 1.5
-        bookMarkIconButton.layer.cornerRadius = 8
-        bookMarkIconButton.contentVerticalAlignment = .fill
-        bookMarkIconButton.contentHorizontalAlignment = .fill
-        bookMarkIconButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        bookMarkIconButton.setImage(image, for: .normal)
+    func setupBookMarkIcon(imageName: String) {
+        self.imageName = imageName
+        
+        DispatchQueue.global().async {
+            let image = ResourceManager.shared.loadImageWithFileName(fileName: imageName)
+            
+            DispatchQueue.main.async {
+                self.bookMarkIconButton.backgroundColor = .clear
+                self.bookMarkIconButton.layer.borderColor = UIColor.lightGray.cgColor
+                self.bookMarkIconButton.layer.borderWidth = 1.5
+                self.bookMarkIconButton.layer.cornerRadius = 8
+                self.bookMarkIconButton.contentVerticalAlignment = .fill
+                self.bookMarkIconButton.contentHorizontalAlignment = .fill
+                self.bookMarkIconButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+                self.bookMarkIconButton.setImage(image, for: .normal)
+            }
+        }
     }
 }
 
