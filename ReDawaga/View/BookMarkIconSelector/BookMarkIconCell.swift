@@ -35,7 +35,6 @@ class BookMarkIconCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
-//        setupButtonAction()
     }
     
     required init?(coder: NSCoder) {
@@ -47,9 +46,11 @@ class BookMarkIconCell: UICollectionViewCell {
     
     func configureItem(iconUrl url: String) {
         self.iconUrl = url
-        let image = ResourceManager.shared.getImageFromURL(str: url)
         
-        iconImageButton.setImage(image, for: .normal)
+        let image = ResourceManager.shared.loadImageWithFileName(fileName: url)
+        DispatchQueue.main.async {
+            self.iconImageButton.setImage(image, for: .normal)
+        }                    
     }
     
     
@@ -66,29 +67,5 @@ class BookMarkIconCell: UICollectionViewCell {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.backgroundColor = UIColor.red.withAlphaComponent(0.3)
         selectedBackgroundView = view
-    }
-    
-    func setupButtonAction() {
-//        iconImageButton.rx.touchDownGesture()
-//            .when(.began)
-//            .subscribe(onNext: { [weak self] _ in
-//                self?.iconImageButton.backgroundColor = UIColor.red.withAlphaComponent(0.5)
-//            })
-//            .disposed(by: disposeBag)
-//        iconImageButton.rx
-//            .swipeGesture([.down, .left, .right, .up])
-//            .when(.ended)
-//            .subscribe({ [weak self] _ in
-//                self?.iconImageButton.backgroundColor = UIColor.white
-//            })
-//            .disposed(by: disposeBag)
-//        iconImageButton.rx
-//            .anyGesture(.tap())
-//            .when(.ended)
-//            .subscribe({ [weak self] _ in
-//                self?.iconImageButton.backgroundColor = UIColor.white
-//                self?.delegate?.markCellSelected(selectedImage: self?.iconImageButton.image(for: .normal) ?? UIImage(), url: self?.iconUrl ?? "")
-//            })
-//            .disposed(by: disposeBag)
     }
 }
