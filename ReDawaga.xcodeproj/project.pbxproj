@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		1CB828632CF62971F0B1EC31 /* Pods_ReDawaga.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0A96CD7783ECE7DAF76FD6 /* Pods_ReDawaga.framework */; };
 		62A1D4A091F7C26939A6F7DE /* Pods_ReDawaga_ReDawagaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BAA7869675E1D27A91B5436 /* Pods_ReDawaga_ReDawagaUITests.framework */; };
+		8C02D69E263F846B000EBA9E /* ReduxAPIManagerForGoogleMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02D69D263F846B000EBA9E /* ReduxAPIManagerForGoogleMaps.swift */; };
+		8C02D6A0263FB385000EBA9E /* BookMarkListMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02D69F263FB385000EBA9E /* BookMarkListMiddleware.swift */; };
+		8C02D6A2263FC8DD000EBA9E /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02D6A1263FC8DD000EBA9E /* ImageCacheManager.swift */; };
+		8C02D6A526410527000EBA9E /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02D6A426410527000EBA9E /* LogHelper.swift */; };
+		8C02D6A726411340000EBA9E /* DawagaMapMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02D6A626411340000EBA9E /* DawagaMapMiddleware.swift */; };
+		8C02D6A926439459000EBA9E /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02D6A826439459000EBA9E /* NetworkMonitor.swift */; };
+		8C02D6AC264396DB000EBA9E /* NetworkMonitorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02D6AB264396DB000EBA9E /* NetworkMonitorState.swift */; };
+		8C02D6AE264396DF000EBA9E /* NetworkMonitorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02D6AD264396DF000EBA9E /* NetworkMonitorAction.swift */; };
+		8C02D6B0264396E7000EBA9E /* NetworkMonitorReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02D6AF264396E7000EBA9E /* NetworkMonitorReducer.swift */; };
+		8C02D6B2264397CD000EBA9E /* NetworkMonitorActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02D6B1264397CD000EBA9E /* NetworkMonitorActionCreator.swift */; };
 		8C43CF59261B26AB0086599B /* BookMarkListActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CF58261B26AB0086599B /* BookMarkListActionCreator.swift */; };
 		8C43CF5F261B2AE30086599B /* PlaceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CF5E261B2AE30086599B /* PlaceSearchView.swift */; };
 		8C43CF6D261B2B780086599B /* PlaceSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43CF6C261B2B780086599B /* PlaceSearchTableViewCell.swift */; };
@@ -57,6 +67,11 @@
 		8C61BB3D261577E600FCBB2C /* BookMarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB3C261577E600FCBB2C /* BookMarkTableViewCell.swift */; };
 		8C61BB4226157A7A00FCBB2C /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61BB4126157A7A00FCBB2C /* ResourceManager.swift */; };
 		8C8221802627C94C008EDDF4 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C82217F2627C94C008EDDF4 /* TutorialViewController.swift */; };
+		8C9C0A762637DB2E00D7AA39 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0A752637DB2E00D7AA39 /* ProgressView.swift */; };
+		8C9C0A7E2637DB3400D7AA39 /* ProgressShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0A7D2637DB3400D7AA39 /* ProgressShapeLayer.swift */; };
+		8C9C0A832637DB3900D7AA39 /* StrokeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0A822637DB3900D7AA39 /* StrokeAnimation.swift */; };
+		8C9C0A882637DB4000D7AA39 /* RotationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0A872637DB4000D7AA39 /* RotationAnimation.swift */; };
+		8C9C0A8D2637DB7800D7AA39 /* DawagaMapLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0A8C2637DB7800D7AA39 /* DawagaMapLoadingView.swift */; };
 		8CD6D38F261C11A000CEBD39 /* Pods_ReDawaga.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD6D38E261C11A000CEBD39 /* Pods_ReDawaga.framework */; };
 		8CD6D3CF261EA78000CEBD39 /* DawagaMapEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3CE261EA78000CEBD39 /* DawagaMapEditView.swift */; };
 		8CD6D3D3261EF30900CEBD39 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3D2261EF30900CEBD39 /* UITextField+Extension.swift */; };
@@ -113,6 +128,16 @@
 		81365408F410719010AAEDC0 /* Pods_ReDawagaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReDawagaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		845D0E88DE5F7CB9ED4DD41C /* Pods-ReDawagaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReDawagaTests.release.xcconfig"; path = "Target Support Files/Pods-ReDawagaTests/Pods-ReDawagaTests.release.xcconfig"; sourceTree = "<group>"; };
 		84F49E9F38CE3D4F311A9362 /* Pods-ReDawagaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReDawagaTests.debug.xcconfig"; path = "Target Support Files/Pods-ReDawagaTests/Pods-ReDawagaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8C02D69D263F846B000EBA9E /* ReduxAPIManagerForGoogleMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReduxAPIManagerForGoogleMaps.swift; sourceTree = "<group>"; };
+		8C02D69F263FB385000EBA9E /* BookMarkListMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkListMiddleware.swift; sourceTree = "<group>"; };
+		8C02D6A1263FC8DD000EBA9E /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		8C02D6A426410527000EBA9E /* LogHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
+		8C02D6A626411340000EBA9E /* DawagaMapMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaMapMiddleware.swift; sourceTree = "<group>"; };
+		8C02D6A826439459000EBA9E /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		8C02D6AB264396DB000EBA9E /* NetworkMonitorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorState.swift; sourceTree = "<group>"; };
+		8C02D6AD264396DF000EBA9E /* NetworkMonitorAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorAction.swift; sourceTree = "<group>"; };
+		8C02D6AF264396E7000EBA9E /* NetworkMonitorReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorReducer.swift; sourceTree = "<group>"; };
+		8C02D6B1264397CD000EBA9E /* NetworkMonitorActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorActionCreator.swift; sourceTree = "<group>"; };
 		8C43CF58261B26AB0086599B /* BookMarkListActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkListActionCreator.swift; sourceTree = "<group>"; };
 		8C43CF5E261B2AE30086599B /* PlaceSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchView.swift; sourceTree = "<group>"; };
 		8C43CF6C261B2B780086599B /* PlaceSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -173,6 +198,11 @@
 		8C61BB3C261577E600FCBB2C /* BookMarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTableViewCell.swift; sourceTree = "<group>"; };
 		8C61BB4126157A7A00FCBB2C /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
 		8C82217F2627C94C008EDDF4 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		8C9C0A752637DB2E00D7AA39 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		8C9C0A7D2637DB3400D7AA39 /* ProgressShapeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressShapeLayer.swift; sourceTree = "<group>"; };
+		8C9C0A822637DB3900D7AA39 /* StrokeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeAnimation.swift; sourceTree = "<group>"; };
+		8C9C0A872637DB4000D7AA39 /* RotationAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationAnimation.swift; sourceTree = "<group>"; };
+		8C9C0A8C2637DB7800D7AA39 /* DawagaMapLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaMapLoadingView.swift; sourceTree = "<group>"; };
 		8CD6D38E261C11A000CEBD39 /* Pods_ReDawaga.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ReDawaga.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD6D3CE261EA78000CEBD39 /* DawagaMapEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaMapEditView.swift; sourceTree = "<group>"; };
 		8CD6D3D2261EF30900CEBD39 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
@@ -254,6 +284,36 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		8C02D691263F76E7000EBA9E /* Middleware */ = {
+			isa = PBXGroup;
+			children = (
+				8C02D69D263F846B000EBA9E /* ReduxAPIManagerForGoogleMaps.swift */,
+				8C02D69F263FB385000EBA9E /* BookMarkListMiddleware.swift */,
+				8C02D6A626411340000EBA9E /* DawagaMapMiddleware.swift */,
+			);
+			path = Middleware;
+			sourceTree = "<group>";
+		};
+		8C02D6A326410511000EBA9E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8C02D6A426410527000EBA9E /* LogHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		8C02D6AA264396C9000EBA9E /* NetworkMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				8C02D6A826439459000EBA9E /* NetworkMonitor.swift */,
+				8C02D6AB264396DB000EBA9E /* NetworkMonitorState.swift */,
+				8C02D6AD264396DF000EBA9E /* NetworkMonitorAction.swift */,
+				8C02D6AF264396E7000EBA9E /* NetworkMonitorReducer.swift */,
+				8C02D6B1264397CD000EBA9E /* NetworkMonitorActionCreator.swift */,
+			);
+			path = NetworkMonitor;
+			sourceTree = "<group>";
+		};
 		8C43CF5D261B2AB60086599B /* PlaceSearch */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +384,7 @@
 			children = (
 				8C43CFF8261C09C30086599B /* DawagaMapBottomView.swift */,
 				8CD6D3CE261EA78000CEBD39 /* DawagaMapEditView.swift */,
+				8C9C0A8C2637DB7800D7AA39 /* DawagaMapLoadingView.swift */,
 			);
 			path = DawagaMap;
 			sourceTree = "<group>";
@@ -386,6 +447,7 @@
 			isa = PBXGroup;
 			children = (
 				8CD6D4A42626187700CEBD39 /* MarkIcon */,
+				8C02D6A326410511000EBA9E /* Helper */,
 				8CD6D4412625AF5100CEBD39 /* Emitter&Observer */,
 				8CD6D4362625AB4B00CEBD39 /* LocationNotification */,
 				8C61BB0726140BC000FCBB2C /* Constants */,
@@ -394,6 +456,7 @@
 				8C61BA4E2611581F00FCBB2C /* Model */,
 				8C61BA4C2611581300FCBB2C /* Module */,
 				8C61BA4B2611580D00FCBB2C /* Protocol */,
+				8C9C0A732637DB0F00D7AA39 /* CustomView */,
 				8C61BA4A2611580700FCBB2C /* View */,
 				8C61BA492611580000FCBB2C /* Redux */,
 				8C61BA45261157FB00FCBB2C /* ViewController */,
@@ -439,6 +502,7 @@
 		8C61BA492611580000FCBB2C /* Redux */ = {
 			isa = PBXGroup;
 			children = (
+				8C02D691263F76E7000EBA9E /* Middleware */,
 				8C61BAC22614036900FCBB2C /* ActionCreator */,
 				8C61BAC12614036600FCBB2C /* Action */,
 				8C61BAC02614035E00FCBB2C /* Reducer */,
@@ -454,9 +518,6 @@
 				8C43CFD4261C086D0086599B /* DawagaMap */,
 				8C43CF5D261B2AB60086599B /* PlaceSearch */,
 				8C61BAF026140A8000FCBB2C /* Main */,
-				8C61BAF926140B5A00FCBB2C /* PaddingTextField.swift */,
-				8C43CFFD261C0F760086599B /* CornerView.swift */,
-				8CD6D3D8261F032800CEBD39 /* RoundButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -472,9 +533,11 @@
 		8C61BA4C2611581300FCBB2C /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				8C02D6AA264396C9000EBA9E /* NetworkMonitor */,
 				8C61BAB62613F5C600FCBB2C /* APIManager */,
 				8C61BB34261571E000FCBB2C /* DeviceSize.swift */,
 				8C61BB4126157A7A00FCBB2C /* ResourceManager.swift */,
+				8C02D6A1263FC8DD000EBA9E /* ImageCacheManager.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -606,6 +669,28 @@
 				8CD81773262621600093C2B1 /* GoogleKey.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		8C9C0A732637DB0F00D7AA39 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				8C9C0A742637DB1D00D7AA39 /* ProgressView */,
+				8C61BAF926140B5A00FCBB2C /* PaddingTextField.swift */,
+				8C43CFFD261C0F760086599B /* CornerView.swift */,
+				8CD6D3D8261F032800CEBD39 /* RoundButton.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		8C9C0A742637DB1D00D7AA39 /* ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				8C9C0A752637DB2E00D7AA39 /* ProgressView.swift */,
+				8C9C0A7D2637DB3400D7AA39 /* ProgressShapeLayer.swift */,
+				8C9C0A822637DB3900D7AA39 /* StrokeAnimation.swift */,
+				8C9C0A872637DB4000D7AA39 /* RotationAnimation.swift */,
+			);
+			path = ProgressView;
 			sourceTree = "<group>";
 		};
 		8CD6D3ED261F2AD900CEBD39 /* BookMarkIconSelector */ = {
@@ -987,8 +1072,10 @@
 				8CD6D3D9261F032800CEBD39 /* RoundButton.swift in Sources */,
 				8C43CFF4261C08D20086599B /* DawagaMapActionCreator.swift in Sources */,
 				8CD6D3E8261F29F400CEBD39 /* BookMarkIconSelectorViewController.swift in Sources */,
+				8C9C0A882637DB4000D7AA39 /* RotationAnimation.swift in Sources */,
 				8C43CFDA261C08AD0086599B /* DawagaMapState.swift in Sources */,
 				8CD6D40D261F2FCE00CEBD39 /* BookMarkIconSelectorActionCreator.swift in Sources */,
+				8C9C0A8D2637DB7800D7AA39 /* DawagaMapLoadingView.swift in Sources */,
 				8CD6D4272625A5F400CEBD39 /* DawagaLoadingReducer.swift in Sources */,
 				8C61BADD261405A700FCBB2C /* BookMarkListState.swift in Sources */,
 				8C61BA7B2611B71100FCBB2C /* LocationEntity.swift in Sources */,
@@ -997,29 +1084,39 @@
 				8C61BAAD2613F4AC00FCBB2C /* Location.swift in Sources */,
 				8C61B9FE2611570B00FCBB2C /* AppDelegate.swift in Sources */,
 				8C61BAA52611BD0200FCBB2C /* MarkRealm.swift in Sources */,
+				8C9C0A7E2637DB3400D7AA39 /* ProgressShapeLayer.swift in Sources */,
 				8CD6D3EF261F2AEA00CEBD39 /* BookMarkIconCell.swift in Sources */,
 				8C61BAEC2614096500FCBB2C /* MainViewController.swift in Sources */,
+				8C02D6B2264397CD000EBA9E /* NetworkMonitorActionCreator.swift in Sources */,
 				8C43CFD0261C07E80086599B /* DawagaMapViewController.swift in Sources */,
 				8C43CF8E261B2D410086599B /* PlaceSearchActionCreator.swift in Sources */,
+				8C02D6A726411340000EBA9E /* DawagaMapMiddleware.swift in Sources */,
 				8C43CFC8261BF7D40086599B /* NSObject+Protocol.swift in Sources */,
+				8C9C0A832637DB3900D7AA39 /* StrokeAnimation.swift in Sources */,
 				8C43CFC3261BF7830086599B /* UITableView+Extension.swift in Sources */,
 				8C43CF6D261B2B780086599B /* PlaceSearchTableViewCell.swift in Sources */,
 				8CD6D4472625AFAD00CEBD39 /* LocationEmitterState.swift in Sources */,
 				8CD6D4192625A36200CEBD39 /* DawagaLoadingViewController.swift in Sources */,
 				8C61BAF226140A9B00FCBB2C /* MainViewSearchView.swift in Sources */,
 				8CD6D3CF261EA78000CEBD39 /* DawagaMapEditView.swift in Sources */,
+				8C02D6B0264396E7000EBA9E /* NetworkMonitorReducer.swift in Sources */,
 				8CD6D4382625AB6100CEBD39 /* LocationNotificationEntity.swift in Sources */,
 				8C61BA9B2611B97000FCBB2C /* PlaceEntity.swift in Sources */,
+				8C02D69E263F846B000EBA9E /* ReduxAPIManagerForGoogleMaps.swift in Sources */,
 				8CD6D405261F2FC100CEBD39 /* BookMarkIconSelectorReducer.swift in Sources */,
 				8C43CFEA261C08C30086599B /* DawagaMapReducer.swift in Sources */,
 				8C43CF84261B2D330086599B /* PlaceSearchReducer.swift in Sources */,
+				8C9C0A762637DB2E00D7AA39 /* ProgressView.swift in Sources */,
 				8CD6D409261F2FC700CEBD39 /* BookMarkIconSelectorAction.swift in Sources */,
 				8C61BACC2614037A00FCBB2C /* AppReducer.swift in Sources */,
 				8C61BB3026140D9700FCBB2C /* String+Extension.swift in Sources */,
 				8C61BAC42614037500FCBB2C /* AppState.swift in Sources */,
 				8C61BB0926140BCD00FCBB2C /* App.swift in Sources */,
 				8CD6D4512625B02A00CEBD39 /* LocationEmitterAction.swift in Sources */,
+				8C02D6A526410527000EBA9E /* LogHelper.swift in Sources */,
+				8C02D6A0263FB385000EBA9E /* BookMarkListMiddleware.swift in Sources */,
 				8C43CF59261B26AB0086599B /* BookMarkListActionCreator.swift in Sources */,
+				8C02D6A2263FC8DD000EBA9E /* ImageCacheManager.swift in Sources */,
 				8C43CFB1261B30C70086599B /* PlaceSearchViewController.swift in Sources */,
 				8C61BAB22613F4B300FCBB2C /* Place.swift in Sources */,
 				8CD81774262621600093C2B1 /* GoogleKey.swift in Sources */,
@@ -1028,14 +1125,17 @@
 				8C61BAB82613F61F00FCBB2C /* APIManagerForGoogleMaps.swift in Sources */,
 				8CD6D4432625AF6100CEBD39 /* LocationEmitter.swift in Sources */,
 				8CD6D3D3261EF30900CEBD39 /* UITextField+Extension.swift in Sources */,
+				8C02D6AC264396DB000EBA9E /* NetworkMonitorState.swift in Sources */,
 				8C43CFFE261C0F760086599B /* CornerView.swift in Sources */,
 				8C61BAA02611B9E100FCBB2C /* MarkRealmEntity.swift in Sources */,
 				8C61BB4226157A7A00FCBB2C /* ResourceManager.swift in Sources */,
 				8C43CF7C261B2D290086599B /* PlaceSearchState.swift in Sources */,
+				8C02D6AE264396DF000EBA9E /* NetworkMonitorAction.swift in Sources */,
 				8C61BAE22614063900FCBB2C /* BookMarkListReducer.swift in Sources */,
 				8C43CF5F261B2AE30086599B /* PlaceSearchView.swift in Sources */,
 				8C61BAFA26140B5A00FCBB2C /* PaddingTextField.swift in Sources */,
 				8C43D003261C10020086599B /* UIView+Extension.swift in Sources */,
+				8C02D6A926439459000EBA9E /* NetworkMonitor.swift in Sources */,
 				8C61BB0026140B8600FCBB2C /* UIColor+Extension.swift in Sources */,
 				8CD6D401261F2FB500CEBD39 /* BookMarkIconSelectorState.swift in Sources */,
 				8C43CF89261B2D3A0086599B /* PlaceSearchAction.swift in Sources */,
@@ -1237,9 +1337,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Distribution: Min Guk Kim (3N72J4U62S)";
+				CODE_SIGN_IDENTITY = "Apple Development: Min Guk Kim (3SHSKP537W)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3N72J4U62S;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = ReDawaga/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1248,7 +1349,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MGHouse.ReDawaga;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ReDawagaDistribution;
+				PROVISIONING_PROFILE_SPECIFIER = ReDawagaDevelopment;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1260,9 +1361,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Distribution: Min Guk Kim (3N72J4U62S)";
+				CODE_SIGN_IDENTITY = "Apple Development: Min Guk Kim (3SHSKP537W)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3N72J4U62S;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = ReDawaga/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1271,7 +1373,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MGHouse.ReDawaga;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ReDawagaDistribution;
+				PROVISIONING_PROFILE_SPECIFIER = ReDawagaDevelopment;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
