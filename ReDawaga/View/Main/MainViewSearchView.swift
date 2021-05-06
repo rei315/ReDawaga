@@ -20,6 +20,10 @@ class MainViewSearchView: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 30)
         label.numberOfLines = 2
         label.text = AppString.HomeTitle.localized()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(onBackgroundView))
+        label.addGestureRecognizer(tap)
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -62,12 +66,21 @@ class MainViewSearchView: UIView {
         let label = UILabel()
         label.text = AppString.BookMarkTitle.localized()
         label.font = UIFont.systemFont(ofSize: 25)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(onBackgroundView))
+        label.addGestureRecognizer(tap)
+        label.isUserInteractionEnabled = true
         return label
     }()
     
     private lazy var seperator: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .ultraLightGray
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(onBackgroundView))
+        iv.addGestureRecognizer(tap)
+        iv.isUserInteractionEnabled = true
+        
         return iv
     }()
 
@@ -107,7 +120,7 @@ class MainViewSearchView: UIView {
         addSubview(quickMapButton)
         addSubview(bookMarkLabel)
         addSubview(quickSearchButton)
-        addSubview(seperator)
+        addSubview(seperator)        
         
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(15)
@@ -163,6 +176,11 @@ class MainViewSearchView: UIView {
     
     private func setupQuickMapButtonView() {
         quickMapButton.addTarget(self, action: #selector(onQuickMapButton(sender:)), for: .touchUpInside)
+    }
+    
+    @objc private func onBackgroundView() {
+        print("??")
+        addressTextField.resignFirstResponder()
     }
 }
 
