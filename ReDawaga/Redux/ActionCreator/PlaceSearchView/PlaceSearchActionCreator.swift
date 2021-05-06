@@ -6,28 +6,28 @@
 //
 
 import Foundation
+import ReSwift
 
 struct PlaceSearchActionCreator {}
 
 extension PlaceSearchActionCreator {
     
-    static func fetchPlaceList(address: String) {
-        
-        appStore.dispatch(PlaceSearchState.placeSearchAction.setIsLoadingPlace)
-        
-        
-        APIManagerForGoogleMaps.shared.getAutoCompleteList(address: address)
-            .done { placesJSON in
-                let placeList = Place.getPlaceListBy(json: placesJSON)                
-                appStore.dispatch(PlaceSearchState.placeSearchAction.setPlaceList(place: placeList))
-                
-            }
-            .catch { error in
-                appStore.dispatch(PlaceSearchState.placeSearchAction.setIsErrorPlace)
-            }
+    static func fetchPlaceList(placeList: [PlaceEntity]) -> ReSwift.Action {
+        return PlaceSearchState.placeSearchAction.setPlaceList(place: placeList)
     }
+
     
     static func fetchSelectedPlace(place: PlaceEntity) {
         appStore.dispatch(PlaceSearchState.placeSearchAction.setSelectedPlace(place: place))
+    }
+    
+    static func fetchIsLoadingPlace() -> ReSwift.Action {
+        
+        return PlaceSearchState.placeSearchAction.setIsLoadingPlace
+    }
+    
+    static func fetchIsErrorPlace() -> ReSwift.Action {
+        
+        return PlaceSearchState.placeSearchAction.setIsErrorPlace
     }
 }

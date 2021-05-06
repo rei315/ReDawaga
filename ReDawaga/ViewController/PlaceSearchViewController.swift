@@ -31,7 +31,9 @@ class PlaceSearchViewController: UIViewController {
     
     private var placeList: [PlaceEntity] = [] {
         didSet {
-            placeTableView.reloadData()
+            DispatchQueue.main.async {
+                self.placeTableView.reloadData()
+            }
         }
     }
     
@@ -56,8 +58,8 @@ class PlaceSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupSearchView()
-        setupPlaceTableView()
+        self.setupSearchView()
+        self.setupPlaceTableView()
     }
     
     
@@ -67,7 +69,9 @@ class PlaceSearchViewController: UIViewController {
         let dawagaMapVC = DawagaMapViewController()
         PlaceSearchActionCreator.fetchSelectedPlace(place: place)
         
-        self.navigationController?.pushViewController(dawagaMapVC, animated: true)
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(dawagaMapVC, animated: true)
+        }        
     }
 }
 
@@ -95,8 +99,8 @@ extension PlaceSearchViewController {
     private func setupSearchView() {
         view.addSubview(searchView)
         
-        searchView.searchButtonAction = { address in
-            PlaceSearchActionCreator.fetchPlaceList(address: address ?? "")
+        searchView.searchButtonAction = { address in            
+            appStore.dispatch(thunkFetchAutoCompleteList(address ?? ""))
         }
         let storeAddress = appStore.state.bookMarkListState.searchAddress
         
@@ -113,10 +117,18 @@ extension PlaceSearchViewController {
     private func setupPlaceTableView() {
         view.addSubview(placeTableView)
         
+        placeTableView.backgroundView = UIView()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(onBackgroundView))
+        placeTableView.backgroundView?.addGestureRecognizer(tap)
+        
         placeTableView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
             make.top.equalTo(searchView.snp.bottom)
         }
+    }
+    
+    @objc func onBackgroundView() {
+        self.view.endEditing(true)
     }
 }
 
