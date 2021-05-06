@@ -54,7 +54,11 @@ class BookMarkTableViewCell: UITableViewCell {
     
     func configureItem(mark: MarkRealmEntity) {
         markLabel.text = mark.name
-        iconImage.image = ResourceManager.shared.loadImageWithFileName(fileName: mark.iconImageUrl)
+        let image = ResourceManager.shared.loadImageWithFileName(fileName: mark.iconImageUrl)
+        
+        DispatchQueue.main.async {
+            self.iconImage.image = image
+        }
     }
     
     private func configureCell() {
