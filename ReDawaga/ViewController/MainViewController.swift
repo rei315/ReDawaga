@@ -7,6 +7,7 @@
 
 import UIKit
 import ReSwift
+import SnapKit
 
 class MainViewController: UIViewController {
 
@@ -15,20 +16,29 @@ class MainViewController: UIViewController {
     
     private lazy var searchView: MainViewSearchView = {
         let sv = MainViewSearchView()
+        sv.isUserInteractionEnabled = false
         return sv
     }()
     
     private lazy var bookmarkTableView: UITableView = {
         let tv = UITableView()
+        tv.isUserInteractionEnabled = false
         return tv
     }()
     
-    
+    private let loadingView: LoadingView = {
+        let loadingView = LoadingView(backgroundColor: .white)
+        loadingView.isUserInteractionEnabled = false
+        return loadingView
+    }()
+
     // MARK: - Property
     
     private var markList: [MarkRealmEntity] = [] {
         didSet {
-            bookmarkTableView.reloadData()
+            DispatchQueue.main.async {
+                self.bookmarkTableView.reloadData()
+            }
         }
     }
             
@@ -38,11 +48,9 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appStore.subscribe(self)
-                
         self.setupNavigationController()
-        setupTutorialView()
-        
-        BookMarkListActionCreator.fetchBookMarkList()
+                                
+        appStore.dispatch(thunkFetchBookMarkList)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,36 +58,29 @@ class MainViewController: UIViewController {
         self.view.endEditing(true)
         appStore.unsubscribe(self)        
         
-        searchView.clearTextField()
+        self.searchView.clearTextField()
         
-        BookMarkListActionCreator.fetchBookMarkListClear()
+        appStore.dispatch(BookMarkListActionCreator.fetchBookMarkList(marks: []))
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        NetworkMonitor.shared.startMonitor()
         
-        setupSearchView()
-        setupBookmarkTableView()
+        self.setupSearchView()
+        self.setupBookmarkTableView()
     }
 
     
     // MARK: - Function
-
-    private func setupTutorialView() {
-        let isLaunchedBefore = UserDefaults.standard.bool(forKey: "LaunchedBefore")
-        
-        guard !isLaunchedBefore else { return }
-        
-        UserDefaults.standard.setValue(true, forKey: "LaunchedBefore")
-        let tutorialVC = TutorialViewController()
-        tutorialVC.modalPresentationStyle = .fullScreen
-        self.present(tutorialVC, animated: true, completion: nil)
-    }
-            
+  
     private func presentSearchVC() {
         let searchVC = PlaceSearchViewController()
-        self.navigationController?.pushViewController(searchVC, animated: true)
+        
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(searchVC, animated: true)
+        }        
     }
 }
 
@@ -87,6 +88,22 @@ class MainViewController: UIViewController {
 // MARK: - Redux
 extension MainViewController: StoreSubscriber {
     func newState(state: AppState) {
+        if !state.networkMonitorState.isConnected {
+            self.showAlertNetworkConnectionError()
+        } else {
+            DispatchQueue.main.async { [weak self] in
+                self?.searchView.isUserInteractionEnabled = true
+                self?.bookmarkTableView.isUserInteractionEnabled = true
+            }
+        }
+        
+        if state.bookMarkListState.isLoadingMarkRealm {
+            bookmarkTableView.backgroundView = loadingView
+            loadingView.startLoading()
+        } else {
+            loadingView.stopLoading()
+            setupTouchViewInTableView()
+        }
         self.markList = state.bookMarkListState.markRealm
     }
 }
@@ -102,13 +119,19 @@ extension MainViewController {
     private func setupSearchView() {
         view.addSubview(searchView)
         
-        searchView.quickMapButtonAction = {
+        searchView.quickMapButtonAction = { [weak self] in
+            guard let self = self else { return }
+            
             let dawagaMapVC = DawagaMapViewController()
             BookMarkListActionCreator.fetchTransitionType(type: .Quick)
-            self.navigationController?.pushViewController(dawagaMapVC, animated: true)
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(dawagaMapVC, animated: true)
+            }
         }
         
-        searchView.quickSearchButtonAction = { address in
+        searchView.quickSearchButtonAction = { [weak self] address in
+            guard let self = self else { return }
+            
             BookMarkListActionCreator.fetchSearchAddress(address: address ?? "")
             BookMarkListActionCreator.fetchTransitionType(type: .Search)
             self.presentSearchVC()
@@ -129,11 +152,21 @@ extension MainViewController {
         bookmarkTableView.dataSource = self
         bookmarkTableView.estimatedRowHeight = BookMarkTableViewCell.CELL_HEIGHT
         bookmarkTableView.separatorStyle = .none
-                        
+        
         bookmarkTableView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
             make.top.equalTo(searchView.snp.bottom)
         }
+    }
+    
+    private func setupTouchViewInTableView() {
+        bookmarkTableView.backgroundView = UIView()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(onBackgroundView))
+        bookmarkTableView.backgroundView?.addGestureRecognizer(tap)
+    }
+    
+    @objc func onBackgroundView() {
+        self.view.endEditing(true)
     }
 }
 
@@ -166,9 +199,21 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let dawagaMapVC = DawagaMapViewController()
         BookMarkListActionCreator.fetchTransitionType(type: .BookMark)
         BookMarkListActionCreator.fetchBookMark(mark: mark)
-        
-        self.navigationController?.pushViewController(dawagaMapVC, animated: true)
+                
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(dawagaMapVC, animated: true)
+        }        
     }
 }
 
 
+// MARK: - Alert
+extension MainViewController {
+    
+    private func showAlertNetworkConnectionError() {
+        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { _ in
+            UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+        }
+        self.showAlert(title: AppString.NetworkConnectionErrorTitle.localized(), message: AppString.NetworkConnectionErrorMessage.localized(), style: .alert, actions: [action])
+    }
+}

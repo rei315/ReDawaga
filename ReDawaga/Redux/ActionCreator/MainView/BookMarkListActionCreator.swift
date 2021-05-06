@@ -5,27 +5,25 @@
 //  Created by 김민국 on 2021/04/05.
 //
 
-import Foundation
+import ReSwift
 
 struct BookMarkListActionCreator {}
 
 extension BookMarkListActionCreator {
     
-    static func fetchBookMarkList() {
+    static func fetchBookMarkList(marks: [MarkRealmEntity]) -> ReSwift.Action {
         
-        appStore.dispatch(BookMarkListState.bookMarkListAction.setIsLoadingMarkRealm)
-        
-        MarkRealm.getMarkRealmList()
-            .done { marks in
-                appStore.dispatch(BookMarkListState.bookMarkListAction.setMarkRealm(markRealm: marks))
-            }
-            .catch { error in
-                appStore.dispatch(BookMarkListState.bookMarkListAction.setIsErrorMarkRealm)
-            }
+        return BookMarkListState.bookMarkListAction.setMarkRealm(markRealm: marks)
     }
     
-    static func fetchBookMarkListClear() {
-        appStore.dispatch(BookMarkListState.bookMarkListAction.setMarkRealm(markRealm: []))
+    static func fetchIsLoadingBookMarkList() -> ReSwift.Action {
+        
+        return BookMarkListState.bookMarkListAction.setIsLoadingMarkRealm
+    }
+    
+    static func fetchIsErrorBookMarkList() -> ReSwift.Action {
+        
+        return BookMarkListState.bookMarkListAction.setIsErrorMarkRealm
     }
 
     static func fetchSearchAddress(address: String) {
