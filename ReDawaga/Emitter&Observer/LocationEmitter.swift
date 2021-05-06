@@ -12,6 +12,11 @@ final class LocationEmitter: NSObject {
     
     private let locationManager: CLLocationManager
     
+    enum EmitterType {
+        case OneTime, EveryTime
+    }
+    private var emitterType: EmitterType = .OneTime
+    
     init(locationManager: CLLocationManager) {
         
         self.locationManager = locationManager
@@ -37,7 +42,8 @@ final class LocationEmitter: NSObject {
         self.locationManager.requestLocation()
     }
     
-    func startUpdatingLocation() {
+    func startUpdatingLocation(type: EmitterType) {
+        self.emitterType = type
         self.locationManager.startUpdatingLocation()
     }
     
@@ -55,6 +61,9 @@ extension LocationEmitter: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         dispatch(location: locations.last)
+        if emitterType == .OneTime {
+            stopUpdatingLocation()
+        }
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
