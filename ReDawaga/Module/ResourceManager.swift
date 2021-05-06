@@ -7,6 +7,7 @@
 
 import UIKit
 import PromiseKit
+import Foundation
 
 struct ResourceManager {
     
@@ -17,15 +18,6 @@ struct ResourceManager {
     private init() {}
     
     
-    //
-    //ResourceManager.shared.fetchMarkIcons()
-    //    .done { imgName in
-    //
-    //    }
-    //    .catch { error in
-    //
-    //    }
-    //
     // MARK: - Function
 
     func fetchMarkIcons() -> Promise<[String]> {
@@ -37,7 +29,7 @@ struct ResourceManager {
                 let fm = FileManager()
                 do {
                     let datas = try fm.contentsOfDirectory(at: f, includingPropertiesForKeys: nil, options: [])
-                    strList = datas.map { $0.absoluteString }
+                    strList = datas.map { getFileName(fullURL: $0.absoluteString) }
                     seal.fulfill(strList)
                 } catch {
                     seal.reject(error)
@@ -47,30 +39,29 @@ struct ResourceManager {
         }
     }
     
-    func getImageFromURL(str: String) -> UIImage {
-        if let imageUrl = URL(string: str) {
-            do {
-                let imageData = try Data(contentsOf: imageUrl)
-                return UIImage(data: imageData) ?? UIImage()
-            }
-            catch {
-                assertionFailure("getImageFromURL Error")
-            }
-        }
-        return UIImage()
-    }
-    
-    func loadImageWithFileName(fileName: String) -> UIImage {
-        if let f = Bundle.main.url(forResource: "MarkIcon", withExtension: nil) {
-            do {
-                let url = f.appendingPathComponent(fileName)
-                let imageData = try Data(contentsOf: url)
-                return UIImage(data: imageData) ?? UIImage()
-            } catch {
-                assertionFailure("loadImageWithFileName Error")
+    func loadImageWithFileName(fileName: String) -> UIImage? {
+        let cacheKey = NSString(string: fileName)
+        if let cachedImage = ImageCacheManager.shared.object(forKey: cacheKey) {
+            return cachedImage
+        } else {
+            if let f = Bundle.main.url(forResource: "MarkIcon", withExtension: nil) {
+                do {
+                    let url = f.appendingPathComponent(fileName)
+                    let imageData = try Data(contentsOf: url)
+                    if let image = UIImage(data: imageData){
+                        ImageCacheManager.shared.setObject(image, forKey: cacheKey)
+                        return image
+                    }
+                    else {
+                        return nil
+                    }
+                } catch {
+                    assertionFailure("loadImageWithFileName Error")
+                }
             }
         }
-        return UIImage()
+        
+        return nil
     }
     
     func getFileName(fullURL: String) -> String{
