@@ -7,9 +7,11 @@
 
 import UIKit
 import ReSwift
+import ReSwiftThunk
 import GoogleMaps
 
-let appStore = Store(reducer: appReduce, state: AppState())
+let thunkMiddleware: Middleware<AppState> = createThunkMiddleware()
+let appStore = Store(reducer: appReduce, state: AppState(), middleware: [thunkMiddleware])
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,18 +23,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.applicationIconBadgeNumber = 0
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
-        }
+        }                
         
         GMSServices.provideAPIKey(GOOGLE_API_KEY)
              
         Thread.sleep(forTimeInterval: 2.0)
-        
         window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let isLaunchedBefore = UserDefaults.standard.bool(forKey: "LaunchedBefore")
+        if isLaunchedBefore {
+            setupMainView()
+            return true
+        }
+                
+        setupTutorialView()
+        
+        return true
+    }
+    
+    private func setupTutorialView() {
+        let tutorialVC = TutorialViewController()
+        let nav = UINavigationController(rootViewController: tutorialVC)
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible()
+    }
+        
+    func setupMainView() {
+        let transition = CATransition()
+        transition.type = .fade
+        transition.duration = 0.2
+        window?.layer.add(transition, forKey: kCATransition)
+                
         let nav = UINavigationController(rootViewController: MainViewController())
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
-        
-        return true
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
