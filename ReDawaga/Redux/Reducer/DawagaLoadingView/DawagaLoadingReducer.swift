@@ -25,9 +25,17 @@ extension DawagaLoadingReducer {
             print("setIsNotificationPermissionDenied")
             state.isNotificationPermissionDenied = true
             
-        case let .setNotificationSchedule(error):
+        case let .setNotificationScheduleError(error):
             print("setNotificationSchedule")
-            state.notificationSchedule = error
+            state.notificationScheduleError = error
+            
+        case .setNotificationScheduled:
+            state.notificatinoScheduled = true
+            
+        case let .setIsStartDawaga(isStart):
+            state.isStartDawaga = isStart
+            state.notificationScheduleError = nil
+            state.notificatinoScheduled = false
         }
         
         return state

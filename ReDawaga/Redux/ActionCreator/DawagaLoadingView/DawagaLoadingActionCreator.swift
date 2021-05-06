@@ -16,6 +16,15 @@ extension DawagaLoadingActionCreator {
     }
     
     static func fetchNotificationSchedule(error: Error?) {
-        appStore.dispatch(DawagaLoadingState.dawagaLoadingAction.setNotificationSchedule(error: error))
+        if error == nil{
+            appStore.dispatch(DawagaLoadingState.dawagaLoadingAction.setNotificationScheduled)
+        }
+        else {
+            appStore.dispatch(DawagaLoadingState.dawagaLoadingAction.setNotificationScheduleError(error: error))
+        }
+    }
+    
+    static func fetchIsStartDawaga(isStart: Bool) {
+        appStore.dispatch(DawagaLoadingState.dawagaLoadingAction.setIsStartDawaga(isStart: isStart))
     }
 }

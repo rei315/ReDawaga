@@ -47,36 +47,41 @@ class DawagaLoadingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setupNavigationController()
+        
         appStore.subscribe(self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         appStore.unsubscribe(self)
         self.stopUpdatingLocation()
+        self.removeNotificationCenter()
+        DawagaLoadingActionCreator.fetchIsStartDawaga(isStart: false)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureUI()
-        startDisplayLink()
+        self.setupUI()
+        self.startDisplayLink()
         
-        setupNotificationCenter()
-        startUpdatingLocation()
+        self.setupNotificationCenter()
+        self.startUpdatingLocation()
+        
+        DawagaLoadingActionCreator.fetchIsStartDawaga(isStart: true)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        animateFish()
+        self.animateFish()
     }
 
     
     // MARK: - Function
     
     private func startUpdatingLocation() {
-        self.locationEmitter.startUpdatingLocation()
+        self.locationEmitter.startUpdatingLocation(type: .EveryTime)
     }
     
     private func stopUpdatingLocation() {
@@ -87,7 +92,73 @@ class DawagaLoadingViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(startAnimateFish), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setIsFishSetupFalse), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
+            
+    private func removeNotificationCenter() {
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didEnterBackgroundNotification, object: nil)
+    }
     
+    private func requestLocationNotification() {
+        let info = LocationNotificationEntity(notificationId: AppString.NotificationID, locationId: AppString.LocationID, title: AppString.NotificationTitle.localized(), body: AppString.NotificationBody.localized(), data: ["Location":"Arrived"])
+        locationNotificationScheduler.request(with: info)
+    }
+}
+
+
+// MARK: - Redux
+
+extension DawagaLoadingViewController: StoreSubscriber {
+    
+    func newState(state: AppState) {
+
+        if state.dawagaLoadingState.isNotificationPermissionDenied {
+            self.showAlertNotificationPermissionDenied()
+            return
+        }
+        
+        if let error = state.dawagaLoadingState.notificationScheduleError {
+            self.showAlertNotificationSchedule(error: error)
+            return
+        }
+        
+        if state.dawagaLoadingState.notificatinoScheduled {
+            self.showAlertNotificationSchedule()
+            return
+        }
+
+        switch state.locationEmitterState.authorizationStatus {
+        case .denied, .restricted:
+            _ = self.navigationController?.popToRootViewController(animated: true)
+            return
+        case .authorizedAlways, .authorizedWhenInUse:
+            break
+        case .notDetermined:
+            print("not determined")
+            return
+        @unknown default:
+            break
+        }
+        
+        if let location = state.locationEmitterState.location {
+                        
+            guard let destination = state.dawagaMapState.destination else { return }
+            
+            let distance = location.distance(from: destination)
+            let setDistance: Double = Double(state.dawagaMapState.distanceState)
+            
+            guard distance <= setDistance else { return }
+            
+            self.stopUpdatingLocation()            
+            
+            self.requestLocationNotification()
+            
+            return
+        }
+    }
+}
+
+// MARK: - Animation
+extension DawagaLoadingViewController {
     
     // MARK: - Wave Animation
     
@@ -97,15 +168,6 @@ class DawagaLoadingViewController: UIViewController {
         let displayLink = CADisplayLink(target: self, selector:#selector(handleDisplayLink(_:)))
         displayLink.add(to: .main, forMode: .common)
         self.displayLink = displayLink
-    }
-    
-    private func stopDisplayLink() {
-        displayLink?.invalidate()
-    }
-    
-    @objc private func handleDisplayLink(_ displayLink: CADisplayLink) {
-        let elapsed = CACurrentMediaTime() - startTime
-        shapeLayer.path = wave(at: elapsed).cgPath
     }
     
     private func wave(at elapsed: Double) -> UIBezierPath {
@@ -129,6 +191,15 @@ class DawagaLoadingViewController: UIViewController {
         return path
     }
 
+    private func stopDisplayLink() {
+        displayLink?.invalidate()
+    }
+    
+    @objc private func handleDisplayLink(_ displayLink: CADisplayLink) {
+        let elapsed = CACurrentMediaTime() - startTime
+        shapeLayer.path = wave(at: elapsed).cgPath
+    }
+    
     
     // MARK: - Fish Animation
     
@@ -172,57 +243,10 @@ class DawagaLoadingViewController: UIViewController {
     }
 }
 
-
-// MARK: - Redux
-
-extension DawagaLoadingViewController: StoreSubscriber {
-    
-    func newState(state: AppState) {
-
-        if state.dawagaLoadingState.isNotificationPermissionDenied {
-            self.showAlertNotificationPermissionDenied()
-        }
-        
-        if let _ = state.dawagaLoadingState.notificationSchedule {
-            self.showAlertNotificationScheduleError()
-        }
-
-        switch state.locationEmitterState.authorizationStatus {
-        case .denied, .restricted:
-            _ = self.navigationController?.popToRootViewController(animated: true)
-        case .authorizedAlways, .authorizedWhenInUse:
-            break
-        case .notDetermined:
-            print("not determined")
-            return
-        @unknown default:
-            break
-        }
-        
-        if let location = state.locationEmitterState.location {
-                        
-            guard let destination = state.dawagaMapState.destination else { return }
-            
-            let distance = location.distance(from: destination)
-            let setDistance: Double = Double(state.dawagaMapState.distanceState)
-            
-            guard distance <= setDistance else { return }
-            
-            self.stopUpdatingLocation()
-            
-            let info = LocationNotificationEntity(notificationId: AppString.NotificationID, locationId: AppString.LocationID, title: AppString.NotificationTitle.localized(), body: AppString.NotificationBody.localized(), data: ["Location":"Arrived"])
-            locationNotificationScheduler.request(with: info)
-            
-            self.showAlertDestinationComplete()
-        }
-    }
-}
-
-
 // MARK: - UI Setup
 extension DawagaLoadingViewController {
     
-    private func configureUI() {
+    private func setupUI() {
         view.backgroundColor = .middleBlue
         
         view.addSubview(seperator)
@@ -240,33 +264,27 @@ extension DawagaLoadingViewController {
 
         self.view.addSubview(fishImageView)
     }
-    
-    private func setupNavigationController() {
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.topItem?.title = ""
-        navigationController?.navigationBar.tintColor = .white
-    }
 }
 
 
 // MARK: - Notification Alert Func
 
 extension DawagaLoadingViewController {
-    
-    private func showAlertDestinationComplete() {
-        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { _ in
-            self.navigationController?.popViewController(animated: true)
+
+    private func showAlertNotificationSchedule(error: Error? = nil) {
+        if error == nil{
+            print("nil")
+            let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { _ in
+                self.dismiss(animated: true, completion: nil)
+            }
+            self.showAlert(title: AppString.NotificationTitle.localized(), message: AppString.NotificationBody.localized(), style: .alert, actions: [action])
         }
-        self.showAlert(title: AppString.NotificationTitle.localized(), message: AppString.NotificationBody.localized(), style: .alert, actions: [action])
-    }
-    
-    private func showAlertNotificationScheduleError() {
-        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { (_) in
-            self.dismiss(animated: true, completion: nil)
+        else {
+            let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { (_) in
+                self.dismiss(animated: true, completion: nil)
+            }
+            self.showAlert(title: AppString.NotificationErrorTitle.localized(), message: AppString.NotificationErrorMessage.localized(), style: .alert, actions: [action])
         }
-        self.showAlert(title: AppString.NotificationErrorTitle.localized(), message: AppString.NotificationErrorMessage.localized(), style: .alert, actions: [action])
     }
     
     private func showAlertNotificationPermissionDenied() {

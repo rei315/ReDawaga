@@ -13,5 +13,9 @@ struct DawagaLoadingState: ReSwift.StateType {
     
     var isNotificationPermissionDenied: Bool = false
     
-    var notificationSchedule: Error? = nil
+    var notificationScheduleError: Error? = nil
+    
+    var notificatinoScheduled: Bool = false
+    
+    var isStartDawaga: Bool = false
 }

@@ -14,6 +14,10 @@ extension DawagaLoadingState {
 
         case setIsNotificationPermissionDenied
         
-        case setNotificationSchedule(error: Error?)
+        case setNotificationScheduleError(error: Error?)
+        
+        case setNotificationScheduled        
+        
+        case setIsStartDawaga(isStart: Bool)
     }
 }
