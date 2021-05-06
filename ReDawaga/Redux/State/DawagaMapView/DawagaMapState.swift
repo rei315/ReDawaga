@@ -11,37 +11,45 @@ import CoreLocation
 
 struct DawagaMapState: ReSwift.StateType {
     
+    enum BookMarkState {
+        case isLoading, isComplete, isError
+    }
+    
+    enum RealmBookMarkType: Equatable{
+        case none
+        case save(state: BookMarkState)
+        case edit(state: BookMarkState)
+        case delete(state: BookMarkState)
+    }
+    
     // MARK: - Search
-    
     var isSearchLoadingLocation: Bool = false
-    
     var searchLocationDetail: LocationEntity?
-    
     var isErrorSearchLocation: Bool = false
                 
     
     // MARK: - Reverse Geocode
-        
     var isReverseLoadingLocation: Bool = false
-    
     var reverseLocationDetail: LocationEntity?
-    
     var isErrorReverseLocation: Bool = false
     
     
     // MARK: - Location Manager
-    
     var idleLocation: CLLocation?
     
     
     // MARK: - Bottom View
-    
     var distanceState: Int = DawagaMapBottomView.DistanceState.Fifty.rawValue
+    var bookMarkIconName: String? = nil
     
-    var bookMarkIconName: String = ""
     
+    // MARK: - BookMark Realm
+    var realmBookMarkType: RealmBookMarkType = .none
+    
+//    var saveBookMarkType: BookMarkState = .none
+//    var editBookMarkType: BookMarkState = .none
+//    var deleteBookMarkType: BookMarkState = .none
     
     // MARK: - Transition
-    
-    var destination: CLLocation? = nil
+    var destination: CLLocation? = nil            
 }

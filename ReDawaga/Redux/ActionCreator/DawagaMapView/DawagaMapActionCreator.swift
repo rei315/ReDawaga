@@ -7,55 +7,93 @@
 
 import Foundation
 import CoreLocation
+import ReSwift
 
 struct DawagaMapActionCreator {}
 
 extension DawagaMapActionCreator {
     
     // MARK: - With API Manager
-    
-    static func fetchSearchLocation(id: String) {
+    // Search
+    static func fetchSearchLocation(location: LocationEntity?) -> ReSwift.Action {
         
-        appStore.dispatch(DawagaMapState.dawagaMapAction.setIsSearchLoadingLocation)
+        return DawagaMapState.dawagaMapAction.setSearchLocation(location: location)
+    }
+    static func fetchIsLoadingSearchLocation() -> ReSwift.Action {
         
-        APIManagerForGoogleMaps.shared.getPlaceDetails(placeId: id)
-            .done { detailJSON in
-                let location = Location.getLocationBy(json: detailJSON)
-                appStore.dispatch(DawagaMapState.dawagaMapAction.setSearchLocation(location: location))
-            }
-            .catch { error in
-                appStore.dispatch(DawagaMapState.dawagaMapAction.setIsErrorSearchLocation)
-            }
+        return DawagaMapState.dawagaMapAction.setIsLoadingSearchLocation
+    }
+    static func fetchIsErrorSearchLocation() -> ReSwift.Action {
+        
+        return DawagaMapState.dawagaMapAction.setIsErrorSearchLocation
     }
     
-    static func fetchReverseGeocode(location: CLLocation) {
-        appStore.dispatch(DawagaMapState.dawagaMapAction.setIsReverseLoadingLocation)
+    // Reverse Geocode
+    static func fetchReverseGeocode(location: LocationEntity?) -> ReSwift.Action {
         
-        APIManagerForGoogleMaps.shared.getReverseGeocode(location: location)
-            .done { detailJSON in
-                let location = Location.getLocationBy(json: detailJSON)
-                appStore.dispatch(DawagaMapState.dawagaMapAction.setReverseLocation(location: location))
-            }
-            .catch { error in
-                appStore.dispatch(DawagaMapState.dawagaMapAction.setIsErrorReverseLocation)
-            }
+        return DawagaMapState.dawagaMapAction.setReverseLocation(location: location)
+    }
+    static func fetchIsLoadingReverseLocation() -> ReSwift.Action {
+        return DawagaMapState.dawagaMapAction.setIsLoadingReverseLocation
+    }
+    static func fetchIsErrorReverseLocation() -> ReSwift.Action {
+        return DawagaMapState.dawagaMapAction.setIsErrorReverseLocation
     }
     
-    // MARK: - Map Action
     
-    static func fetchIdleLocation(location: CLLocation) {
+    // MARK: - Location Manager
+    static func fetchIdleLocation(location: CLLocation?) {
         appStore.dispatch(DawagaMapState.dawagaMapAction.setIdleLocation(location: location))
     }
     
 
     // MARK: - Bottom View
-    
     static func fetchDistanceState(with state: Int) {
         appStore.dispatch(DawagaMapState.dawagaMapAction.setDistanceState(state: state))
     }
-    
-    static func fetchBookMarkIconName(with name: String) {
+    static func fetchBookMarkIconName(with name: String?) {
         appStore.dispatch(DawagaMapState.dawagaMapAction.setBookMarkIconName(name: name))
+    }
+    
+    
+    // MARK: - BookMark Realm
+    // Save
+    static func fetchIsLoadingSaveBookMark() -> ReSwift.Action {
+        return DawagaMapState.dawagaMapAction.setIsLoadingSaveBookMark
+    }
+    static func fetchIsCompleteSaveBookMark() -> ReSwift.Action {
+        return DawagaMapState.dawagaMapAction.setIsCompleteSaveBookMark
+    }
+    static func fetchIsErrorSaveBookMark() -> ReSwift.Action {
+        return DawagaMapState.dawagaMapAction.setIsErrorSaveBookMark
+    }
+    
+    
+    // Edit
+    static func fetchIsLoadingEditBookMark() -> ReSwift.Action {
+        return DawagaMapState.dawagaMapAction.setIsLoadingEditBookMark
+    }
+    static func fetchIsCompleteEditBookMark() -> ReSwift.Action {
+        return DawagaMapState.dawagaMapAction.setIsCompleteEditBookMark
+    }
+    static func fetchIsErrorEditBookMark() -> ReSwift.Action {
+        return DawagaMapState.dawagaMapAction.setIsErrorEditBookMark
+    }
+    
+    // Delete
+    static func fetchIsLoadingDeleteBookMark() -> ReSwift.Action {
+        return DawagaMapState.dawagaMapAction.setIsLoadingDeleteBookMark
+    }
+    static func fetchIsCompleteDeleteBookMark() -> ReSwift.Action {
+        return DawagaMapState.dawagaMapAction.setIsCompleteDeleteBookMark
+    }
+    static func fetchIsErrorDeleteBookMark() -> ReSwift.Action {
+        return DawagaMapState.dawagaMapAction.setIsErrorDeleteBookMark
+    }
+    
+    // Init
+    static func fetchInitRealmBookMark() {
+        return appStore.dispatch(DawagaMapState.dawagaMapAction.setInitRealmBookMark)
     }
     
     

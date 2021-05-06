@@ -14,37 +14,43 @@ extension DawagaMapState {
     enum dawagaMapAction: ReSwift.Action {
         
         // MARK: - Search
-        
-        case setIsSearchLoadingLocation
-        
+        case setIsLoadingSearchLocation
         case setSearchLocation(location: LocationEntity?)
-        
         case setIsErrorSearchLocation
         
         
         // MARK: - Reverse Geocode
-        
-        case setIsReverseLoadingLocation
-        
+        case setIsLoadingReverseLocation
         case setReverseLocation(location: LocationEntity?)
-        
         case setIsErrorReverseLocation
         
         
-        // MARK: - Map Action
-
-        case setIdleLocation(location: CLLocation)
+        // MARK: - Location Manager
+        case setIdleLocation(location: CLLocation?)
         
 
         // MARK: - Bottom View
-        
         case setDistanceState(state: Int)
+        case setBookMarkIconName(name: String?)
         
-        case setBookMarkIconName(name: String)
+        
+        // MARK: - BookMark Realm
+        case setIsLoadingSaveBookMark
+        case setIsCompleteSaveBookMark
+        case setIsErrorSaveBookMark
+                
+        case setIsLoadingEditBookMark
+        case setIsCompleteEditBookMark
+        case setIsErrorEditBookMark
+        
+        case setIsLoadingDeleteBookMark
+        case setIsCompleteDeleteBookMark
+        case setIsErrorDeleteBookMark
+        
+        case setInitRealmBookMark
         
         
         // MARK: - Transition
-        
         case setDestination(location: CLLocation?)
     }
 }

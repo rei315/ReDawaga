@@ -41,6 +41,12 @@ class DawagaMapViewController: UIViewController {
     
     private var distanceEditView: DawagaMapEditView?
         
+    private let loadingView: LoadingView = {
+        let loadingView = LoadingView(backgroundColor: .lightGray)        
+        loadingView.isUserInteractionEnabled = false
+        return loadingView
+    }()
+    
     
     // MARK: - Property
     
@@ -55,15 +61,11 @@ class DawagaMapViewController: UIViewController {
     private var locationManager: CLLocationManager = CLLocationManager()
     private lazy var locationEmitter = LocationEmitter(locationManager: locationManager)
     
-    private var currentLocation: CLLocation?
-    private var currentEmitterLocation: CLLocation?
-    private var searchedLocation: CLLocation?
-    
     private let zoomLevel: Float = 15.0
     
-    private var curBookMarkTitle: String = ""
-    private var curBookMarkIconName: String = ""
     private var curBookMarkIdentity: String = ""
+        
+    private var curDistance: Int = DawagaMapBottomView.DistanceState.Fifty.rawValue
     
     
     // MARK: - Lifecycle
@@ -80,19 +82,16 @@ class DawagaMapViewController: UIViewController {
         self.view.endEditing(true)
         appStore.unsubscribe(self)
         
-        LocationEmitterActionCreator.fetchLocation(location: nil)
-        
-        DawagaMapActionCreator.fetchBookMarkIconName(with: "")
-        BookMarkListActionCreator.fetchBookMark(mark: nil)
+        appStore.dispatch(DawagaMapActionCreator.fetchReverseGeocode(location: nil))
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupMapView()
-        setupBottomView()
-        
-        configureType()
+        self.setupMapView()
+        self.configureType()
+        self.setupBottomView()
+        self.setupLoadingView()
     }
 
     
@@ -103,13 +102,13 @@ class DawagaMapViewController: UIViewController {
         
         switch type {
         case .Quick:
-            configureQuick()
+            self.configureQuick()
         case .Search:
             guard let placeID = appStore.state.placeSearchState.selectedPlace?.placeId else { return }
-            configureSearch(placeId: placeID)
+            self.configureSearch(placeId: placeID)
         case .BookMark:
             guard let bookMark = appStore.state.bookMarkListState.bookMark else { return }
-            configureBookMark(bookMark: bookMark)
+            self.configureBookMark(bookMark: bookMark)
         }
     }
     
@@ -119,22 +118,18 @@ class DawagaMapViewController: UIViewController {
         let icon = bookMark.iconImageUrl
         
         self.configureMapCenter(with: location)
-        self.curBookMarkTitle = title
-        self.curBookMarkIconName = icon
         self.curBookMarkIdentity = bookMark.identity
         self.bottomView.configureBookMarkField(title: title)
         
-        let image = ResourceManager.shared.loadImageWithFileName(fileName: icon)
-        
-        self.bottomView.setupBookMarkIcon(image: image)
+        self.bottomView.setupBookMarkIcon(imageName: icon)
     }
     
-    private func configureSearch(placeId: String) {
-        DawagaMapActionCreator.fetchSearchLocation(id: placeId)
+    private func configureSearch(placeId: String) {        
+        appStore.dispatch(thunkFetchSearchLocation(placeId))
     }
     
     private func configureQuick() {
-        locationEmitter.requestLocation()
+        locationEmitter.startUpdatingLocation(type: .OneTime)
     }
     
     private func configureMapCenter(with location: CLLocation) {
@@ -147,10 +142,8 @@ class DawagaMapViewController: UIViewController {
         mapView.clear()
         
         let cllDistance = CLLocationDistance(radius)
-        let center = CGPoint(x: self.mapView.center.x , y: self.mapView.center.y - DawagaMapBottomView.VIEW_HEIGHT/2)
-        let coor = self.mapView.projection.coordinate(for: center)
                 
-        circle.position = coor
+        circle.position = mapView.camera.target
         circle.radius = cllDistance
         
         circle.map = mapView
@@ -159,79 +152,159 @@ class DawagaMapViewController: UIViewController {
     private func presentBookMarkIconSelectorVC() {
         let bookMarkIconSelectorVC = BookMarkIconSelectorViewController()
         
-        self.present(bookMarkIconSelectorVC, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(bookMarkIconSelectorVC, animated: true, completion: nil)
+        }
     }
 }
 
+
 extension DawagaMapViewController: StoreSubscriber {
     
-    func newState(state: AppState) {
+    func newState(state: AppState) {        
+        guard !state.dawagaLoadingState.isStartDawaga else { return }
         
         switch state.locationEmitterState.authorizationStatus {
         case .denied, .restricted:
-            let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { _ in
-                _ = self.navigationController?.popToRootViewController(animated: true)
-            }
-            self.showAlert(title: AppString.LocationDeniedTitle.localized(), message: AppString.LocationDeniedMessage.localized(), style: .alert, actions: [action])
+            self.setAuthorizationFailedState()
+            return
         case .notDetermined, .authorizedAlways, .authorizedWhenInUse:
             break
         @unknown default:
             break
         }
         
-        if let location = state.locationEmitterState.location, self.currentEmitterLocation != location {
-            self.currentEmitterLocation = location
-            configureMapCenter(with: location)
-        }
-        
-        // SearchLocation Makes Center
-        if state.bookMarkListState.transitionType == .Search {
-            if searchedLocation != state.dawagaMapState.searchLocationDetail?.location {
-                if let searched = state.dawagaMapState.searchLocationDetail?.location {
-                    self.searchedLocation = searched
-                    self.configureMapCenter(with: searched)
-                }
+        switch state.bookMarkListState.transitionType {
+        case .Quick:
+            if let location = state.locationEmitterState.location {
+                self.setLocationEmitterState(location: location)
+                LocationEmitterActionCreator.fetchLocation(location: nil)
+                return
             }
-        }
-        
-        if curBookMarkIconName != state.dawagaMapState.bookMarkIconName && state.dawagaMapState.bookMarkIconName != "" {
-            let name = state.dawagaMapState.bookMarkIconName
-            self.curBookMarkIconName = name
-            let image = ResourceManager.shared.loadImageWithFileName(fileName: name)
-            
-            bottomView.setupBookMarkIcon(image: image)
-        }
-        
-        // ReverseGeocode
-        if currentLocation != state.dawagaMapState.idleLocation {
-            if let location = state.dawagaMapState.idleLocation {
-                self.currentLocation = location
-                DawagaMapActionCreator.fetchReverseGeocode(location: location)
+        case .Search:
+            if let location = state.dawagaMapState.searchLocationDetail?.location {
+                self.setMapCenterState(location: location)
+                appStore.dispatch(DawagaMapActionCreator.fetchSearchLocation(location: nil))
+                return
             }
+        case .BookMark:
+            break
         }
         
-        bottomView.configureRegionField(address: state.dawagaMapState.reverseLocationDetail?.title ?? "")
+        if let location = state.dawagaMapState.idleLocation {
+            self.reverseGeocodeState(location: location)
+            DawagaMapActionCreator.fetchIdleLocation(location: nil)
+            return
+        }
+        
+        if let iconName = state.dawagaMapState.bookMarkIconName {
+            self.setBookMarkIconState(name: iconName)
+            DawagaMapActionCreator.fetchBookMarkIconName(with: nil)
+            return
+        }
+        
+        switch state.dawagaMapState.realmBookMarkType {
+        case let .save(type):
+            switch type {
+            case .isComplete:
+                self.showAlertBookMarkCreateComplete()
+                DawagaMapActionCreator.fetchInitRealmBookMark()
+                return
+            case .isError:
+                self.showAlertBookMarkCreateError()
+                DawagaMapActionCreator.fetchInitRealmBookMark()
+                return
+            case .isLoading:
+                break
+            }
+        case let .edit(type):
+            switch type {
+            case .isComplete:
+                self.showAlertBookMarkEditComplete()
+                DawagaMapActionCreator.fetchInitRealmBookMark()
+                return
+            case .isError:
+                self.showAlertBookMarkEditError()
+                DawagaMapActionCreator.fetchInitRealmBookMark()
+                return
+            case .isLoading:
+                break
+            }
+        case let .delete(type):
+            switch type {
+            case .isComplete:
+                _ = self.navigationController?.popToRootViewController(animated: true)
+                DawagaMapActionCreator.fetchInitRealmBookMark()
+               return
+            case .isError:
+                self.showAlertBookMarkDeleteError()
+                DawagaMapActionCreator.fetchInitRealmBookMark()
+                return
+            case .isLoading:
+                break
+            }
+        case .none:
+            break
+        }
+        
+        
+        if let region = state.dawagaMapState.reverseLocationDetail {
+            bottomView.configureRegionField(address: region.title)
+//            return
+        }
+    }
+        
+    
+    private func setAuthorizationFailedState() {
+        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { _ in
+            _ = self.navigationController?.popToRootViewController(animated: true)
+        }
+        self.showAlert(title: AppString.LocationDeniedTitle.localized(), message: AppString.LocationDeniedMessage.localized(), style: .alert, actions: [action])
+    }
+    
+    private func setLocationEmitterState(location: CLLocation) {
+        loadingView.stopLoading()
+        configureMapCenter(with: location)
+    }
+    
+    private func setMapCenterState(location: CLLocation) {
+        self.configureMapCenter(with: location)
+    }
+    
+    private func setBookMarkIconState(name: String) {
+        self.bottomView.setupBookMarkIcon(imageName: name)
+    }
+    
+    private func reverseGeocodeState(location: CLLocation) {
+        appStore.dispatch(thunkFetchReverseLocation(location))
     }
 }
 
 extension DawagaMapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        let center = self.mapView.center
-        let cgCenter = CGPoint(x: center.x, y: center.y - DawagaMapBottomView.VIEW_HEIGHT/2)
-        let coorCenter = self.mapView.projection.coordinate(for: cgCenter)
-        let location = CLLocation(latitude: coorCenter.latitude, longitude: coorCenter.longitude)
+        let coor = mapView.camera.target
         
-        DawagaMapActionCreator.fetchIdleLocation(location: location)
-        
-        let distance = appStore.state.dawagaMapState.distanceState
-        self.configureCircle(with: distance)
+        DawagaMapActionCreator.fetchIdleLocation(location: CLLocation(latitude: coor.latitude, longitude: coor.longitude))
+                        
+        self.configureCircle(with: self.curDistance)
     }
 }
 
 // MARK: - UI Setup
 
 extension DawagaMapViewController {
+    
+    private func setupLoadingView() {
+        if appStore.state.bookMarkListState.transitionType == .Quick {
+            view.addSubview(loadingView)
+            loadingView.startLoading()
+            
+            loadingView.snp.makeConstraints { (make) in
+                make.edges.equalToSuperview()
+            }
+        }
+    }
     
     private func setupMapView() {
         view.addSubview(mapView)
@@ -248,38 +321,35 @@ extension DawagaMapViewController {
         
         markImageView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(-markSize/2-Int(DawagaMapBottomView.VIEW_HEIGHT)/2)
+            make.centerY.equalToSuperview().offset(-markSize-Int(DawagaMapBottomView.VIEW_HEIGHT)/4)
             make.width.equalTo(markSize)
             make.height.equalTo(markSize)
         }
     }
     
     private func setupBottomView() {
+        
         bottomView.setupTransitionType(
             type: appStore.state.bookMarkListState.transitionType,
             mark: appStore.state.bookMarkListState.bookMark
         )
         
-        bottomView.fiftyButtonAction = { distance in
-            DawagaMapActionCreator.fetchDistanceState(with: distance)
+        bottomView.distanceButtonAction = { [weak self] distance in
+            guard let self = self else { return }
+            
+            self.curDistance = distance
             self.configureCircle(with: distance)
         }
         
-        bottomView.hundredButtonAction = { distance in
-            DawagaMapActionCreator.fetchDistanceState(with: distance)
-            self.configureCircle(with: distance)
-        }
-        
-        bottomView.thousandButtonAction = { distance in
-            DawagaMapActionCreator.fetchDistanceState(with: distance)
-            self.configureCircle(with: distance)
-        }
-        
-        bottomView.bookMarkIconButtonAction = {
+        bottomView.bookMarkIconButtonAction = { [weak self] in
+            guard let self = self else { return }
+            
             self.presentBookMarkIconSelectorVC()
         }
         
-        bottomView.editViewAction = { state in
+        bottomView.editViewAction = { [weak self] state in
+            guard let self = self else { return }
+            
             switch state {
             case .BookMark:
                 self.setupDistanceEditView(state: .BookMark)
@@ -290,100 +360,61 @@ extension DawagaMapViewController {
             }
         }
         
-        bottomView.startDawagaButtonAction = {
+        bottomView.startDawagaButtonAction = { [weak self] in
+            guard let self = self else { return }
+            
             let coordinate = self.circle.position
             let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
             DawagaMapActionCreator.fetchDestination(with: location)
             
             let DawagaLoadingVC = DawagaLoadingViewController()
-            self.navigationController?.pushViewController(DawagaLoadingVC, animated: true)
+            
+            DispatchQueue.main.async {
+                self.present(DawagaLoadingVC, animated: true, completion: nil)
+            }
         }
         
-        bottomView.saveBookMarkButtonAction = {
-            let title = self.curBookMarkTitle
-            let markIcon = self.curBookMarkIconName
+        bottomView.saveBookMarkButtonAction = { [weak self] param in
+            guard let self = self else { return }
+            
             let location = self.circle.position
-            let address = appStore.state.dawagaMapState.reverseLocationDetail?.title ?? ""
             
-            guard self.checkMarkRealmTitleAvailable(title: title) else {
-                let action = UIAlertAction(title: AppString.Enter.localized(), style: .default)
-                self.showAlert(title: AppString.InputError.localized(), message: AppString.BookMarkNameEmptyAlertMessage.localized(), style: .alert, actions: [action])
+            guard self.checkMarkRealmTitleAvailable(title: param.title) else {
+                self.showAlertBookMarkTitleError()
                 return
             }
-            guard self.checkMarkRealmIconAvailable(icon: markIcon) else {
-                let action = UIAlertAction(title: AppString.Enter.localized(), style: .default)
-                self.showAlert(title: AppString.InputError.localized(), message: AppString.BookMarkImageEmptyAlertMessage.localized(), style: .alert, actions: [action])
+            guard self.checkMarkRealmIconAvailable(icon: param.icon) else {
+                self.showAlertBookMarkIconError()
                 return
             }
             
-            let realmMark = MarkRealmEntity(identity: "\(Date())", name: title, latitude: location.latitude, longitude: location.longitude, address: address, iconImageUrl: markIcon)
+            let realmMark = MarkRealmEntity(identity: "\(Date())", name: param.title, latitude: location.latitude, longitude: location.longitude, address: param.address, iconImageUrl: param.icon)
             
-            MarkRealm.saveMarkRealm(mark: realmMark)
-                .done {
-                    let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { _ in
-                        _ = self.navigationController?.popToRootViewController(animated: true)
-                    }
-                    self.showAlert(title: AppString.CreatedComplete.localized(), message: AppString.BookMarkCreated.localized(), style: .alert, actions: [action])
-                }
-                .catch { error in
-                    let action = UIAlertAction(title: AppString.Enter.localized(), style: .default)
-                    self.showAlert(title: AppString.InputError.localized(), message: AppString.BookMarkRealmErrorAlertMessage.localized(), style: .alert, actions: [action])
-                }
+            appStore.dispatch(thunkSaveBookMark(mark: realmMark))
         }
         
-        bottomView.editBookMarkButtonAction = {
-            guard let lat = self.currentLocation?.coordinate.latitude else { return }
-            guard let lng = self.currentLocation?.coordinate.longitude else { return }
-            guard let address = appStore.state.dawagaMapState.reverseLocationDetail?.title else { return }
+        bottomView.editBookMarkButtonAction = { [weak self] param in
+            guard let self = self else { return }
             
-            let title = self.curBookMarkTitle
-            let markIcon = self.curBookMarkIconName
+            let lat = self.circle.position.latitude
+            let lng = self.circle.position.longitude
             
-            guard self.checkMarkRealmTitleAvailable(title: title) else {
-                let action = UIAlertAction(title: AppString.Enter.localized(), style: .default)
-                self.showAlert(title: AppString.InputError.localized(), message: AppString.BookMarkNameEmptyAlertMessage.localized(), style: .alert, actions: [action])
+            guard self.checkMarkRealmTitleAvailable(title: param.title) else {
+                self.showAlertBookMarkTitleError()
                 return
             }
-            guard self.checkMarkRealmIconAvailable(icon: markIcon) else {
-                let action = UIAlertAction(title: AppString.Enter.localized(), style: .default)
-                self.showAlert(title: AppString.InputError.localized(), message: AppString.BookMarkImageEmptyAlertMessage.localized(), style: .alert, actions: [action])
+            guard self.checkMarkRealmIconAvailable(icon: param.icon) else {
+                self.showAlertBookMarkIconError()
                 return
             }
             
-            MarkRealm.editMarkRealm(identity: self.curBookMarkIdentity, name: self.curBookMarkTitle, address: address, iconImage: self.curBookMarkIconName, latitude: lat , longitude: lng)
-                .done { isSuccess in
-                    if isSuccess {
-                        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { _ in
-                            _ = self.navigationController?.popToRootViewController(animated: true)
-                        }
-                        self.showAlert(title: AppString.UpdateComplete.localized(), message: AppString.BookMarkUpdated.localized(), style: .alert, actions: [action])
-                    }
-                    else {
-                        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default)
-                        self.showAlert(title: AppString.InputError.localized(), message: AppString.BookMarkRealmErrorAlertMessage.localized(), style: .alert, actions: [action])
-                    }
-                }
-                .catch { error in
-                    let action = UIAlertAction(title: AppString.Enter.localized(), style: .default)
-                    self.showAlert(title: AppString.InputError.localized(), message: AppString.BookMarkRealmErrorAlertMessage.localized(), style: .alert, actions: [action])
-                }
+            appStore.dispatch(thunkEditBookMark(identity: self.curBookMarkIdentity, name: param.title, address: param.address, iconImage: param.icon, latityde: lat, longitude: lng))
         }
         
-        bottomView.deleteBookMarkButtonAction = {
-            MarkRealm.removeMarkRealm(identity: self.curBookMarkIdentity)
-                .done { isSuccess in
-                    if isSuccess {
-                        _ = self.navigationController?.popToRootViewController(animated: true)
-                    }
-                    else {
-                        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default)
-                        self.showAlert(title: AppString.InputError.localized(), message: AppString.BookMarkRealmErrorAlertMessage.localized(), style: .alert, actions: [action])
-                    }
-                }
-                .catch { error in
-                    let action = UIAlertAction(title: AppString.Enter.localized(), style: .default)
-                    self.showAlert(title: AppString.InputError.localized(), message: AppString.BookMarkRealmErrorAlertMessage.localized(), style: .alert, actions: [action])
-                }
+        bottomView.deleteBookMarkButtonAction = { [weak self] in
+            guard let self = self else { return }
+            
+            appStore.dispatch(thunkDeleteBookMark(identity: self.curBookMarkIdentity))
         }
         
         view.addSubview(bottomView)
@@ -414,14 +445,18 @@ extension DawagaMapViewController {
             self.view.addSubview(view)
         }
         
-        distanceEditView?.enterDistanceButtonAction = { value in
-            DawagaMapActionCreator.fetchDistanceState(with: value)
+        distanceEditView?.enterDistanceButtonAction = { [weak self] value in
+            guard let self = self else { return }
+            
+            self.curDistance = value
+            self.configureCircle(with: value)
             self.distanceEditView?.removeFromSuperview()
             self.distanceEditView = nil
         }
         
-        distanceEditView?.enterBookMarkButtonAction = { title in
-            self.curBookMarkTitle = title
+        distanceEditView?.enterBookMarkButtonAction = { [weak self] title in
+            guard let self = self else { return }
+            
             self.bottomView.configureBookMarkField(title: title)
             self.distanceEditView?.removeFromSuperview()
             self.distanceEditView = nil
@@ -438,4 +473,47 @@ extension DawagaMapViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.topItem?.title = ""
     }
+}
+
+
+// MARK: - Alert
+extension DawagaMapViewController {
+    private func showAlertBookMarkTitleError() {
+        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default)
+        self.showAlert(title: AppString.InputError.localized(), message: AppString.BookMarkNameEmptyAlertMessage.localized(), style: .alert, actions: [action])
+    }
+    
+    private func showAlertBookMarkIconError() {
+        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default)
+        self.showAlert(title: AppString.InputError.localized(), message: AppString.BookMarkImageEmptyAlertMessage.localized(), style: .alert, actions: [action])
+    }
+    
+    private func showAlertBookMarkCreateComplete() {
+        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { _ in
+            _ = self.navigationController?.popToRootViewController(animated: true)
+        }
+        self.showAlert(title: AppString.CreatedComplete.localized(), message: AppString.BookMarkCreated.localized(), style: .alert, actions: [action])
+    }
+    
+    private func showAlertBookMarkCreateError() {
+        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default)
+        self.showAlert(title: AppString.InputError.localized(), message: AppString.BookMarkRealmErrorAlertMessage.localized(), style: .alert, actions: [action])
+    }
+    
+    private func showAlertBookMarkEditComplete() {
+        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { _ in
+            _ = self.navigationController?.popToRootViewController(animated: true)
+        }
+        self.showAlert(title: AppString.UpdateComplete.localized(), message: AppString.BookMarkUpdated.localized(), style: .alert, actions: [action])
+    }
+    
+    private func showAlertBookMarkEditError() {
+        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default)
+        self.showAlert(title: AppString.InputError.localized(), message: AppString.BookMarkRealmErrorAlertMessage.localized(), style: .alert, actions: [action])
+    }
+    
+    private func showAlertBookMarkDeleteError() {
+        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default)
+        self.showAlert(title: AppString.InputError.localized(), message: AppString.BookMarkRealmErrorAlertMessage.localized(), style: .alert, actions: [action])
+    }        
 }
