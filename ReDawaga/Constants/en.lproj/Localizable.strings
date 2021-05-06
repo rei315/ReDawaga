@@ -45,3 +45,6 @@
 "BookMarkUpdated" = "Bookmark modification completed";
 
 "TutorialDoneTitle" = "Start!";
+
+"NetworkConnectionErrorTitle" = "Network Connection Error";
+"NetworkConnectionErrorMessage" = "Please Connect to a Network";

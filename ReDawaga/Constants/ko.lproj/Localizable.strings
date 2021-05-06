@@ -45,3 +45,6 @@
 "BookMarkUpdated" = "즐겨찾기 수정 완료";
 
 "TutorialDoneTitle" = "시작!";
+
+"NetworkConnectionErrorTitle" = "인터넷 연결 오류";
+"NetworkConnectionErrorMessage" = "인터넷에 연결되어 있지 않음";

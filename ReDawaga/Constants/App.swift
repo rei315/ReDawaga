@@ -56,6 +56,9 @@ extension AppString {
     static let TutorialDoneTitle = "TutorialDoneTitle"
     
     static let Enter = "Enter"
+    
+    static let NetworkConnectionErrorTitle = "NetworkConnectionErrorTitle"
+    static let NetworkConnectionErrorMessage = "NetworkConnectionErrorMessage"
 }
 
 enum Url {}

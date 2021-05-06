@@ -45,3 +45,6 @@
 "BookMarkUpdated" = "ブックマーク 修正済み";
 
 "TutorialDoneTitle" = "スタート!";
+
+"NetworkConnectionErrorTitle" = "インターネットエラー";
+"NetworkConnectionErrorMessage" = "インターネットに接続されていません";
