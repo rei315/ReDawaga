@@ -21,4 +21,6 @@ struct AppState: ReSwift.StateType {
     var dawagaLoadingState = DawagaLoadingState()
     
     var locationEmitterState = LocationEmitterState()
+    
+    var networkMonitorState = NetworkMonitorState()
 }

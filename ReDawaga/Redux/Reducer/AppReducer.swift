@@ -24,5 +24,7 @@ func appReduce(action: Action, state: AppState?) -> AppState {
     
     state.dawagaLoadingState = DawagaLoadingReducer.reduce(action: action, state: state.dawagaLoadingState)
     
+    state.networkMonitorState = NetworkMonitorReducer.reduce(action: action, state: state.networkMonitorState)
+    
     return state
 }
