@@ -30,6 +30,15 @@ class DawagaLoadingViewController: UIViewController {
     
     private let fishImageView = UIImageView(image: UIImage(named: "Fish"))
     
+    private let distanceLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 25)
+        return label
+    }()
     
     // MARK: - Property
     
@@ -42,6 +51,7 @@ class DawagaLoadingViewController: UIViewController {
     private let locationManager = CLLocationManager()
     private lazy var locationEmitter = LocationEmitter(locationManager: locationManager)
     
+    private let distanceLeftTitle = AppString.LeftDistanceTitle.localized()
     
     // MARK: - Lifecycle
     
@@ -145,6 +155,12 @@ extension DawagaLoadingViewController: StoreSubscriber {
             
             let distance = location.distance(from: destination)
             let setDistance: Double = Double(state.dawagaMapState.distanceState)
+                                    
+            let distanceStr = distanceLeftTitle + "\(Int(distance)) m"
+            
+            DispatchQueue.main.async {
+                self.distanceLabel.text = distanceStr
+            }
             
             guard distance <= setDistance else { return }
             
@@ -263,6 +279,13 @@ extension DawagaLoadingViewController {
         fishImageView.backgroundColor = .clear
 
         self.view.addSubview(fishImageView)
+        
+        self.view.addSubview(distanceLabel)
+        
+        distanceLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-self.view.frame.height/5)
+        }
     }
 }
 
@@ -273,7 +296,6 @@ extension DawagaLoadingViewController {
 
     private func showAlertNotificationSchedule(error: Error? = nil) {
         if error == nil{
-            print("nil")
             let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { _ in
                 self.dismiss(animated: true, completion: nil)
             }

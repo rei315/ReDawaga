@@ -6,20 +6,14 @@
   
 */
 
+// MARK: - Navigation Title
 "HomeTitle" = "地番、道路名、建物名を\n入力してください";
 "AddressPlaceHolder" = "住所を入力してください";
 "BookMarkTitle" = "ブックマーク";
 
 "SearchAddressTitle" = "目的地住所";
 
-"DawagaMapDistanceEdit" = "直接入力";
-"DawagaMapStart" = "スタート";
-"DawagaMapEditValuePlaceHolder" = "ブックマークの名前";
-"DawagaMapAddBookMark" = "ブックマーク追加";
-"DawagaMapDeleteBookMark" = " ブックマーク修正キャンセル";
-"DawagaMapModifyBookMark" = "ブックマーク修正";
-"DawagaMapEditViewPlaceHolder" = "入力";
-
+// MARK: - DawagaLoadingVC
 "DawagaNotificationTitle" = "到着";
 "DawagaNotificationBody" = "目的地に着きました";
 
@@ -32,6 +26,16 @@
 
 "Enter" = "完了";
 "Destination" = "目的地";
+"LeftDistanceTitle" = "目的地まで\n";
+
+// MARK: - DawagaMapVC
+"DawagaMapDistanceEdit" = "直接入力";
+"DawagaMapStart" = "スタート";
+"DawagaMapEditValuePlaceHolder" = "ブックマークの名前";
+"DawagaMapAddBookMark" = "ブックマーク追加";
+"DawagaMapDeleteBookMark" = " ブックマーク修正キャンセル";
+"DawagaMapModifyBookMark" = "ブックマーク修正";
+"DawagaMapEditViewPlaceHolder" = "入力";
 
 "InputError" = "入力エラー";
 "BookMarkAddressEmptyAlertMessage" = "アドレスをもう一度設定してください";
@@ -44,7 +48,9 @@
 "BookMarkCreated" = "ブックマーク 追加完了";
 "BookMarkUpdated" = "ブックマーク 修正済み";
 
+// MARK: - TutorialVC
 "TutorialDoneTitle" = "スタート!";
 
+// MARK: - NetworkMonitor
 "NetworkConnectionErrorTitle" = "インターネットエラー";
 "NetworkConnectionErrorMessage" = "インターネットに接続されていません";

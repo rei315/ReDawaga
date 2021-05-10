@@ -6,20 +6,14 @@
   
 */
 
+// MARK: - Navigation Title
 "HomeTitle" = "지번, 도로명, 건물명을\n입력하세요";
 "AddressPlaceHolder" = "주소를 입력하세요";
 "BookMarkTitle" = "즐겨찾기";
 
 "SearchAddressTitle" = "목적지 주소";
 
-"DawagaMapDistanceEdit" = "직접입력";
-"DawagaMapStart" = "시작";
-"DawagaMapEditValuePlaceHolder" = "이름을 입력하세요";
-"DawagaMapAddBookMark" = "즐겨찾기 추가";
-"DawagaMapDeleteBookMark" = " 즐겨찾기 수정 취소";
-"DawagaMapModifyBookMark" = "즐겨찾기 수정";
-"DawagaMapEditViewPlaceHolder" = "입력하세요";
-
+// MARK: - DawagaLoadingVC
 "DawagaNotificationTitle" = "도착";
 "DawagaNotificationBody" = "목적지에 도착하였습니다.";
 
@@ -32,6 +26,16 @@
 
 "Enter" = "확인";
 "Destination" = "목적지";
+"LeftDistanceTitle" = "남은 거리\n\n";
+
+// MARK: - DawagaMapVC
+"DawagaMapDistanceEdit" = "직접입력";
+"DawagaMapStart" = "시작";
+"DawagaMapEditValuePlaceHolder" = "이름을 입력하세요";
+"DawagaMapAddBookMark" = "즐겨찾기 추가";
+"DawagaMapDeleteBookMark" = " 즐겨찾기 수정 취소";
+"DawagaMapModifyBookMark" = "즐겨찾기 수정";
+"DawagaMapEditViewPlaceHolder" = "입력하세요";
 
 "InputError" = "입력 오류";
 "BookMarkAddressEmptyAlertMessage" = "주소를 다시 설정해주세요";
@@ -44,7 +48,9 @@
 "BookMarkCreated" = "즐겨찾기 추가 완료";
 "BookMarkUpdated" = "즐겨찾기 수정 완료";
 
+// MARK: - TutorialVC
 "TutorialDoneTitle" = "시작!";
 
+// MARK: - NetworkMonitor
 "NetworkConnectionErrorTitle" = "인터넷 연결 오류";
 "NetworkConnectionErrorMessage" = "인터넷에 연결되어 있지 않음";

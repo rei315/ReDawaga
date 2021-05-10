@@ -14,6 +14,16 @@ extension App {
 
 enum AppString {}
 extension AppString {
+    
+    // MARK: - Navigation Title
+    static let AddressPlaceHolder = "AddressPlaceHolder"
+    static let HomeTitle = "HomeTitle"
+    static let BookMarkTitle = "BookMarkTitle"
+    
+    
+    // MARK: - DawagaLoadingVC
+    static let LeftDistanceTitle = "LeftDistanceTitle"
+    
     static let Destination = "Destination"
     static let NotificationID = "reach_notification_id"
     static let LocationID = "reach_location_id"
@@ -26,6 +36,7 @@ extension AppString {
     static let NotificationErrorTitle = "NotificationErrorTitle"
     static let NotificationErrorMessage = "NotificationErrorBody"
     
+    // MARK: - DawagaMapVC
     static let Fifty = "50M"
     static let Hundred = "100M"
     static let Thousand = "1000M"
@@ -38,10 +49,6 @@ extension AppString {
     static let DawagaMapModifyBookMark = "DawagaMapModifyBookMark"
     static let DawagaMapEditViewPlaceHolder = "DawagaMapEditViewPlaceHolder"
     
-    static let AddressPlaceHolder = "AddressPlaceHolder"
-    static let HomeTitle = "HomeTitle"
-    static let BookMarkTitle = "BookMarkTitle"
-    
     static let InputError = "InputError"
     static let BookMarkAddressEmptyAlertMessage = "BookMarkAddressEmptyAlertMessage"
     static let BookMarkNameEmptyAlertMessage = "BookMarkNameEmptyAlertMessage"
@@ -53,12 +60,16 @@ extension AppString {
     static let BookMarkCreated = "BookMarkCreated"
     static let BookMarkUpdated = "BookMarkUpdated"
     
+    // MARK: - TutorialVC
     static let TutorialDoneTitle = "TutorialDoneTitle"
     
     static let Enter = "Enter"
     
+    // MARK: - NetworkMonitor
     static let NetworkConnectionErrorTitle = "NetworkConnectionErrorTitle"
     static let NetworkConnectionErrorMessage = "NetworkConnectionErrorMessage"
+    
+    
 }
 
 enum Url {}

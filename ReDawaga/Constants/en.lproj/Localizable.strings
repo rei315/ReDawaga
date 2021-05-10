@@ -6,20 +6,14 @@
   
 */
 
+// MARK: - Navigation Title
 "HomeTitle" = "Please enter the\nDestination Address";
 "AddressPlaceHolder" = "Please enter your address";
 "BookMarkTitle" = "Bookmark";
 
 "SearchAddressTitle" = "Destination Address";
 
-"DawagaMapDistanceEdit" = "Edit";
-"DawagaMapStart" = "Start";
-"DawagaMapEditValuePlaceHolder" = "Please enter a name";
-"DawagaMapAddBookMark" = "Add Bookmark";
-"DawagaMapDeleteBookMark" = " Cancel Bookmark Modification";
-"DawagaMapModifyBookMark" = "Modify Bookmark";
-"DawagaMapEditViewPlaceHolder" = "Please enter";
-
+// MARK: - DawagaLoadingVC
 "DawagaNotificationTitle" = "Arrived";
 "DawagaNotificationBody" = "Arrived at destination";
 
@@ -32,6 +26,16 @@
 
 "Enter" = "Done";
 "Destination" = "Destination";
+"LeftDistanceTitle" = "Distance Remaining\n";
+
+// MARK: - DawagaMapVC
+"DawagaMapDistanceEdit" = "Edit";
+"DawagaMapStart" = "Start";
+"DawagaMapEditValuePlaceHolder" = "Please enter a name";
+"DawagaMapAddBookMark" = "Add Bookmark";
+"DawagaMapDeleteBookMark" = " Cancel Bookmark Modification";
+"DawagaMapModifyBookMark" = "Modify Bookmark";
+"DawagaMapEditViewPlaceHolder" = "Please enter";
 
 "InputError" = "Input Error";
 "BookMarkAddressEmptyAlertMessage" = "Please set the address";
@@ -44,7 +48,9 @@
 "BookMarkCreated" = "Bookmark addition completed";
 "BookMarkUpdated" = "Bookmark modification completed";
 
+// MARK: - TutorialVC
 "TutorialDoneTitle" = "Start!";
 
+// MARK: - NetworkMonitor
 "NetworkConnectionErrorTitle" = "Network Connection Error";
 "NetworkConnectionErrorMessage" = "Please Connect to a Network";
