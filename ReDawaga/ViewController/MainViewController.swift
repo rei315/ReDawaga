@@ -91,9 +91,9 @@ extension MainViewController: StoreSubscriber {
         if !state.networkMonitorState.isConnected {
             self.showAlertNetworkConnectionError()
         } else {
-            DispatchQueue.main.async { [weak self] in
-                self?.searchView.isUserInteractionEnabled = true
-                self?.bookmarkTableView.isUserInteractionEnabled = true
+            DispatchQueue.main.async {
+                self.searchView.isUserInteractionEnabled = true
+                self.bookmarkTableView.isUserInteractionEnabled = true
             }
         }
         
