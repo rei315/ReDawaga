@@ -17,10 +17,10 @@ class ProgressView: UIView {
     
     let colors: [UIColor]
     let lineWidth: CGFloat
-            
+    
     var isAnimating: Bool = true {
         didSet {
-            if isAnimating {
+            if self.isAnimating {
                 self.animateStroke()
                 self.animateRotation()
             } else {
@@ -60,46 +60,45 @@ class ProgressView: UIView {
         
         shapeLayer.path = path.cgPath
     }
-        
+    
     
     // MARK: - Function
     
-    func animateStroke() {
-            
-            let startAnimation = StrokeAnimation(
-                type: .start,
-                beginTime: 0.25,
-                fromValue: 0.0,
-                toValue: 1.0,
-                duration: 0.75
-            )
-            
-            let endAnimation = StrokeAnimation(
-                type: .end,
-                fromValue: 0.0,
-                toValue: 1.0,
-                duration: 0.75
-            )
-            
-            let strokeAnimationGroup = CAAnimationGroup()
-            strokeAnimationGroup.duration = 1
-            strokeAnimationGroup.repeatDuration = .infinity
-            strokeAnimationGroup.animations = [startAnimation, endAnimation]
-            
-            shapeLayer.add(strokeAnimationGroup, forKey: nil)
-            
-            self.layer.addSublayer(shapeLayer)
-        }
+    func animateStroke() {        
+        let startAnimation = StrokeAnimation(
+            type: .start,
+            beginTime: 0.25,
+            fromValue: 0.0,
+            toValue: 1.0,
+            duration: 0.75
+        )
+        
+        let endAnimation = StrokeAnimation(
+            type: .end,
+            fromValue: 0.0,
+            toValue: 1.0,
+            duration: 0.75
+        )
+        
+        let strokeAnimationGroup = CAAnimationGroup()
+        strokeAnimationGroup.duration = 1
+        strokeAnimationGroup.repeatDuration = .infinity
+        strokeAnimationGroup.animations = [startAnimation, endAnimation]
+        
+        shapeLayer.add(strokeAnimationGroup, forKey: nil)
+        
+        self.layer.addSublayer(shapeLayer)
+    }
     
     func animateRotation() {
-            let rotationAnimation = RotationAnimation(
-                direction: .z,
-                fromValue: 0,
-                toValue: CGFloat.pi * 2,
-                duration: 2,
-                repeatCount: .greatestFiniteMagnitude
-            )
-            
-            self.layer.add(rotationAnimation, forKey: nil)
-        }
+        let rotationAnimation = RotationAnimation(
+            direction: .z,
+            fromValue: 0,
+            toValue: CGFloat.pi * 2,
+            duration: 2,
+            repeatCount: .greatestFiniteMagnitude
+        )
+        
+        self.layer.add(rotationAnimation, forKey: nil)
+    }
 }
