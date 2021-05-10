@@ -314,6 +314,13 @@
 			path = NetworkMonitor;
 			sourceTree = "<group>";
 		};
+		8C02D6B32643A5C5000EBA9E /* TutorialView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TutorialView;
+			sourceTree = "<group>";
+		};
 		8C43CF5D261B2AB60086599B /* PlaceSearch */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +520,7 @@
 		8C61BA4A2611580700FCBB2C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8C02D6B32643A5C5000EBA9E /* TutorialView */,
 				8CD6D3ED261F2AD900CEBD39 /* BookMarkIconSelector */,
 				8C43CFD4261C086D0086599B /* DawagaMap */,
 				8C43CF5D261B2AB60086599B /* PlaceSearch */,
