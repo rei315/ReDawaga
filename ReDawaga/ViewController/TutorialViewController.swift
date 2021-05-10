@@ -182,7 +182,6 @@ extension TutorialViewController {
         tutorialDoneButton.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(50)
-//            make.width.equalToSuperview().multipliedBy(0.4)
             make.width.equalTo(view.frame.width*0.4)
             make.height.equalTo(50)
         }
