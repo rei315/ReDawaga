@@ -10,6 +10,13 @@ import ReSwift
 
 final class LocationEmitter: NSObject {
     
+    // MARK: - Singleton Instance
+    
+    static let shared = LocationEmitter()
+    
+    
+    // MARK: - Property
+    
     private let locationManager: CLLocationManager
     
     enum EmitterType {
@@ -17,9 +24,12 @@ final class LocationEmitter: NSObject {
     }
     private var emitterType: EmitterType = .OneTime
     
-    init(locationManager: CLLocationManager) {
+    
+    // MARK: - Lifecycle
+//    locationManager: CLLocationManager
+    override init() {
         
-        self.locationManager = locationManager
+        self.locationManager = CLLocationManager()
         super.init()
 
         locationManager.delegate = self
@@ -29,6 +39,9 @@ final class LocationEmitter: NSObject {
         locationManager.showsBackgroundLocationIndicator = true
         locationManager.requestAlwaysAuthorization()
     }
+
+
+    // MARK: - Function
 
     private func dispatch(authorizationStatus: CLAuthorizationStatus) {
         LocationEmitterActionCreator.fetchAuthorizationStatus(state: authorizationStatus)
@@ -67,6 +80,6 @@ extension LocationEmitter: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
+//        print(error)
     }
 }
