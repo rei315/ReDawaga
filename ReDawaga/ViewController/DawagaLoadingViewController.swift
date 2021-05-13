@@ -49,7 +49,7 @@ class DawagaLoadingViewController: UIViewController {
     private let locationNotificationScheduler = LocationNotificationScheduler()
     
     private let locationManager = CLLocationManager()
-    private lazy var locationEmitter = LocationEmitter(locationManager: locationManager)
+//    private lazy var locationEmitter = LocationEmitter(locationManager: locationManager)
     
     private let distanceLeftTitle = AppString.LeftDistanceTitle.localized()
     
@@ -77,9 +77,9 @@ class DawagaLoadingViewController: UIViewController {
         self.startDisplayLink()
         
         self.setupNotificationCenter()
-        self.startUpdatingLocation()
-        
+                
         DawagaLoadingActionCreator.fetchIsStartDawaga(isStart: true)
+        self.startUpdatingLocation()
     }
     
     override func viewDidLayoutSubviews() {
@@ -91,11 +91,13 @@ class DawagaLoadingViewController: UIViewController {
     // MARK: - Function
     
     private func startUpdatingLocation() {
-        self.locationEmitter.startUpdatingLocation(type: .EveryTime)
+        LocationEmitter.shared.startUpdatingLocation(type: .EveryTime)
+//        self.locationEmitter.startUpdatingLocation(type: .EveryTime)
     }
     
     private func stopUpdatingLocation() {
-        self.locationEmitter.stopUpdatingLocation()
+        LocationEmitter.shared.stopUpdatingLocation()
+//        self.locationEmitter.stopUpdatingLocation()
     }
     
     private func setupNotificationCenter() {
@@ -157,18 +159,22 @@ extension DawagaLoadingViewController: StoreSubscriber {
             let setDistance: Double = Double(state.dawagaMapState.distanceState)
                                     
             let distanceStr = distanceLeftTitle + "\(Int(distance)) m"
+                        
+            self.updateDistanceLabel(distanceStr: distanceStr)
             
-            DispatchQueue.main.async {
-                self.distanceLabel.text = distanceStr
+            if distance <= setDistance {
+                self.stopUpdatingLocation()
+                            
+                self.requestLocationNotification()
             }
-            
-            guard distance <= setDistance else { return }
-            
-            self.stopUpdatingLocation()            
-            
-            self.requestLocationNotification()
-            
+                                            
             return
+        }
+    }
+    
+    private func updateDistanceLabel(distanceStr: String) {
+        DispatchQueue.main.async {
+            self.distanceLabel.text = distanceStr
         }
     }
 }
