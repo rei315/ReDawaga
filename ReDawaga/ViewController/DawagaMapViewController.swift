@@ -59,13 +59,11 @@ class DawagaMapViewController: UIViewController {
     }()
                 
     private var locationManager: CLLocationManager = CLLocationManager()
-    private lazy var locationEmitter = LocationEmitter(locationManager: locationManager)
+//    private lazy var locationEmitter = LocationEmitter(locationManager: locationManager)
     
     private let zoomLevel: Float = 15.0
     
     private var curBookMarkIdentity: String = ""
-        
-    private var curDistance: Int = DawagaMapBottomView.DistanceState.Fifty.rawValue
     
     
     // MARK: - Lifecycle
@@ -129,7 +127,8 @@ class DawagaMapViewController: UIViewController {
     }
     
     private func configureQuick() {
-        locationEmitter.startUpdatingLocation(type: .OneTime)
+        LocationEmitter.shared.startUpdatingLocation(type: .OneTime)
+//        locationEmitter.startUpdatingLocation(type: .OneTime)
     }
     
     private func configureMapCenter(with location: CLLocation) {
@@ -287,7 +286,8 @@ extension DawagaMapViewController: GMSMapViewDelegate {
         
         DawagaMapActionCreator.fetchIdleLocation(location: CLLocation(latitude: coor.latitude, longitude: coor.longitude))
                         
-        self.configureCircle(with: self.curDistance)
+        let distance = appStore.state.dawagaMapState.distanceState
+        self.configureCircle(with: distance)
     }
 }
 
@@ -337,7 +337,7 @@ extension DawagaMapViewController {
         bottomView.distanceButtonAction = { [weak self] distance in
             guard let self = self else { return }
             
-            self.curDistance = distance
+            DawagaMapActionCreator.fetchDistanceState(with: distance)
             self.configureCircle(with: distance)
         }
         
@@ -448,8 +448,8 @@ extension DawagaMapViewController {
         distanceEditView?.enterDistanceButtonAction = { [weak self] value in
             guard let self = self else { return }
             
-            self.curDistance = value
-            self.configureCircle(with: value)
+            DawagaMapActionCreator.fetchDistanceState(with: value)
+            self.configureCircle(with: value)            
             self.distanceEditView?.removeFromSuperview()
             self.distanceEditView = nil
         }
