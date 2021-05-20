@@ -21,7 +21,7 @@ extension DawagaMapState {
         
         // MARK: - Reverse Geocode
         case setIsLoadingReverseLocation
-        case setReverseLocation(location: LocationEntity?)
+        case setReverseLocation(location: String?)
         case setIsErrorReverseLocation
         
         

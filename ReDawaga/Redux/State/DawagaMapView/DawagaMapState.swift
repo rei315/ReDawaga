@@ -30,7 +30,7 @@ struct DawagaMapState: ReSwift.StateType {
     
     // MARK: - Reverse Geocode
     var isReverseLoadingLocation: Bool = false
-    var reverseLocationDetail: LocationEntity?
+    var reverseLocationDetail: String = ""
     var isErrorReverseLocation: Bool = false
     
     
@@ -46,9 +46,6 @@ struct DawagaMapState: ReSwift.StateType {
     // MARK: - BookMark Realm
     var realmBookMarkType: RealmBookMarkType = .none
     
-//    var saveBookMarkType: BookMarkState = .none
-//    var editBookMarkType: BookMarkState = .none
-//    var deleteBookMarkType: BookMarkState = .none
     
     // MARK: - Transition
     var destination: CLLocation? = nil            

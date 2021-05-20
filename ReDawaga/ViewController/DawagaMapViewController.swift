@@ -39,7 +39,7 @@ class DawagaMapViewController: UIViewController {
         return bottomView
     }()
     
-    private var distanceEditView: DawagaMapEditView?
+    private let distanceEditView = DawagaMapEditView()
         
     private let loadingView: LoadingView = {
         let loadingView = LoadingView(backgroundColor: .lightGray)        
@@ -50,20 +50,58 @@ class DawagaMapViewController: UIViewController {
     
     // MARK: - Property
     
-    private lazy var circle: GMSCircle = {
+    private let circle: GMSCircle = {
         let circle = GMSCircle()
         circle.fillColor = UIColor.red.withAlphaComponent(0.2)
         circle.strokeColor = UIColor.red
         circle.strokeWidth = 1
         return circle
     }()
-                
-    private var locationManager: CLLocationManager = CLLocationManager()
-//    private lazy var locationEmitter = LocationEmitter(locationManager: locationManager)
-    
+
     private let zoomLevel: Float = 15.0
     
     private var curBookMarkIdentity: String = ""
+    
+    private var addressTitle: String = "" {
+        didSet {
+            bottomView.configureRegionField(address: addressTitle)
+        }
+    }
+    
+    private var iconTitle: String = "" {
+        didSet {
+            setBookMarkIconState(name: iconTitle)
+        }
+    }
+    
+    enum LocationType {
+        case Reverse, Search, Emitter
+    }
+    typealias CustomLocationDataType = (LocationType, CLLocation)
+    struct CustomLocation {
+        var data: CustomLocationDataType?
+    }
+    
+    private var customLocation: CustomLocation = .init(data: nil) {
+        didSet {
+            switch customLocation.data?.0 {
+            case .Reverse:
+                reverseGeocodeState(location: customLocation.data?.1 ?? CLLocation(latitude: 0, longitude: 0))
+            case .Search:
+                setMapCenterState(location: customLocation.data?.1 ?? CLLocation(latitude: 0, longitude: 0))
+            case .Emitter:
+                setLocationEmitterState(location: customLocation.data?.1 ?? CLLocation(latitude: 0, longitude: 0))
+            case .none:
+                break
+            }
+        }
+    }
+    
+    private var distance: Int = DawagaMapBottomView.DistanceState.Fifty.rawValue {
+        didSet {
+            configureCircle(with: distance)
+        }
+    }
     
     
     // MARK: - Lifecycle
@@ -80,7 +118,8 @@ class DawagaMapViewController: UIViewController {
         self.view.endEditing(true)
         appStore.unsubscribe(self)
         
-        appStore.dispatch(DawagaMapActionCreator.fetchReverseGeocode(location: nil))
+        appStore.dispatch(DawagaMapActionCreator.fetchReverseGeocode(location: ""))
+        DawagaMapActionCreator.fetchDistanceState(with: DawagaMapBottomView.DistanceState.Fifty.rawValue)
     }
     
     override func viewDidLoad() {
@@ -128,7 +167,6 @@ class DawagaMapViewController: UIViewController {
     
     private func configureQuick() {
         LocationEmitter.shared.startUpdatingLocation(type: .OneTime)
-//        locationEmitter.startUpdatingLocation(type: .OneTime)
     }
     
     private func configureMapCenter(with location: CLLocation) {
@@ -138,13 +176,10 @@ class DawagaMapViewController: UIViewController {
     }
     
     private func configureCircle(with radius: Int) {
-        mapView.clear()
-        
         let cllDistance = CLLocationDistance(radius)
-                
+        
         circle.position = mapView.camera.target
         circle.radius = cllDistance
-        
         circle.map = mapView
     }
     
@@ -176,13 +211,13 @@ extension DawagaMapViewController: StoreSubscriber {
         switch state.bookMarkListState.transitionType {
         case .Quick:
             if let location = state.locationEmitterState.location {
-                self.setLocationEmitterState(location: location)
+                self.customLocation.data = (LocationType.Emitter, location)
                 LocationEmitterActionCreator.fetchLocation(location: nil)
                 return
             }
         case .Search:
             if let location = state.dawagaMapState.searchLocationDetail?.location {
-                self.setMapCenterState(location: location)
+                self.customLocation.data = (LocationType.Search, location)
                 appStore.dispatch(DawagaMapActionCreator.fetchSearchLocation(location: nil))
                 return
             }
@@ -191,13 +226,13 @@ extension DawagaMapViewController: StoreSubscriber {
         }
         
         if let location = state.dawagaMapState.idleLocation {
-            self.reverseGeocodeState(location: location)
+            self.customLocation.data = (LocationType.Reverse, location)
             DawagaMapActionCreator.fetchIdleLocation(location: nil)
             return
         }
         
         if let iconName = state.dawagaMapState.bookMarkIconName {
-            self.setBookMarkIconState(name: iconName)
+            self.iconTitle = iconName
             DawagaMapActionCreator.fetchBookMarkIconName(with: nil)
             return
         }
@@ -246,11 +281,7 @@ extension DawagaMapViewController: StoreSubscriber {
             break
         }
         
-        
-        if let region = state.dawagaMapState.reverseLocationDetail {
-            bottomView.configureRegionField(address: region.title)
-//            return
-        }
+        self.addressTitle = state.dawagaMapState.reverseLocationDetail
     }
         
     
@@ -283,11 +314,10 @@ extension DawagaMapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         let coor = mapView.camera.target
-        
+
         DawagaMapActionCreator.fetchIdleLocation(location: CLLocation(latitude: coor.latitude, longitude: coor.longitude))
-                        
-        let distance = appStore.state.dawagaMapState.distanceState
-        self.configureCircle(with: distance)
+        
+        self.distance = appStore.state.dawagaMapState.distanceState
     }
 }
 
@@ -335,49 +365,45 @@ extension DawagaMapViewController {
         )
         
         bottomView.distanceButtonAction = { [weak self] distance in
-            guard let self = self else { return }
-            
             DawagaMapActionCreator.fetchDistanceState(with: distance)
-            self.configureCircle(with: distance)
+            self?.distance = distance
         }
         
         bottomView.bookMarkIconButtonAction = { [weak self] in
-            guard let self = self else { return }
-            
-            self.presentBookMarkIconSelectorVC()
+            self?.presentBookMarkIconSelectorVC()
         }
         
         bottomView.editViewAction = { [weak self] state in
-            guard let self = self else { return }
-            
             switch state {
             case .BookMark:
-                self.setupDistanceEditView(state: .BookMark)
+                self?.setupDistanceEditView(state: .BookMark)
             case .Distance:
-                self.setupDistanceEditView(state: .Distance)
+                self?.setupDistanceEditView(state: .Distance)
             case .None:
                 break
             }
         }
         
         bottomView.startDawagaButtonAction = { [weak self] in
-            guard let self = self else { return }
-            
-            let coordinate = self.circle.position
-            let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-            DawagaMapActionCreator.fetchDestination(with: location)
-            
-            let DawagaLoadingVC = DawagaLoadingViewController()
-            
-            DispatchQueue.main.async {
-                self.present(DawagaLoadingVC, animated: true, completion: nil)
+            if let circle = self?.circle {
+                let coordinate = circle.position
+                
+                let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                DawagaMapActionCreator.fetchDestination(with: location)
+                
+                let DawagaLoadingVC = DawagaLoadingViewController()
+                
+                DispatchQueue.main.async {
+                    self?.present(DawagaLoadingVC, animated: true, completion: nil)
+                }
             }
         }
         
         bottomView.saveBookMarkButtonAction = { [weak self] param in
             guard let self = self else { return }
-            
-            let location = self.circle.position
+                        
+            let lat = self.circle.position.latitude
+            let lng = self.circle.position.longitude
             
             guard self.checkMarkRealmTitleAvailable(title: param.title) else {
                 self.showAlertBookMarkTitleError()
@@ -388,7 +414,7 @@ extension DawagaMapViewController {
                 return
             }
             
-            let realmMark = MarkRealmEntity(identity: "\(Date())", name: param.title, latitude: location.latitude, longitude: location.longitude, address: param.address, iconImageUrl: param.icon)
+            let realmMark = MarkRealmEntity(identity: "\(Date())", name: param.title, latitude: lat, longitude: lng, address: param.address, iconImageUrl: param.icon)
             
             appStore.dispatch(thunkSaveBookMark(mark: realmMark))
         }
@@ -412,9 +438,9 @@ extension DawagaMapViewController {
         }
         
         bottomView.deleteBookMarkButtonAction = { [weak self] in
-            guard let self = self else { return }
-            
-            appStore.dispatch(thunkDeleteBookMark(identity: self.curBookMarkIdentity))
+            if let identity = self?.curBookMarkIdentity {
+                appStore.dispatch(thunkDeleteBookMark(identity: identity))
+            }
         }
         
         view.addSubview(bottomView)
@@ -429,7 +455,6 @@ extension DawagaMapViewController {
     
     private func checkMarkRealmTitleAvailable(title: String) -> Bool {
         if title.isEmpty { return false }
-                
         return true
     }
     private func checkMarkRealmIconAvailable(icon: String) -> Bool {
@@ -438,31 +463,24 @@ extension DawagaMapViewController {
     }
     
     private func setupDistanceEditView(state: DawagaMapBottomView.EditState) {
-        guard distanceEditView == nil else { return }
         
-        self.distanceEditView = DawagaMapEditView(state: state)
-        if let view = self.distanceEditView {
-            self.view.addSubview(view)
-        }
+        distanceEditView.configureUI(state: state)
+        self.view.addSubview(distanceEditView)
         
-        distanceEditView?.enterDistanceButtonAction = { [weak self] value in
-            guard let self = self else { return }
+        distanceEditView.enterDistanceButtonAction = { [weak self] value in
             
             DawagaMapActionCreator.fetchDistanceState(with: value)
-            self.configureCircle(with: value)            
-            self.distanceEditView?.removeFromSuperview()
-            self.distanceEditView = nil
+            self?.distance = value
+            self?.distanceEditView.removeFromSuperview()
         }
         
-        distanceEditView?.enterBookMarkButtonAction = { [weak self] title in
-            guard let self = self else { return }
+        distanceEditView.enterBookMarkButtonAction = { [weak self] title in
             
-            self.bottomView.configureBookMarkField(title: title)
-            self.distanceEditView?.removeFromSuperview()
-            self.distanceEditView = nil
+            self?.bottomView.configureBookMarkField(title: title)
+            self?.distanceEditView.removeFromSuperview()
         }
         
-        distanceEditView?.snp.makeConstraints { (make) in
+        distanceEditView.snp.makeConstraints { (make) in
             make.left.right.bottom.top.equalToSuperview()
         }
     }

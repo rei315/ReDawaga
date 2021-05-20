@@ -29,7 +29,7 @@ extension DawagaMapActionCreator {
     }
     
     // Reverse Geocode
-    static func fetchReverseGeocode(location: LocationEntity?) -> ReSwift.Action {
+    static func fetchReverseGeocode(location: String) -> ReSwift.Action {
         
         return DawagaMapState.dawagaMapAction.setReverseLocation(location: location)
     }

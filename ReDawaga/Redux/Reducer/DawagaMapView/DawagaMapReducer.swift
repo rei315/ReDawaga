@@ -24,46 +24,37 @@ extension DawagaMapReducer {
         
         // MARK: - Search
         case .setIsLoadingSearchLocation:
-            print("setIsSearchLoadingLocation")
             state.isSearchLoadingLocation = true
         case let .setSearchLocation(location):
-            print("setSearchLocation")
             state.isSearchLoadingLocation = false
             state.searchLocationDetail = location
             state.isErrorSearchLocation = false
         case .setIsErrorSearchLocation:
-            print("setIsErrorSearchLocation")
             state.isSearchLoadingLocation = false
             state.isErrorSearchLocation = true
             
             
         // MARK: - Location Manager
         case let .setIdleLocation(location):
-            print("setIdleLocation")
             state.idleLocation = location
             
             
         // MARK: - Reverse Geocode
         case .setIsLoadingReverseLocation:
-            print("setIsReverseLoadingLocation")
             state.isReverseLoadingLocation = true
-        case let .setReverseLocation(location):
-            print("setReverseLocation")
+        case let .setReverseLocation(locationTitle):
             state.isReverseLoadingLocation = false
-            state.reverseLocationDetail = location
+            state.reverseLocationDetail = locationTitle ?? ""
             state.isErrorReverseLocation = false
         case .setIsErrorReverseLocation:
-            print("setIsErrorReverseLocation")
             state.isReverseLoadingLocation = false
             state.isErrorReverseLocation = true
             
             
         // MARK: - Bottom View
         case let .setDistanceState(distanceState):
-            print("setDistanceState")
             state.distanceState = distanceState
         case let .setBookMarkIconName(name):
-            print("setBookMarkIconName")
             state.bookMarkIconName = name
             
             
@@ -98,7 +89,6 @@ extension DawagaMapReducer {
             
         // MARK: - Transition
         case let .setDestination(location):
-            print("setDestination")
             state.destination = location
         }
         
