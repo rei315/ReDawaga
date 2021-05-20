@@ -156,6 +156,7 @@ class DawagaMapBottomView: CornerView {
     
     private var imageName: String = ""
     
+    
     // MARK: - Lifecycle
     
     override init(cornerRadius: CGFloat) {
@@ -182,11 +183,15 @@ class DawagaMapBottomView: CornerView {
     }
     
     func configureRegionField(address: String) {
-        self.regionLabel.text = address
+        DispatchQueue.main.async {
+            self.regionLabel.text = address
+        }
     }
     
     func configureBookMarkField(title: String) {
-        self.bookMarkField.text = title
+        DispatchQueue.main.async {
+            self.bookMarkField.text = title
+        }        
     }
 }
 
