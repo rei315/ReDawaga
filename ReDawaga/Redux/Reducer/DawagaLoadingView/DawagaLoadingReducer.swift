@@ -22,11 +22,9 @@ extension DawagaLoadingReducer {
         
         switch action {
         case .setIsNotificationPermissionDenied:
-            print("setIsNotificationPermissionDenied")
             state.isNotificationPermissionDenied = true
             
         case let .setNotificationScheduleError(error):
-            print("setNotificationSchedule")
             state.notificationScheduleError = error
             
         case .setNotificationScheduled:
