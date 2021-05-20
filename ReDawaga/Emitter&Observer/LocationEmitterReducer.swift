@@ -23,10 +23,8 @@ extension LocationEmitterReducer {
         
         switch action {
         case let .setAuthorizationStatus(authorizationStatus):
-            print("setAuthorizationStatus")
             state.authorizationStatus = authorizationStatus
         case let .setLocation(location):
-            print("setLocation")
             state.location = location
         }
         

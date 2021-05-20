@@ -26,7 +26,7 @@ final class LocationEmitter: NSObject {
     
     
     // MARK: - Lifecycle
-//    locationManager: CLLocationManager
+
     override init() {
         
         self.locationManager = CLLocationManager()
