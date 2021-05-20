@@ -14,21 +14,18 @@ class MainViewController: UIViewController {
     
     // MARK: - UI Initialization
     
-    private lazy var searchView: MainViewSearchView = {
+    private let searchView: MainViewSearchView = {
         let sv = MainViewSearchView()
-        sv.isUserInteractionEnabled = false
         return sv
     }()
     
-    private lazy var bookmarkTableView: UITableView = {
+    private let bookmarkTableView: UITableView = {
         let tv = UITableView()
-        tv.isUserInteractionEnabled = false
         return tv
     }()
     
     private let loadingView: LoadingView = {
         let loadingView = LoadingView(backgroundColor: .white)
-        loadingView.isUserInteractionEnabled = false
         return loadingView
     }()
 
@@ -47,7 +44,9 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.view.isUserInteractionEnabled = false
         appStore.subscribe(self)
+        
         self.setupNavigationController()
                                 
         appStore.dispatch(thunkFetchBookMarkList)
@@ -56,6 +55,7 @@ class MainViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.view.endEditing(true)
+        
         appStore.unsubscribe(self)        
         
         self.searchView.clearTextField()
@@ -90,11 +90,6 @@ extension MainViewController: StoreSubscriber {
     func newState(state: AppState) {
         if !state.networkMonitorState.isConnected {
             self.showAlertNetworkConnectionError()
-        } else {
-            DispatchQueue.main.async {
-                self.searchView.isUserInteractionEnabled = true
-                self.bookmarkTableView.isUserInteractionEnabled = true
-            }
         }
         
         if state.bookMarkListState.isLoadingMarkRealm {
@@ -102,9 +97,15 @@ extension MainViewController: StoreSubscriber {
             loadingView.startLoading()
         } else {
             loadingView.stopLoading()
-            setupTouchViewInTableView()
+            
+            self.view.isUserInteractionEnabled = true
         }
-        self.markList = state.bookMarkListState.markRealm
+        
+        if !state.bookMarkListState.markRealm.isEmpty {
+            self.markList = state.bookMarkListState.markRealm
+                                    
+            self.setupTouchViewInTableView()
+        }
     }
 }
 
@@ -120,21 +121,19 @@ extension MainViewController {
         view.addSubview(searchView)
         
         searchView.quickMapButtonAction = { [weak self] in
-            guard let self = self else { return }
             
             let dawagaMapVC = DawagaMapViewController()
             BookMarkListActionCreator.fetchTransitionType(type: .Quick)
             DispatchQueue.main.async {
-                self.navigationController?.pushViewController(dawagaMapVC, animated: true)
+                self?.navigationController?.pushViewController(dawagaMapVC, animated: true)
             }
         }
         
         searchView.quickSearchButtonAction = { [weak self] address in
-            guard let self = self else { return }
             
             BookMarkListActionCreator.fetchSearchAddress(address: address ?? "")
             BookMarkListActionCreator.fetchTransitionType(type: .Search)
-            self.presentSearchVC()
+            self?.presentSearchVC()
         }
         
         searchView.snp.makeConstraints({ (make) in
