@@ -55,13 +55,13 @@ class DawagaMapEditView: UIView {
     var enterDistanceButtonAction: ((Int) -> ())?
     var enterBookMarkButtonAction: ((String) -> ())?
     
+    var lastEditTitle: String = ""
     
     // MARK: - Lifecycle
     
-    init(state: DawagaMapBottomView.EditState) {
+    init() {
         super.init(frame: .zero)
-        
-        self.editState = state
+                
         setupUI()
     }
     
@@ -96,8 +96,9 @@ extension DawagaMapEditView {
     @objc private func onValueEditEnterButton() {
         switch self.editState {
         case .Distance:
-            self.enterDistanceButtonAction?(self.convertValue(toInt: self.valueTextField.text))
+            self.enterDistanceButtonAction?(self.convertValue(toInt: self.valueTextField.text ?? ""))
         case .BookMark:
+            self.lastEditTitle = self.valueTextField.text ?? ""
             self.enterBookMarkButtonAction?(self.valueTextField.text ?? "")
         case .None:
             break
@@ -189,18 +190,7 @@ extension DawagaMapEditView {
         valueEditDimView.addSubview(valueTextField)
                         
         valueTextField.delegate = self
-        
-        switch self.editState {
-        case .Distance:
-            valueTextField.keyboardType = .numberPad
-        case .BookMark, .None:
-            valueTextField.keyboardType = .default
-        }
-        
-        if self.editState == .Distance {
-            valueTextField.addTarget(self, action: #selector(valueTextFieldChanged), for: .editingChanged)
-        }
-        
+                                
         valueEditDimView.snp.makeConstraints { (make) in
             make.left.right.bottom.top.equalToSuperview()
         }
@@ -216,6 +206,22 @@ extension DawagaMapEditView {
             make.width.height.equalTo(ValueEditButtonsWidth)
             make.centerX.equalToSuperview()
             make.top.equalTo(valueTextField.snp.bottom).offset(ValueEditButtonsTop)
+        }
+    }
+    
+    func configureUI(state: DawagaMapBottomView.EditState) {
+        self.editState = state
+        
+        valueTextField.removeTarget(self, action: #selector(valueTextFieldChanged), for: .editingChanged)
+        
+        switch self.editState {
+        case .Distance:
+            self.valueTextField.text = ""
+            valueTextField.keyboardType = .numberPad
+            valueTextField.addTarget(self, action: #selector(valueTextFieldChanged), for: .editingChanged)
+        case .BookMark, .None:
+            self.valueTextField.text = lastEditTitle
+            valueTextField.keyboardType = .default
         }
     }
 }
