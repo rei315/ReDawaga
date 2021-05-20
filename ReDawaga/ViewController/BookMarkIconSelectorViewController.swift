@@ -12,7 +12,7 @@ class BookMarkIconSelectorViewController: UIViewController {
 
     // MARK: - UI Initialization
     
-    private lazy var collectionView: UICollectionView = {
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.estimatedItemSize = .zero
         layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
@@ -26,8 +26,7 @@ class BookMarkIconSelectorViewController: UIViewController {
     
     // MARK: - Property
     
-    private var iconTitles: [String] = [] {
-        
+    private var iconTitles: [String] = [] {        
         didSet {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
