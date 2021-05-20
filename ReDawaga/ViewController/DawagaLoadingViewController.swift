@@ -46,12 +46,18 @@ class DawagaLoadingViewController: UIViewController {
     private var startTime: CFTimeInterval = 0
     
     private var isFishSetup: Bool = false
+    
     private let locationNotificationScheduler = LocationNotificationScheduler()
     
-    private let locationManager = CLLocationManager()
-//    private lazy var locationEmitter = LocationEmitter(locationManager: locationManager)
-    
     private let distanceLeftTitle = AppString.LeftDistanceTitle.localized()
+    
+    private let setDistance: Double = Double(appStore.state.dawagaMapState.distanceState)
+    
+    private var distanceTitle: String = "" {
+        didSet {
+            updateDistanceLabel(distanceStr: distanceTitle)
+        }
+    }
     
     // MARK: - Lifecycle
     
@@ -92,12 +98,10 @@ class DawagaLoadingViewController: UIViewController {
     
     private func startUpdatingLocation() {
         LocationEmitter.shared.startUpdatingLocation(type: .EveryTime)
-//        self.locationEmitter.startUpdatingLocation(type: .EveryTime)
     }
     
     private func stopUpdatingLocation() {
         LocationEmitter.shared.stopUpdatingLocation()
-//        self.locationEmitter.stopUpdatingLocation()
     }
     
     private func setupNotificationCenter() {
@@ -156,12 +160,9 @@ extension DawagaLoadingViewController: StoreSubscriber {
             guard let destination = state.dawagaMapState.destination else { return }
             
             let distance = location.distance(from: destination)
-            let setDistance: Double = Double(state.dawagaMapState.distanceState)
-                                    
-            let distanceStr = distanceLeftTitle + "\(Int(distance)) m"
                         
-            self.updateDistanceLabel(distanceStr: distanceStr)
-            
+            self.distanceTitle = distanceLeftTitle + "\(Int(distance)) m"
+                        
             if distance <= setDistance {
                 self.stopUpdatingLocation()
                             
@@ -186,7 +187,7 @@ extension DawagaLoadingViewController {
     
     private func startDisplayLink() {
         startTime = CACurrentMediaTime()
-        self.displayLink?.invalidate()
+        self.displayLink?.invalidate()        
         let displayLink = CADisplayLink(target: self, selector:#selector(handleDisplayLink(_:)))
         displayLink.add(to: .main, forMode: .common)
         self.displayLink = displayLink
@@ -264,6 +265,7 @@ extension DawagaLoadingViewController {
         self.isFishSetup = true
     }
 }
+
 
 // MARK: - UI Setup
 extension DawagaLoadingViewController {
