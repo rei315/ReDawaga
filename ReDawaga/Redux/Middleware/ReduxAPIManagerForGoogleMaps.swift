@@ -65,7 +65,8 @@ func thunkFetchReverseLocation(_ location: CLLocation) -> Thunk<AppState> {
         APIManagerForGoogleMaps.shared.getReverseGeocode(location: location)
             .done { detailJSON in
                 let location = Location.getLocationBy(json: detailJSON)
-                appStore.dispatch(DawagaMapActionCreator.fetchReverseGeocode(location: location))
+                let title = location.title
+                appStore.dispatch(DawagaMapActionCreator.fetchReverseGeocode(location: title))
             }
             .catch { error in
                 appStore.dispatch(DawagaMapState.dawagaMapAction.setIsErrorReverseLocation)
