@@ -23,7 +23,7 @@ final class NetworkMonitor {
         monitor.pathUpdateHandler = { [weak self] path in
             self?.stopMonitor()
             let isConnected: Bool = path.status == .satisfied ? true : false
-
+            
             NetworkMonitorActionCreator.fetchIsConnected(isConnected: isConnected)
         }
     }
