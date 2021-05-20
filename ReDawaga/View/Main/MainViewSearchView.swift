@@ -179,7 +179,6 @@ class MainViewSearchView: UIView {
     }
     
     @objc private func onBackgroundView() {
-        print("??")
         addressTextField.resignFirstResponder()
     }
 }
