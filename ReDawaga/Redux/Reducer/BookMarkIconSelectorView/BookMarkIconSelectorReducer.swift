@@ -23,22 +23,18 @@ extension BookMarkIconSelectorReducer {
         switch action {
         
         case .setIsLoadingIconTitles:
-            print("setIsLoadingIconTitles")
             state.isLoadingIconTitles = true
             
         case let .setIconTitles(titles):
-            print("setIconTitles")
             state.isLoadingIconTitles = false
             state.iconTitles = titles
             state.isErrorLoadingIconTitles = false
             
         case .setIsErrorLoadingIconTitles:
-            print("setIsErrorLoadingIconTitles")
             state.isLoadingIconTitles = false
             state.isErrorLoadingIconTitles = true
             
         case let .setSelectedIconTitle(title):
-            print("setSelectedIconTitle")
             state.seletecedIconTitle = title
         }
         
