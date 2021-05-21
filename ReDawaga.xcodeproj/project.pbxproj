@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1CB828632CF62971F0B1EC31 /* Pods_ReDawaga.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0A96CD7783ECE7DAF76FD6 /* Pods_ReDawaga.framework */; };
 		62A1D4A091F7C26939A6F7DE /* Pods_ReDawaga_ReDawagaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BAA7869675E1D27A91B5436 /* Pods_ReDawaga_ReDawagaUITests.framework */; };
 		8C02D69E263F846B000EBA9E /* ReduxAPIManagerForGoogleMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02D69D263F846B000EBA9E /* ReduxAPIManagerForGoogleMaps.swift */; };
 		8C02D6A0263FB385000EBA9E /* BookMarkListMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02D69F263FB385000EBA9E /* BookMarkListMiddleware.swift */; };
@@ -237,7 +236,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CD6D38F261C11A000CEBD39 /* Pods_ReDawaga.framework in Frameworks */,
-				1CB828632CF62971F0B1EC31 /* Pods_ReDawaga.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,7 +862,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					8C61B9F92611570B00FCBB2C = {
 						CreatedOnToolsVersion = 12.4;
