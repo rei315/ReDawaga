@@ -41,11 +41,11 @@ class DawagaMapViewController: UIViewController {
     
     private let distanceEditView = DawagaMapEditView()
         
-    private let loadingView: LoadingView = {
-        let loadingView = LoadingView(backgroundColor: .lightGray)        
-        loadingView.isUserInteractionEnabled = false
-        return loadingView
-    }()
+//    private let loadingView: LoadingView = {
+//        let loadingView = LoadingView(backgroundColor: .lightGray)
+//        loadingView.isUserInteractionEnabled = false
+//        return loadingView
+//    }()
     
     
     // MARK: - Property
@@ -74,23 +74,17 @@ class DawagaMapViewController: UIViewController {
         }
     }
     
-    enum LocationType {
-        case Reverse, Search, Emitter
-    }
+    enum LocationType { case Reverse, Search, Emitter }
     typealias CustomLocationDataType = (LocationType, CLLocation)
-    struct CustomLocation {
-        var data: CustomLocationDataType?
-    }
-    
-    private var customLocation: CustomLocation = .init(data: nil) {
+    private var customLocation: CustomLocationDataType? {
         didSet {
-            switch customLocation.data?.0 {
+            switch customLocation?.0 {
             case .Reverse:
-                reverseGeocodeState(location: customLocation.data?.1 ?? CLLocation(latitude: 0, longitude: 0))
+                reverseGeocodeState(location: customLocation?.1 ?? CLLocation(latitude: 0, longitude: 0))
             case .Search:
-                setMapCenterState(location: customLocation.data?.1 ?? CLLocation(latitude: 0, longitude: 0))
+                setMapCenterState(location: customLocation?.1 ?? CLLocation(latitude: 0, longitude: 0))
             case .Emitter:
-                setLocationEmitterState(location: customLocation.data?.1 ?? CLLocation(latitude: 0, longitude: 0))
+                setLocationEmitterState(location: customLocation?.1 ?? CLLocation(latitude: 0, longitude: 0))
             case .none:
                 break
             }
@@ -128,7 +122,7 @@ class DawagaMapViewController: UIViewController {
         self.setupMapView()
         self.configureType()
         self.setupBottomView()
-        self.setupLoadingView()
+//        self.setupLoadingView()
     }
 
     
@@ -211,22 +205,24 @@ extension DawagaMapViewController: StoreSubscriber {
         switch state.bookMarkListState.transitionType {
         case .Quick:
             if let location = state.locationEmitterState.location {
-                self.customLocation.data = (LocationType.Emitter, location)
+                self.customLocation = (LocationType.Emitter, location)
                 LocationEmitterActionCreator.fetchLocation(location: nil)
                 return
             }
+            break
         case .Search:
             if let location = state.dawagaMapState.searchLocationDetail?.location {
-                self.customLocation.data = (LocationType.Search, location)
+                self.customLocation = (LocationType.Search, location)
                 appStore.dispatch(DawagaMapActionCreator.fetchSearchLocation(location: nil))
                 return
             }
+            break
         case .BookMark:
             break
         }
         
         if let location = state.dawagaMapState.idleLocation {
-            self.customLocation.data = (LocationType.Reverse, location)
+            self.customLocation = (LocationType.Reverse, location)
             DawagaMapActionCreator.fetchIdleLocation(location: nil)
             return
         }
@@ -293,7 +289,7 @@ extension DawagaMapViewController: StoreSubscriber {
     }
     
     private func setLocationEmitterState(location: CLLocation) {
-        loadingView.stopLoading()
+//        loadingView.stopLoading()
         configureMapCenter(with: location)
     }
     
@@ -314,8 +310,8 @@ extension DawagaMapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         let coor = mapView.camera.target
-
-        DawagaMapActionCreator.fetchIdleLocation(location: CLLocation(latitude: coor.latitude, longitude: coor.longitude))
+        self.customLocation = (LocationType.Reverse, CLLocation(latitude: coor.latitude, longitude: coor.longitude))
+//        DawagaMapActionCreator.fetchIdleLocation(location: CLLocation(latitude: coor.latitude, longitude: coor.longitude))
         
         self.distance = appStore.state.dawagaMapState.distanceState
     }
@@ -325,16 +321,16 @@ extension DawagaMapViewController: GMSMapViewDelegate {
 
 extension DawagaMapViewController {
     
-    private func setupLoadingView() {
-        if appStore.state.bookMarkListState.transitionType == .Quick {
-            view.addSubview(loadingView)
-            loadingView.startLoading()
-            
-            loadingView.snp.makeConstraints { (make) in
-                make.edges.equalToSuperview()
-            }
-        }
-    }
+//    private func setupLoadingView() {
+//        if appStore.state.bookMarkListState.transitionType == .Quick {
+//            view.addSubview(loadingView)
+//            loadingView.startLoading()
+//
+//            loadingView.snp.makeConstraints { (make) in
+//                make.edges.equalToSuperview()
+//            }
+//        }
+//    }
     
     private func setupMapView() {
         view.addSubview(mapView)
