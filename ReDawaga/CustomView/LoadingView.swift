@@ -39,7 +39,7 @@ class LoadingView: UIView {
     }
     
     func stopLoading() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+        DispatchQueue.main.async {
             self.loadingIndicator.isAnimating = false
             self.isHidden = true
         }
