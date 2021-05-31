@@ -78,7 +78,7 @@ class DawagaLoadingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NetworkMonitor.shared.startMonitor()
         self.setupUI()
         self.startDisplayLink()
         
@@ -126,7 +126,10 @@ class DawagaLoadingViewController: UIViewController {
 extension DawagaLoadingViewController: StoreSubscriber {
     
     func newState(state: AppState) {
-
+        if !state.networkMonitorState.isConnected {
+            self.showAlertNetworkConnectionError()
+        }
+        
         if state.dawagaLoadingState.isNotificationPermissionDenied {
             self.showAlertNotificationPermissionDenied()
             return
@@ -322,5 +325,12 @@ extension DawagaLoadingViewController {
             self.dismiss(animated: true, completion: nil)
         }
         self.showAlert(title: AppString.NotificationPermissionTitle.localized(), message: AppString.NotificationPermissionMessage.localized(), style: .alert, actions: [action])
+    }
+    
+    private func showAlertNetworkConnectionError() {
+        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { _ in
+            UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+        }
+        self.showAlert(title: AppString.NetworkConnectionErrorTitle.localized(), message: AppString.NetworkConnectionErrorMessage.localized(), style: .alert, actions: [action])
     }
 }
