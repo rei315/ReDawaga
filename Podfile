@@ -20,9 +20,6 @@ target 'ReDawaga' do
 
 	pod 'GoogleMaps'
 
-
-
-
   target 'ReDawagaTests' do
     inherit! :search_paths
     # Pods for testing
