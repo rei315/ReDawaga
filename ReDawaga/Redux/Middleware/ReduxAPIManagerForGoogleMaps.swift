@@ -34,7 +34,7 @@ func thunkFetchSearchLocation(_ id: String) -> Thunk<AppState> {
     return Thunk<AppState> { dispatch, getState in
         guard let state = getState() else { return }
         
-        if state.dawagaMapState.isSearchLoadingLocation {
+        if state.dawagaMapState.isLoadingSearchLocation {
             return
         }
         
@@ -56,7 +56,7 @@ func thunkFetchReverseLocation(_ location: CLLocation) -> Thunk<AppState> {
     return Thunk<AppState> { dispatch, getState in
         guard let state = getState() else { return }
         
-        if state.dawagaMapState.isReverseLoadingLocation {
+        if state.dawagaMapState.isLoadingReverseLocation {
             return
         }
         
