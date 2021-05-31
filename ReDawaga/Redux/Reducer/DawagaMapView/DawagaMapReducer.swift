@@ -24,13 +24,13 @@ extension DawagaMapReducer {
         
         // MARK: - Search
         case .setIsLoadingSearchLocation:
-            state.isSearchLoadingLocation = true
+            state.isLoadingSearchLocation = true
         case let .setSearchLocation(location):
-            state.isSearchLoadingLocation = false
+            state.isLoadingSearchLocation = false
             state.searchLocationDetail = location
             state.isErrorSearchLocation = false
         case .setIsErrorSearchLocation:
-            state.isSearchLoadingLocation = false
+            state.isLoadingSearchLocation = false
             state.isErrorSearchLocation = true
             
             
@@ -41,13 +41,13 @@ extension DawagaMapReducer {
             
         // MARK: - Reverse Geocode
         case .setIsLoadingReverseLocation:
-            state.isReverseLoadingLocation = true
+            state.isLoadingReverseLocation = true
         case let .setReverseLocation(locationTitle):
-            state.isReverseLoadingLocation = false
+            state.isLoadingReverseLocation = false
             state.reverseLocationDetail = locationTitle ?? ""
             state.isErrorReverseLocation = false
         case .setIsErrorReverseLocation:
-            state.isReverseLoadingLocation = false
+            state.isLoadingReverseLocation = false
             state.isErrorReverseLocation = true
             
             
