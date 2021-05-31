@@ -57,9 +57,9 @@ class PlaceSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NetworkMonitor.shared.startMonitor()
         self.setupSearchView()
-        self.setupPlaceTableView()
+        self.setupPlaceTableView()        
     }
     
     
@@ -80,6 +80,10 @@ class PlaceSearchViewController: UIViewController {
 extension PlaceSearchViewController: StoreSubscriber  {
     
     func newState(state: AppState) {
+        if !state.networkMonitorState.isConnected {
+            self.showAlertNetworkConnectionError()
+        }
+        
         self.placeList = state.placeSearchState.placeList
     }
 }
@@ -99,7 +103,7 @@ extension PlaceSearchViewController {
     private func setupSearchView() {
         view.addSubview(searchView)
         
-        searchView.searchButtonAction = { address in            
+        searchView.searchButtonAction = { address in
             appStore.dispatch(thunkFetchAutoCompleteList(address ?? ""))
         }
         let storeAddress = appStore.state.bookMarkListState.searchAddress
@@ -129,6 +133,18 @@ extension PlaceSearchViewController {
     
     @objc func onBackgroundView() {
         self.view.endEditing(true)
+    }
+    
+}
+
+
+// MARK: - Alert
+extension PlaceSearchViewController {
+    private func showAlertNetworkConnectionError() {
+        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { _ in
+            UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+        }
+        self.showAlert(title: AppString.NetworkConnectionErrorTitle.localized(), message: AppString.NetworkConnectionErrorMessage.localized(), style: .alert, actions: [action])
     }
 }
 
