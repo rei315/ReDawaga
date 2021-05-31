@@ -28,7 +28,7 @@ func thunkSaveBookMark(mark: MarkRealmEntity) -> Thunk<AppState> {
     }
 }
 
-func thunkEditBookMark(identity: String, name: String, address: String, iconImage: String, latityde: Double, longitude: Double) -> Thunk<AppState> {
+func thunkEditBookMark(identity: String, name: String, address: String, iconImage: String, latitude: Double, longitude: Double) -> Thunk<AppState> {
     return Thunk<AppState> { dispatch, getState in
         guard let state = getState() else { return }
         
@@ -38,7 +38,7 @@ func thunkEditBookMark(identity: String, name: String, address: String, iconImag
         
         dispatch(DawagaMapActionCreator.fetchIsLoadingEditBookMark())
         
-        MarkRealm.editMarkRealm(identity: identity, name: name, address: address, iconImage: iconImage, latitude: latityde, longitude: longitude)
+        MarkRealm.editMarkRealm(identity: identity, name: name, address: address, iconImage: iconImage, latitude: latitude, longitude: longitude)
             .done { isSuccess in
                 if isSuccess {
                     dispatch(DawagaMapActionCreator.fetchIsCompleteEditBookMark())
