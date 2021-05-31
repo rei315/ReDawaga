@@ -23,13 +23,13 @@ struct DawagaMapState: ReSwift.StateType {
     }
     
     // MARK: - Search
-    var isSearchLoadingLocation: Bool = false
+    var isLoadingSearchLocation: Bool = false
     var searchLocationDetail: LocationEntity?
     var isErrorSearchLocation: Bool = false
                 
     
     // MARK: - Reverse Geocode
-    var isReverseLoadingLocation: Bool = false
+    var isLoadingReverseLocation: Bool = false
     var reverseLocationDetail: String = ""
     var isErrorReverseLocation: Bool = false
     
