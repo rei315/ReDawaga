@@ -118,11 +118,11 @@ class DawagaMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NetworkMonitor.shared.startMonitor()
         self.setupMapView()
         self.configureType()
         self.setupBottomView()
-//        self.setupLoadingView()
+//        self.setupLoadingView()        
     }
 
     
@@ -189,8 +189,12 @@ class DawagaMapViewController: UIViewController {
 
 extension DawagaMapViewController: StoreSubscriber {
     
-    func newState(state: AppState) {        
+    func newState(state: AppState) {
         guard !state.dawagaLoadingState.isStartDawaga else { return }
+        
+        if !state.networkMonitorState.isConnected {
+            self.showAlertNetworkConnectionError()
+        }
         
         switch state.locationEmitterState.authorizationStatus {
         case .denied, .restricted:
@@ -430,7 +434,7 @@ extension DawagaMapViewController {
                 return
             }
             
-            appStore.dispatch(thunkEditBookMark(identity: self.curBookMarkIdentity, name: param.title, address: param.address, iconImage: param.icon, latityde: lat, longitude: lng))
+            appStore.dispatch(thunkEditBookMark(identity: self.curBookMarkIdentity, name: param.title, address: param.address, iconImage: param.icon, latitude: lat, longitude: lng))
         }
         
         bottomView.deleteBookMarkButtonAction = { [weak self] in
@@ -529,5 +533,12 @@ extension DawagaMapViewController {
     private func showAlertBookMarkDeleteError() {
         let action = UIAlertAction(title: AppString.Enter.localized(), style: .default)
         self.showAlert(title: AppString.InputError.localized(), message: AppString.BookMarkRealmErrorAlertMessage.localized(), style: .alert, actions: [action])
-    }        
+    }
+    
+    private func showAlertNetworkConnectionError() {
+        let action = UIAlertAction(title: AppString.Enter.localized(), style: .default) { _ in
+            UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+        }
+        self.showAlert(title: AppString.NetworkConnectionErrorTitle.localized(), message: AppString.NetworkConnectionErrorMessage.localized(), style: .alert, actions: [action])
+    }
 }
