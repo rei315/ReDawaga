@@ -54,6 +54,7 @@ class APIManagerForGoogleMaps {
     }
     
     func getPlaceDetails(placeId: String) -> Promise<JSON> {
+        LogHelper(data: placeId)
         
         let parameters: [String : Any] = [
             "place_id"  :   placeId,
@@ -76,6 +77,7 @@ class APIManagerForGoogleMaps {
     }
     
     func getReverseGeocode(location: CLLocation) -> Promise<JSON> {
+        LogHelper(data: location)
         
         let parameters: [String : Any] = [
             "latlng"            :      "\(location.coordinate.latitude),\(location.coordinate.longitude)",
