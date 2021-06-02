@@ -315,8 +315,7 @@ extension DawagaMapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         let coor = mapView.camera.target
         self.customLocation = (LocationType.Reverse, CLLocation(latitude: coor.latitude, longitude: coor.longitude))
-//        DawagaMapActionCreator.fetchIdleLocation(location: CLLocation(latitude: coor.latitude, longitude: coor.longitude))
-        
+
         self.distance = appStore.state.dawagaMapState.distanceState
     }
 }
