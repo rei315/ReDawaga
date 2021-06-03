@@ -26,7 +26,7 @@
 
 "Enter" = "完了";
 "Destination" = "目的地";
-"LeftDistanceTitle" = "目的地まで\n";
+"LeftDistanceTitle" = "目的地まで\n\n";
 
 // MARK: - DawagaMapVC
 "DawagaMapDistanceEdit" = "直接入力";
