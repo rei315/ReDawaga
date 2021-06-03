@@ -49,11 +49,10 @@ class RealmTests: XCTestCase {
     }
     
     func testAddRealmExample() throws {
-
-        appStore.dispatch(thunkSaveBookMark(mark: testRealm[0]))
-        
         let expectation = XCTestExpectation()
         
+        appStore.dispatch(thunkSaveBookMark(mark: testRealm[0]))
+                        
         DispatchQueue.main.asyncAfter(deadline: .now()+2) {
             if appStore.state.dawagaMapState.realmBookMarkType == .save(state: .isComplete) {
                 expectation.fulfill()
@@ -72,15 +71,14 @@ class RealmTests: XCTestCase {
     }
 
     func testEditRealmExample() throws {
+        let expectation = XCTestExpectation()
         
         let firstRealm = appStore.state.bookMarkListState.markRealm.first
         XCTAssertNotNil(firstRealm, "realm is nil")
 
         guard let identity = firstRealm?.identity else { return }
 
-        appStore.dispatch(thunkEditBookMark(identity: identity, name: testRealm[1].name, address: testRealm[1].address, iconImage: testRealm[1].iconImageUrl, latitude: testRealm[1].latitude, longitude: testRealm[1].longitude))
-        
-        let expectation = XCTestExpectation()
+        appStore.dispatch(thunkEditBookMark(identity: identity, name: testRealm[1].name, address: testRealm[1].address, iconImage: testRealm[1].iconImageUrl, latitude: testRealm[1].latitude, longitude: testRealm[1].longitude))                
         
         DispatchQueue.main.asyncAfter(deadline: .now()+2) {
             if appStore.state.dawagaMapState.realmBookMarkType == .edit(state: .isComplete) {
@@ -98,9 +96,8 @@ class RealmTests: XCTestCase {
             XCTAssertTrue(false, "Edit Realm is not working well")
         }
     }
-
+    
     func testDeleteRealmExample() throws {
-        
 //        let expectation = XCTestExpectation()
 //
 //        let firstMark = appStore.state.bookMarkListState.markRealm.first
@@ -109,12 +106,21 @@ class RealmTests: XCTestCase {
 //        guard let mark = firstMark else { return }
 //
 //        appStore.dispatch(thunkDeleteBookMark(identity: mark.identity))
-
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+//            if appStore.state.dawagaMapState.realmBookMarkType == .delete(state: .isComplete) {
+//                expectation.fulfill()
+//            }
+//        }
+//
+//        wait(for: [expectation], timeout: 2)
+//
 //        switch appStore.state.dawagaMapState.realmBookMarkType {
 //        case let .delete(type):
 //            let isComplete = type == .isComplete ? true : false
 //            XCTAssertTrue(isComplete, "Delete Realm is not working well")
 //        default:
+//            XCTAssertTrue(false, "Delete Realm is not working well")
 //            break
 //        }
     }
