@@ -36,6 +36,9 @@ class MainViewController: UIViewController {
             DispatchQueue.main.async {
                 self.bookmarkTableView.reloadData()
             }
+            if !markList.isEmpty {
+                self.setupTouchViewInTableView()
+            }            
         }
     }
             
@@ -101,11 +104,12 @@ extension MainViewController: StoreSubscriber {
             self.view.isUserInteractionEnabled = true
         }
         
-        if !state.bookMarkListState.markRealm.isEmpty {
-            self.markList = state.bookMarkListState.markRealm
+        self.markList = state.bookMarkListState.markRealm
+//        if !state.bookMarkListState.markRealm.isEmpty {
+//            self.markList = state.bookMarkListState.markRealm
                                     
-            self.setupTouchViewInTableView()
-        }
+//            self.setupTouchViewInTableView()
+//        }
     }
 }
 
