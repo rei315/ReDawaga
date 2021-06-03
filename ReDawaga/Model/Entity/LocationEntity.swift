@@ -17,7 +17,10 @@ struct LocationEntity {
         var fullAddress = json["formatted_address"].string ?? ""
         
         if let addressData = json["address_components"].arrayValue.filter({ $0["types"].arrayObject!.contains { $0 as! String == "country" || $0 as! String == "plus_code"} }).first {
-            if let country = addressData["long_name"].string {
+            if var country = addressData["long_name"].string {
+                if Locale.current.languageCode == "ja" {
+                    country += "、"
+                }
                 fullAddress = fullAddress.replacingOccurrences(of: country, with: "")
             }
         }
