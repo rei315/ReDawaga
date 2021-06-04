@@ -54,3 +54,6 @@
 // MARK: - NetworkMonitor
 "NetworkConnectionErrorTitle" = "インターネットエラー";
 "NetworkConnectionErrorMessage" = "インターネットに接続されていません";
+
+
+
