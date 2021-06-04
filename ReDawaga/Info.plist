@@ -11,11 +11,11 @@
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Turning on location services allow us to show you user&apos;s location and left distance</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
+	<string>Turning on location services allow us to show you user&apos;s location and left distance</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Turning on location services allow us to show you user&apos;s location and left distance</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
