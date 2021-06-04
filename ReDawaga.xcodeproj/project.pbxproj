@@ -74,6 +74,7 @@
 		8C9C0A832637DB3900D7AA39 /* StrokeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0A822637DB3900D7AA39 /* StrokeAnimation.swift */; };
 		8C9C0A882637DB4000D7AA39 /* RotationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0A872637DB4000D7AA39 /* RotationAnimation.swift */; };
 		8C9C0A8D2637DB7800D7AA39 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0A8C2637DB7800D7AA39 /* LoadingView.swift */; };
+		8CCA7FEA266AB0C300EBD5DD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8CCA7FEC266AB0C300EBD5DD /* InfoPlist.strings */; };
 		8CD6D3CF261EA78000CEBD39 /* DawagaMapEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3CE261EA78000CEBD39 /* DawagaMapEditView.swift */; };
 		8CD6D3D3261EF30900CEBD39 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3D2261EF30900CEBD39 /* UITextField+Extension.swift */; };
 		8CD6D3D9261F032800CEBD39 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6D3D8261F032800CEBD39 /* RoundButton.swift */; };
@@ -160,7 +161,6 @@
 		8C61BA042611570B00FCBB2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8C61BA062611570B00FCBB2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C61BA092611570B00FCBB2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8C61BA0B2611570B00FCBB2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C61BA102611570B00FCBB2C /* ReDawagaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReDawagaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C61BA142611570B00FCBB2C /* ReDawagaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReDawagaTests.swift; sourceTree = "<group>"; };
 		8C61BA162611570B00FCBB2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -202,6 +202,10 @@
 		8C9C0A822637DB3900D7AA39 /* StrokeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeAnimation.swift; sourceTree = "<group>"; };
 		8C9C0A872637DB4000D7AA39 /* RotationAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationAnimation.swift; sourceTree = "<group>"; };
 		8C9C0A8C2637DB7800D7AA39 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		8CCA7FE6266AB05F00EBD5DD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CCA7FEB266AB0C300EBD5DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8CCA7FED266AB0C700EBD5DD /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8CCA7FEE266AB0C800EBD5DD /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8CD6D3CE261EA78000CEBD39 /* DawagaMapEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DawagaMapEditView.swift; sourceTree = "<group>"; };
 		8CD6D3D2261EF30900CEBD39 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		8CD6D3D8261F032800CEBD39 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -469,7 +473,7 @@
 				8C61B9FD2611570B00FCBB2C /* AppDelegate.swift */,
 				8C61BA062611570B00FCBB2C /* Assets.xcassets */,
 				8C61BA082611570B00FCBB2C /* LaunchScreen.storyboard */,
-				8C61BA0B2611570B00FCBB2C /* Info.plist */,
+				8CCA7FE6266AB05F00EBD5DD /* Info.plist */,
 			);
 			path = ReDawaga;
 			sourceTree = "<group>";
@@ -676,6 +680,7 @@
 				8C61BB0826140BCD00FCBB2C /* App.swift */,
 				8C61BB1F26140C9B00FCBB2C /* Localizable.strings */,
 				8CD81773262621600093C2B1 /* GoogleKey.swift */,
+				8CCA7FEC266AB0C300EBD5DD /* InfoPlist.strings */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -909,6 +914,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C61BA0A2611570B00FCBB2C /* LaunchScreen.storyboard in Resources */,
+				8CCA7FEA266AB0C300EBD5DD /* InfoPlist.strings in Resources */,
 				8C61BB1D26140C9B00FCBB2C /* Localizable.strings in Resources */,
 				8C61BA072611570B00FCBB2C /* Assets.xcassets in Resources */,
 				8CD6D4A52626187700CEBD39 /* MarkIcon in Resources */,
@@ -1222,6 +1228,16 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		8CCA7FEC266AB0C300EBD5DD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8CCA7FEB266AB0C300EBD5DD /* en */,
+				8CCA7FED266AB0C700EBD5DD /* ja */,
+				8CCA7FEE266AB0C800EBD5DD /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1352,7 +1368,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Distribution: Min Guk Kim (3N72J4U62S)";
+				CODE_SIGN_IDENTITY = "Apple Development: Min Guk Kim (3SHSKP537W)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3N72J4U62S;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -1364,7 +1380,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MGHouse.ReDawaga;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ReDawagaDistribution;
+				PROVISIONING_PROFILE_SPECIFIER = ReDawagaDevelopment;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
