@@ -1,0 +1,14 @@
+/* 
+  InfoPlist.strings
+  ReDawaga
+
+  Created by 김민국 on 2021/06/05.
+  
+*/
+
+// MARK: - Permission
+NSLocationWhenInUseUsageDescription = "Turning on location services allow us to show you user's location and left distance";
+NSLocationAlwaysUsageDescription = "Turning on location services allow us to show you user's location and left distance";
+NSLocationAlwaysAndWhenInUseUsageDescription = "Turning on location services allow us to show you user's location and left distance";
+
+CFBundleName = "Dawaga";

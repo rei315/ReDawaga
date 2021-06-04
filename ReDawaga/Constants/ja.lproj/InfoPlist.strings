@@ -1,0 +1,15 @@
+/* 
+  InfoPlist.strings
+  ReDawaga
+
+  Created by 김민국 on 2021/06/05.
+  
+*/
+
+// MARK: - Permission
+NSLocationWhenInUseUsageDescription = "位置サービスをオンにすると、ユーザーの位置と残った距離を表示できます。";
+NSLocationAlwaysUsageDescription = "位置サービスをオンにすると、ユーザーの位置と残った距離を表示できます。";
+NSLocationAlwaysAndWhenInUseUsageDescription = "位置サービスをオンにすると、ユーザーの位置と残った距離を表示できます。";
+
+
+CFBundleName = "ダワガ";
